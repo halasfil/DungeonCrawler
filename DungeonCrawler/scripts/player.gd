@@ -117,7 +117,6 @@ func attack() -> void:
 			knockback()
 		PLAYER_STATE = STATE.NEUTRAL
 func knockback() -> void:
-	var kickbackDirection : Vector2 = (get_global_mouse_position() - global_position).normalized()
 	var weaponKickback: float;
 	if (EQUIPPED == WEAPONS.AXE):
 		weaponKickback = AXE_STATS.knockback
@@ -258,7 +257,18 @@ func dodge() -> void:
 		PLAYER_STATE = STATE.DODGING
 		AXE.visible = false
 		BOW.visible = false
-		ANIMATION.play("roll_f");
+		if (DIRECTION_FACING == DIRECTIONS.DOWN_R):
+			BODY.flip_h = false
+			ANIMATION.play("roll_f");
+		if (DIRECTION_FACING == DIRECTIONS.DOWN_L):
+			BODY.flip_h = true
+			ANIMATION.play("roll_f");
+		if (DIRECTION_FACING == DIRECTIONS.UP_L):
+			BODY.flip_h = false
+			ANIMATION.play("roll_b");
+		if (DIRECTION_FACING == DIRECTIONS.UP_R):
+			BODY.flip_h = true
+			ANIMATION.play("roll_b");
 		var tween = create_tween()
 		var target_position: Vector2 = Vector2.ZERO
 		var mouse_position: Vector2 = get_global_mouse_position()
