@@ -1,0 +1,9 @@
+res://scenes/main_menu.tscn
+res://scripts/player/weapon.gd
+res://scripts/player/weapons/axe.gd
+res://scripts/player/weapons/weapon.gd
+res://scripts/player/player.gd
+res://scenes/player.tscn
+res://animations/player_animations.res
+res://scripts/player/weapons/bow.gd
+res://scripts/player/weapons/sword.gd

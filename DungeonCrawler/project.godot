@@ -16,8 +16,7 @@ config/features=PackedStringArray("4.2", "GL Compatibility")
 
 [editor]
 
-movie_writer/mjpeg_quality=0.5
-movie_writer/movie_file="C:/WorkBackup/Sandbox/New folder/rec/vid.avi"
+movie_writer/movie_file="D:/repositories/godot/recording dungeon crawler/vid.avi"
 
 [input]
 
@@ -59,6 +58,11 @@ left={
 right={
 "deadzone": 0.5,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":68,"key_label":0,"unicode":100,"echo":false,"script":null)
+]
+}
+3={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":51,"key_label":0,"unicode":51,"echo":false,"script":null)
 ]
 }
 
