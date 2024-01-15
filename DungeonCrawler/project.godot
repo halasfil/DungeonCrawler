@@ -14,6 +14,14 @@ config/name="DungeonCrawler"
 run/main_scene="res://scenes/main_menu.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 
+[display]
+
+window/size/viewport_width=2340
+window/size/viewport_height=1080
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
+window/handheld/orientation=4
+
 [editor]
 
 movie_writer/movie_file="D:/repositories/godot/recording dungeon crawler/vid.avi"
@@ -66,7 +74,12 @@ right={
 ]
 }
 
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+
 [rendering]
 
-renderer/rendering_method="gl_compatibility"
+renderer/rendering_method="mobile"
 renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true

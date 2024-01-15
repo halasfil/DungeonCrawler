@@ -6,16 +6,6 @@ enum DIRECTIONS {
 	UP_L,
 	DOWN_L,
 }
-enum WEAPONS {
-	AXE,
-	BOW
-}
-var AXE_STATS = {
-	"knockback": -5
-}
-var BOW_STATS = {
-	"knockback": 3
-}
 enum STATE {
 	IDLE,
 	WALKING,
@@ -24,9 +14,10 @@ enum STATE {
 	NEUTRAL,
 	ACTION
 }
-var MOVING_SPEED : int = 150
+var MOVING_SPEED : int = 100
 var VECTOR : Vector2 = Vector2.ZERO
 var SPEED_BOOST : int = 1;
+var DODGE_COOLDOWN_TIME : int = 1;
 @onready
 var ANIMATION = $AnimationPlayer
 @onready
@@ -36,12 +27,26 @@ var MELEE : Sprite2D = $Melee
 @onready
 var RANGED : Sprite2D = $Marker2D/Ranged
 @onready
-var POINTER = $Marker2D
+var MARKER = $Marker2D
+@onready
+var AIM = $Aim
 @onready
 var MELEE_MARK : Sprite2D = $Marker2D/MeleeMark
-var PLAYER_STATE = STATE.IDLE
+@onready 
+var UI = $Ui
+@onready
+var DODGE_COOLDOWN = $DodgeCooldown
+@onready
+var JOYSTICK = UI.JOYSTICK
+@onready
+var ATTACK_BUTTON = UI.ATTACK_BUTTON
+@onready
+var DODGE_BUTTON = UI.DODGE_BUTTON
+
+var CAN_DODGE = true
+var PLAYER_STATE = STATE.NEUTRAL
 var DIRECTION_FACING = DIRECTIONS.DOWN_R
-var KNOCKBACK : Vector2 = Vector2.ZERO
+
 #to be moved to inventory node
 var EQUIPPED : Weapon
 var EQUIPPMENT = [Axe.new(), Bow.new(), Sword.new()]
@@ -49,9 +54,14 @@ var EQUIPPMENT = [Axe.new(), Bow.new(), Sword.new()]
 #region main functions
 func _ready():
 	MELEE_MARK.visible = false
-func _physics_process(_delta) -> void:
-	if (PLAYER_STATE != STATE.ATTACKING):
-		aim()
+	#to be deleted after making inventory
+	EQUIPPED = EQUIPPMENT[0]
+	MELEE.visible = true
+	RANGED.visible = false
+	MELEE.texture = EQUIPPED.weaponSprite
+	
+func _physics_process(_delta):
+	aim()
 	show_proper_weapon()
 	if (PLAYER_STATE != STATE.ATTACKING 
 	&& PLAYER_STATE != STATE.DODGING 
@@ -59,34 +69,32 @@ func _physics_process(_delta) -> void:
 		check_player_input()
 #endregion
 #region aim
-func aim() -> void:
-	POINTER.look_at(get_global_mouse_position());
-	var angle = get_angle_to(get_global_mouse_position());
-	if (angle > 0 && angle < 1.5):
-		DIRECTION_FACING = DIRECTIONS.DOWN_R;
-		RANGED.z_index = 0
-	elif (angle > 1.5):
-		DIRECTION_FACING = DIRECTIONS.DOWN_L;
-		RANGED.z_index = 0
-	elif (angle < 0 && angle > -1.5):
-		DIRECTION_FACING = DIRECTIONS.UP_R;
-		RANGED.z_index = -1
-	elif (angle < -1.5):
-		DIRECTION_FACING = DIRECTIONS.UP_L;
-		RANGED.z_index = -1
+func aim():
+	var angle = JOYSTICK.angle
+	AIM.rotation = angle
+	if (PLAYER_STATE != STATE.ATTACKING):
+		MARKER.rotation = angle;
+		if (angle > 0 && angle < 1.5):
+			DIRECTION_FACING = DIRECTIONS.DOWN_R;
+			RANGED.z_index = 0
+		elif (angle > 1.5):
+			DIRECTION_FACING = DIRECTIONS.DOWN_L;
+			RANGED.z_index = 0
+		elif (angle < 0 && angle > -1.5):
+			DIRECTION_FACING = DIRECTIONS.UP_R;
+			RANGED.z_index = -1
+		elif (angle < -1.5):
+			DIRECTION_FACING = DIRECTIONS.UP_L;
+			RANGED.z_index = -1
 #endregion
 #region player input check
-func check_player_input() -> void:
-	if (Input.is_anything_pressed() == false):
-		idle()
-	else:
-		await attack()
-		walk()
-		change_weapon()
-		await dodge()
+func check_player_input():
+	walk_or_idle()
+	await attack()
+	await dodge()
 #endregion
 #region weapon change
-func change_weapon() -> void:
+func change_weapon():
 	if (Input.is_action_just_pressed("1")):
 		EQUIPPED = EQUIPPMENT[1]
 		MELEE.visible = false
@@ -105,10 +113,8 @@ func change_weapon() -> void:
 		RANGED.visible = false
 		MELEE.texture = EQUIPPED.weaponSprite
 		PLAYER_STATE = STATE.NEUTRAL
-func show_proper_weapon() -> void:
-	print(PLAYER_STATE)
-	print(EQUIPPED)
-	if (PLAYER_STATE != STATE.DODGING && EQUIPPED != null):
+func show_proper_weapon():
+	if (PLAYER_STATE != STATE.DODGING && PLAYER_STATE != STATE.ACTION && EQUIPPED != null):
 		if (EQUIPPED.isWeaponRanged == false):
 			MELEE.visible = true
 			RANGED.visible = false
@@ -117,8 +123,8 @@ func show_proper_weapon() -> void:
 			RANGED.visible = true
 #endregion
 #region attack
-func attack() -> void:
-	if (Input.is_action_pressed("lmb") && EQUIPPED != null):
+func attack():
+	if(ATTACK_BUTTON.pressed):
 		PLAYER_STATE = STATE.ATTACKING
 		if (EQUIPPED.isWeaponRanged == false):
 			knockback()
@@ -129,12 +135,12 @@ func attack() -> void:
 			await ANIMATION.animation_finished
 			knockback()
 		PLAYER_STATE = STATE.NEUTRAL
-func knockback() -> void:
+func knockback():
 	var weaponKickback: int = EQUIPPED.weaponKickback;
 	var tween = create_tween()
 	var target_position : Vector2 = Vector2.ZERO
-	var mouse_position : Vector2 = get_global_mouse_position()
-	var direction : Vector2 = mouse_position - position
+	var aim_position : Vector2 = $"Marker2D/Aim-helper".global_position
+	var direction : Vector2 = aim_position - position
 	direction = direction.normalized() * -2 * weaponKickback
 	target_position = position + direction
 	tween.tween_property(self, "position", target_position, .1)
@@ -144,9 +150,9 @@ func knockback() -> void:
 	)
 #endregion
 #region melee attack
-func perform_melee_attack() -> void:
+func perform_melee_attack():
 	play_melee_animation()
-func play_melee_animation() -> void:
+func play_melee_animation():
 	var attackType = RandomNumberGenerator.new().randi_range(0, 1)
 	if (DIRECTION_FACING == DIRECTIONS.DOWN_R):
 		BODY.flip_h = false
@@ -178,9 +184,9 @@ func play_melee_animation() -> void:
 			ANIMATION.play("attack_b_melee_2");
 #endregion
 #region ranged attack
-func perform_ranged_attack() -> void:
+func perform_ranged_attack():
 	play_ranged_animation()
-func play_ranged_animation() -> void:
+func play_ranged_animation():
 	if (DIRECTION_FACING == DIRECTIONS.DOWN_R):
 		BODY.flip_h = false
 		MELEE.flip_h = false
@@ -198,8 +204,36 @@ func play_ranged_animation() -> void:
 		MELEE.flip_h = true
 		ANIMATION.play("attack_b_ranged");
 #endregion
+#region walking
+func walk_or_idle():
+	var walkingDirection = JOYSTICK.posVector
+	if (walkingDirection):
+		velocity = walkingDirection * MOVING_SPEED * SPEED_BOOST
+		play_walking_animation()
+		move_and_slide()
+	else:
+		velocity = Vector2.ZERO
+		idle()
+func play_walking_animation():
+	if (DIRECTION_FACING == DIRECTIONS.DOWN_R):
+		BODY.flip_h = false
+		MELEE.flip_h = false
+		ANIMATION.play("run_f")
+	elif (DIRECTION_FACING == DIRECTIONS.DOWN_L):
+		BODY.flip_h = true
+		MELEE.flip_h = true
+		ANIMATION.play("run_f")
+	elif (DIRECTION_FACING == DIRECTIONS.UP_R):
+		BODY.flip_h = false
+		MELEE.flip_h = false
+		ANIMATION.play("run_b")
+	elif (DIRECTION_FACING == DIRECTIONS.UP_L):
+		BODY.flip_h = true
+		MELEE.flip_h = true
+		ANIMATION.play("run_b")
+#endregion
 #region idle
-func idle() -> void:
+func idle():
 	PLAYER_STATE = STATE.IDLE
 	if (DIRECTION_FACING == DIRECTIONS.DOWN_R):
 		BODY.flip_h = false
@@ -218,54 +252,15 @@ func idle() -> void:
 		MELEE.flip_h = true
 		ANIMATION.play("idle_b")
 #endregion
-#region walking
-func walk() -> void:
-	if (Input.is_action_pressed("right") 
-	|| Input.is_action_pressed("left") 
-	||Input.is_action_pressed("up") 
-	||Input.is_action_pressed("down")):
-		PLAYER_STATE = STATE.WALKING
-		VECTOR.x = Input.get_action_strength("right") - Input.get_action_strength("left")
-		VECTOR.y = Input.get_action_strength("down") - Input.get_action_strength("up")
-		VECTOR = VECTOR.normalized()
-		var FACING_BOOST = calculate_facing_boost()
-		velocity = VECTOR * MOVING_SPEED * SPEED_BOOST * FACING_BOOST + KNOCKBACK
-		play_walking_animation()
-		move_and_slide()
-func calculate_facing_boost() -> float:
-	if (DIRECTION_FACING == DIRECTIONS.DOWN_R && VECTOR.x >= 0 && VECTOR.y >= 0):
-		return 1
-	if (DIRECTION_FACING == DIRECTIONS.DOWN_L && VECTOR.x <= 0 && VECTOR.y >= 0):
-		return 1
-	if (DIRECTION_FACING == DIRECTIONS.UP_L && VECTOR.x <= 0 && VECTOR.y <= 0):
-		return 1
-	if (DIRECTION_FACING == DIRECTIONS.UP_R && VECTOR.x >= 0 && VECTOR.y <= 0):
-		return 1
-	return 0.85
-func play_walking_animation() -> void:
-	if (DIRECTION_FACING == DIRECTIONS.DOWN_R):
-		BODY.flip_h = false
-		MELEE.flip_h = false
-		ANIMATION.play("run_f")
-	elif (DIRECTION_FACING == DIRECTIONS.DOWN_L):
-		BODY.flip_h = true
-		MELEE.flip_h = true
-		ANIMATION.play("run_f")
-	elif (DIRECTION_FACING == DIRECTIONS.UP_R):
-		BODY.flip_h = false
-		MELEE.flip_h = false
-		ANIMATION.play("run_b")
-	elif (DIRECTION_FACING == DIRECTIONS.UP_L):
-		BODY.flip_h = true
-		MELEE.flip_h = true
-		ANIMATION.play("run_b")
-#endregion
 #region dodge
-func dodge() -> void:
-	if (Input.is_action_just_pressed("space")):
+func dodge():
+	if (DODGE_BUTTON.pressed && CAN_DODGE):
+		CAN_DODGE = false
 		PLAYER_STATE = STATE.DODGING
 		MELEE.visible = false
 		RANGED.visible = false
+		print(DODGE_BUTTON.modulate)
+		DODGE_BUTTON.modulate = Color(1,1,1,0.5)
 		if (DIRECTION_FACING == DIRECTIONS.DOWN_R):
 			BODY.flip_h = false
 			ANIMATION.play("roll_f");
@@ -280,8 +275,8 @@ func dodge() -> void:
 			ANIMATION.play("roll_b");
 		var tween = create_tween()
 		var target_position: Vector2 = Vector2.ZERO
-		var mouse_position: Vector2 = get_global_mouse_position()
-		var direction: Vector2 = mouse_position - position
+		var aim_position : Vector2 = $"Marker2D/Aim-helper".global_position
+		var direction: Vector2 = aim_position - position
 		direction = direction.normalized() * 100
 		target_position = position + direction
 		tween.tween_property(self, "position", target_position, ANIMATION.get_animation("roll_f").length)
@@ -291,4 +286,8 @@ func dodge() -> void:
 		)
 		await ANIMATION.animation_finished
 		PLAYER_STATE = STATE.NEUTRAL
+		DODGE_COOLDOWN.start(DODGE_COOLDOWN_TIME)
+func _on_dodge_cooldown_timeout():
+	CAN_DODGE = true
+	DODGE_BUTTON.modulate = Color(1,1,1,1)
 #endregion
