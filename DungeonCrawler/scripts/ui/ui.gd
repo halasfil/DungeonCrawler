@@ -1,4 +1,4 @@
-extends Node2D
+class_name Ui extends Node2D
 
 @onready
 var JOYSTICK = $CanvasLayer/HBoxContainer/joystick

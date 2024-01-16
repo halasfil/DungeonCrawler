@@ -19,7 +19,7 @@ var VECTOR : Vector2 = Vector2.ZERO
 var SPEED_BOOST : int = 1;
 var DODGE_COOLDOWN_TIME : int = 1;
 @onready
-var ANIMATION = $AnimationPlayer
+var ANIMATION : AnimationPlayer = $AnimationPlayer
 @onready
 var BODY : Sprite2D = $Body
 @onready
@@ -27,25 +27,25 @@ var MELEE : Sprite2D = $Melee
 @onready
 var RANGED : Sprite2D = $Marker2D/Ranged
 @onready
-var MARKER = $Marker2D
+var MARKER : Marker2D = $Marker2D
 @onready
 var AIM = $Aim
 @onready
 var MELEE_MARK : Sprite2D = $Marker2D/MeleeMark
 @onready 
-var UI = $Ui
+var UI : Ui = $Ui
 @onready
-var DODGE_COOLDOWN = $DodgeCooldown
+var DODGE_COOLDOWN : Timer = $DodgeCooldown
 @onready
-var JOYSTICK = UI.JOYSTICK
+var JOYSTICK : Joystick = UI.JOYSTICK 
 @onready
-var ATTACK_BUTTON = UI.ATTACK_BUTTON
+var ATTACK_BUTTON : AttackButton = UI.ATTACK_BUTTON
 @onready
-var DODGE_BUTTON = UI.DODGE_BUTTON
+var DODGE_BUTTON : DodgeButton  = UI.DODGE_BUTTON
 
-var CAN_DODGE = true
-var PLAYER_STATE = STATE.NEUTRAL
-var DIRECTION_FACING = DIRECTIONS.DOWN_R
+var CAN_DODGE : bool = true
+var PLAYER_STATE : int = STATE.NEUTRAL
+var DIRECTION_FACING : int = DIRECTIONS.DOWN_R
 
 #to be moved to inventory node
 var EQUIPPED : Weapon
@@ -259,7 +259,6 @@ func dodge():
 		PLAYER_STATE = STATE.DODGING
 		MELEE.visible = false
 		RANGED.visible = false
-		print(DODGE_BUTTON.modulate)
 		DODGE_BUTTON.modulate = Color(1,1,1,0.5)
 		if (DIRECTION_FACING == DIRECTIONS.DOWN_R):
 			BODY.flip_h = false
@@ -286,8 +285,10 @@ func dodge():
 		)
 		await ANIMATION.animation_finished
 		PLAYER_STATE = STATE.NEUTRAL
+		var color_tween = create_tween()
+		var target_color = Color(1,1,1,1)
+		color_tween.tween_property(DODGE_BUTTON, "modulate", target_color, DODGE_COOLDOWN_TIME)
 		DODGE_COOLDOWN.start(DODGE_COOLDOWN_TIME)
 func _on_dodge_cooldown_timeout():
 	CAN_DODGE = true
-	DODGE_BUTTON.modulate = Color(1,1,1,1)
 #endregion

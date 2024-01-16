@@ -1,4 +1,4 @@
-extends Node2D
+class_name AttackButton extends Node2D
 
 var pressed : bool;
 
