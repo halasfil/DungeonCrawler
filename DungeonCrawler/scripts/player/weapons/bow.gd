@@ -1,14 +1,13 @@
 class_name Bow extends Weapon
 
-var sprite : CompressedTexture2D = preload("res://assets/player/bow.png")
+var sprite : CompressedTexture2D = preload("res://assets/weapons/bow.png")
 
 func _init() -> void: 
-	super("Bow", 1, 3, "None", 2, 2, 10, sprite, true)
+	super("Bow", 1, 3, 2, 2, 8, sprite, true)
 	
 	#nameWeapon : String, 
 	#minDamage : int, 
 	#maxDamage : int, 
-	#enchancement : String,
 	#kickback : int, 
 	#pushback : int,
 	#price : int,

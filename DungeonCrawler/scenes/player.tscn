@@ -4,9 +4,9 @@
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_vw300"]
 [ext_resource type="PackedScene" uid="uid://xnje4uggyijj" path="res://scenes/ui.tscn" id="2_130pe"]
 [ext_resource type="Texture2D" uid="uid://cgbk02q34tlg" path="res://assets/player/pointer.png" id="2_wl0il"]
-[ext_resource type="Texture2D" uid="uid://bb6yq41h7plnu" path="res://assets/player/sword.png" id="3_fes1p"]
-[ext_resource type="Texture2D" uid="uid://dhaytpklv7tjl" path="res://assets/player/bow.png" id="4_vdep7"]
+[ext_resource type="Texture2D" uid="uid://bb6yq41h7plnu" path="res://assets/weapons/sword.png" id="4_0o85m"]
 [ext_resource type="AnimationLibrary" uid="uid://81c0pbcls2m0" path="res://animations/player_animations.res" id="5_fvxux"]
+[ext_resource type="Texture2D" uid="uid://dhaytpklv7tjl" path="res://assets/weapons/bow.png" id="6_ef77g"]
 [ext_resource type="Texture2D" uid="uid://gocm6goif27y" path="res://assets/player/attack.png" id="6_uhjr1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o3gem"]
@@ -33,11 +33,8 @@ texture_filter = 1
 position = Vector2(-6, -2)
 rotation = 0.507229
 scale = Vector2(0.8, 0.8)
-texture = ExtResource("3_fes1p")
+texture = ExtResource("4_0o85m")
 flip_v = true
-hframes = 9
-vframes = 3
-frame = 1
 
 [node name="Aim" type="Marker2D" parent="."]
 
@@ -55,7 +52,7 @@ position = Vector2(1, 2)
 visible = false
 texture_filter = 1
 position = Vector2(5, -1)
-texture = ExtResource("4_vdep7")
+texture = ExtResource("6_ef77g")
 hframes = 9
 vframes = 3
 
@@ -79,8 +76,7 @@ libraries = {
 }
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(0, 25)
-zoom = Vector2(5, 5)
+zoom = Vector2(3, 3)
 
 [node name="DodgeCooldown" type="Timer" parent="."]
 wait_time = 2.0

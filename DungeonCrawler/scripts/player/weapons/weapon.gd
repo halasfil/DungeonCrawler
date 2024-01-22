@@ -1,10 +1,9 @@
-class_name Weapon extends Node
+class_name Weapon extends Item
 
 var weaponName : String;
 var weaponMinDamage : int;
 var weaponMaxDamage : int;
 #todo tbd
-var weaponEnchancement : String;
 var weaponKickback : int;
 var weaponPushback : int;
 var weaponPrice : int;
@@ -15,7 +14,6 @@ func _init(
 	nameWeapon : String, 
 	minDamage : int, 
 	maxDamage : int, 
-	enchancement : String,
 	kickback : int, 
 	pushback : int,
 	price : int,
@@ -25,7 +23,6 @@ func _init(
 	weaponName = nameWeapon;
 	weaponMinDamage = minDamage;
 	weaponMaxDamage = maxDamage;
-	weaponEnchancement = enchancement;
 	weaponKickback = kickback;
 	weaponPushback = pushback;
 	weaponPrice = price;

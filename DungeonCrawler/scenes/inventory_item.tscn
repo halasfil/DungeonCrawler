@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b41ybpiw7q5sb"]
+
+[ext_resource type="Script" path="res://scripts/ui/inventory_item.gd" id="1_iuufj"]
+
+[node name="InventoryItem" type="Button"]
+script = ExtResource("1_iuufj")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

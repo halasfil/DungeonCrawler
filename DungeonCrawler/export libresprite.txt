@@ -1,0 +1,8 @@
+player
+by columns
+of rows - 3
+288x96
+
+
+weapons 
+1 dla animacji i 2 dla inv

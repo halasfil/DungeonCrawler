@@ -1,0 +1,113 @@
+[gd_scene load_steps=3 format=3 uid="uid://phoxfhoi5d6q"]
+
+[ext_resource type="Script" path="res://scripts/ui/inventory.gd" id="1_2s6c5"]
+[ext_resource type="Texture2D" uid="uid://n5fyy2he8bsf" path="res://godot_logo.png" id="1_uu1f6"]
+
+[node name="Inventory" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2s6c5")
+
+[node name="InventoryBackground" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.219608)
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_uu1f6")
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -37.0
+offset_right = -2.0
+offset_bottom = 38.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TypeChoice" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 80
+alignment = 1
+
+[node name="Weapons" type="Button" parent="VBoxContainer/TypeChoice"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Weapons
+"
+
+[node name="Armors" type="Button" parent="VBoxContainer/TypeChoice"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Armors
+"
+
+[node name="Utils" type="Button" parent="VBoxContainer/TypeChoice"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Utils
+"
+
+[node name="Exit" type="Button" parent="VBoxContainer/TypeChoice"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_font_sizes/font_size = 60
+text = "X"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 200
+alignment = 1
+
+[node name="ItemsList" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+
+[node name="ItemDetailsContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HBoxContainer/ItemDetailsContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(0, 150)
+layout_direction = 1
+layout_mode = 2
+
+[node name="ItemDetails" type="RichTextLabel" parent="VBoxContainer/HBoxContainer/ItemDetailsContainer"]
+custom_minimum_size = Vector2(100, 300)
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 30
+autowrap_mode = 2
+
+[node name="ItemActionButtons" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/ItemDetailsContainer"]
+layout_mode = 2
+theme_override_constants/separation = 60
+
+[node name="UseButton" type="Button" parent="VBoxContainer/HBoxContainer/ItemDetailsContainer/ItemActionButtons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Equip"
+
+[node name="DeleteButton" type="Button" parent="VBoxContainer/HBoxContainer/ItemDetailsContainer/ItemActionButtons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Delete"
+
+[node name="SellButton" type="Button" parent="VBoxContainer/HBoxContainer/ItemDetailsContainer/ItemActionButtons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Sell
+"
+
+[connection signal="button_down" from="VBoxContainer/TypeChoice/Exit" to="." method="_on_exit_button_down"]

@@ -16,8 +16,8 @@ config/features=PackedStringArray("4.2", "GL Compatibility")
 
 [display]
 
-window/size/viewport_width=2340
-window/size/viewport_height=1080
+window/size/viewport_width=1170
+window/size/viewport_height=540
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 window/handheld/orientation=4

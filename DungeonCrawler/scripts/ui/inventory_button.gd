@@ -1,4 +1,9 @@
-extends Node2D
+class_name InventoryButton extends Node2D
 
-func _on_touch_screen_button_pressed():
-	print("inventory pressed")
+var pressed : bool = false
+
+func _on_button_button_down():
+	pressed = true
+
+func _on_button_button_up():
+	pressed = false

@@ -20,13 +20,13 @@ alignment = 1
 
 [node name="start_button" type="Button" parent="CanvasLayer/VBoxContainer2"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 100
+theme_override_font_sizes/font_size = 80
 text = "Start game"
 icon_alignment = 1
 
 [node name="exit_button" type="Button" parent="CanvasLayer/VBoxContainer2"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 100
+theme_override_font_sizes/font_size = 60
 text = "Exit"
 
 [connection signal="pressed" from="CanvasLayer/VBoxContainer2/start_button" to="." method="_on_start_button_pressed"]

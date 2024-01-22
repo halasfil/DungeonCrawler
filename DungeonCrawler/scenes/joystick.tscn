@@ -9,7 +9,6 @@
 radius = 160.0
 
 [node name="joystick" type="Node2D"]
-scale = Vector2(0.8, 0.8)
 script = ExtResource("1_1o17u")
 
 [node name="ring" type="Sprite2D" parent="."]
