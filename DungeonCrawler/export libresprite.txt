@@ -5,4 +5,4 @@ of rows - 3
 
 
 weapons 
-1 dla animacji i 2 dla inv
+32x32px 1 sprite

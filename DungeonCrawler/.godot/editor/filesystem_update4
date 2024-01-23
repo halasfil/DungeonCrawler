@@ -1,5 +1,7 @@
-res://scenes/main_menu.tscn
 res://scenes/player.tscn
+res://animations/player_animations.res
+res://scenes/main_menu.tscn
+res://scripts/player/player.gd
 res://scenes/game.tscn
 res://scenes/ui.tscn
 res://scenes/joystick.tscn
@@ -10,10 +12,3 @@ res://scenes/dodge_button.tscn
 res://scenes/quick_item_button.tscn
 res://scenes/inventory.tscn
 res://scenes/inventory_item.tscn
-res://scripts/ui/inventory.gd
-res://scripts/ui/inventory_item.gd
-res://scripts/ui/inventory_button.gd
-res://scripts/player/weapons/sword.gd
-res://scripts/player/weapons/weapon.gd
-res://scripts/player/weapons/axe.gd
-res://scripts/player/weapons/bow.gd

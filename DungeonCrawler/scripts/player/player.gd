@@ -55,7 +55,7 @@ var EQUIPPMENT = [Axe.new(), Bow.new(), Sword.new()]
 func _ready():
 	MELEE_MARK.visible = false
 	#to be deleted after making inventory
-	EQUIPPED = EQUIPPMENT[0]
+	EQUIPPED = EQUIPPMENT[1]
 	MELEE.visible = true
 	RANGED.visible = false
 	MELEE.texture = EQUIPPED.weaponSprite
