@@ -55,7 +55,7 @@ var EQUIPPMENT = [Axe.new(), Bow.new(), Sword.new()]
 func _ready():
 	MELEE_MARK.visible = false
 	#to be deleted after making inventory
-	EQUIPPED = EQUIPPMENT[1]
+	EQUIPPED = EQUIPPMENT[0]
 	MELEE.visible = true
 	RANGED.visible = false
 	MELEE.texture = EQUIPPED.weaponSprite
@@ -63,9 +63,7 @@ func _ready():
 func _physics_process(_delta):
 	aim()
 	show_proper_weapon()
-	if (PLAYER_STATE != STATE.ATTACKING 
-	&& PLAYER_STATE != STATE.DODGING 
-	&& PLAYER_STATE != STATE.ACTION):
+	if (PLAYER_STATE != STATE.ATTACKING && PLAYER_STATE != STATE.DODGING && PLAYER_STATE != STATE.ACTION):
 		check_player_input()
 #endregion
 #region aim

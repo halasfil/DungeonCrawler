@@ -1,7 +1,7 @@
 player
-by columns
-of rows - 3
-288x96
+by rows
+of columns 8
+256x96
 
 
 weapons 

@@ -12,3 +12,5 @@ res://scenes/dodge_button.tscn
 res://scenes/quick_item_button.tscn
 res://scenes/inventory.tscn
 res://scenes/inventory_item.tscn
+res://scripts/ui/skill_button.gd
+res://scenes/skill_button.tscn

@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bffkc26tki3jx"]
+
+[ext_resource type="Script" path="res://scripts/ui/skill_button.gd" id="1_dy1qh"]
+[ext_resource type="Texture2D" uid="uid://cloqpwjbujk54" path="res://assets/ui/SmallHandleFilled.png" id="2_8lvob"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g4rcx"]
+radius = 50.0
+
+[node name="SkillButton" type="Node2D"]
+script = ExtResource("1_dy1qh")
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="."]
+modulate = Color(0, 0.0627451, 0.94902, 1)
+texture_normal = ExtResource("2_8lvob")
+shape = SubResource("CircleShape2D_g4rcx")
+
+[connection signal="pressed" from="TouchScreenButton" to="." method="_on_touch_screen_button_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://xnje4uggyijj"]
+[gd_scene load_steps=12 format=3 uid="uid://xnje4uggyijj"]
 
 [ext_resource type="PackedScene" uid="uid://cyv2gg81gj43k" path="res://scenes/joystick.tscn" id="1_g0bjv"]
 [ext_resource type="Script" path="res://scripts/ui/ui.gd" id="1_kgkwy"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dovh01m70itsy" path="res://scenes/quick_item_button.tscn" id="4_52gbr"]
 [ext_resource type="PackedScene" uid="uid://c2rcdshq4xw37" path="res://scenes/dodge_button.tscn" id="5_0eka8"]
 [ext_resource type="PackedScene" uid="uid://cptn6wixbwlha" path="res://scenes/inventory_button.tscn" id="5_kep2y"]
+[ext_resource type="PackedScene" uid="uid://bffkc26tki3jx" path="res://scenes/skill_button.tscn" id="6_j1cb1"]
 [ext_resource type="PackedScene" uid="uid://phoxfhoi5d6q" path="res://scenes/inventory.tscn" id="8_ay8l2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_11thm"]
@@ -72,6 +73,10 @@ scale = Vector2(0.6, 0.6)
 
 [node name="DodgeButton" parent="CanvasLayer/HBoxContainer2" instance=ExtResource("5_0eka8")]
 position = Vector2(-162, -170)
+scale = Vector2(0.6, 0.6)
+
+[node name="SkillButton" parent="CanvasLayer/HBoxContainer2" instance=ExtResource("6_j1cb1")]
+position = Vector2(-214, -89)
 scale = Vector2(0.6, 0.6)
 
 [node name="HBoxContainer4" type="HBoxContainer" parent="CanvasLayer"]

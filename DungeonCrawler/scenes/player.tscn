@@ -23,7 +23,7 @@ position = Vector2(0, 41)
 texture_filter = 1
 position = Vector2(1, 0)
 texture = ExtResource("1_842iu")
-hframes = 9
+hframes = 8
 vframes = 3
 frame = 3
 
@@ -60,6 +60,7 @@ texture = ExtResource("7_qu3kr")
 hframes = 3
 
 [node name="MeleeMark" type="Sprite2D" parent="Marker2D"]
+texture_filter = 1
 position = Vector2(5, -3)
 texture = ExtResource("6_uhjr1")
 flip_v = true
