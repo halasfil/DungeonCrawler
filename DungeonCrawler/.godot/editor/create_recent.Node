@@ -1,3 +1,7 @@
+ScrollContainer
+VScrollBar
+ColorRect
+Label
 TouchScreenButton
 Sprite2D
 Button
@@ -9,6 +13,3 @@ VBoxContainer
 HBoxContainer
 CanvasLayer
 Node2D
-Node
-TextureRect
-RichTextLabel

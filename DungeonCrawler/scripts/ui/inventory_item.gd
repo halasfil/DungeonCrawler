@@ -12,3 +12,5 @@ func _ready():
 	text = nameItem
 	button_down.connect(func(): clicked = true)
 	button_up.connect(func(): clicked = false)
+	
+

@@ -19,7 +19,6 @@ func _init(
 	price : int,
 	sprite : CompressedTexture2D,
 	ranged : bool) -> void:
-		
 	weaponName = nameWeapon;
 	weaponMinDamage = minDamage;
 	weaponMaxDamage = maxDamage;

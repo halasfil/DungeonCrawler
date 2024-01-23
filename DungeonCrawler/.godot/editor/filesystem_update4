@@ -1,7 +1,5 @@
-res://scenes/player.tscn
-res://animations/player_animations.res
 res://scenes/main_menu.tscn
-res://scripts/player/player.gd
+res://scenes/player.tscn
 res://scenes/game.tscn
 res://scenes/ui.tscn
 res://scenes/joystick.tscn
@@ -12,5 +10,10 @@ res://scenes/dodge_button.tscn
 res://scenes/quick_item_button.tscn
 res://scenes/inventory.tscn
 res://scenes/inventory_item.tscn
-res://scripts/ui/skill_button.gd
 res://scenes/skill_button.tscn
+res://scripts/ui/inventory.gd
+res://themes/new_theme.tres
+res://scripts/player/weapons/weapon.gd
+res://scripts/ui/inventory_item.gd
+res://scripts/player/player.gd
+res://animations/player_animations.res

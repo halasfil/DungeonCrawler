@@ -35,6 +35,8 @@ var MELEE_MARK : Sprite2D = $Marker2D/MeleeMark
 @onready 
 var UI : Ui = $Ui
 @onready
+var INVENTORY : Inventory = $Ui/CanvasLayer/Inventory
+@onready
 var DODGE_COOLDOWN : Timer = $DodgeCooldown
 @onready
 var JOYSTICK : Joystick = UI.JOYSTICK 
@@ -46,25 +48,22 @@ var DODGE_BUTTON : DodgeButton  = UI.DODGE_BUTTON
 var CAN_DODGE : bool = true
 var PLAYER_STATE : int = STATE.NEUTRAL
 var DIRECTION_FACING : int = DIRECTIONS.DOWN_R
+var EQUIPPED_WEAPON : Weapon
 
-#to be moved to inventory node
-var EQUIPPED : Weapon
-var EQUIPPMENT = [Axe.new(), Bow.new(), Sword.new()]
 #endregion
 #region main functions
 func _ready():
 	MELEE_MARK.visible = false
-	#to be deleted after making inventory
-	EQUIPPED = EQUIPPMENT[0]
 	MELEE.visible = true
 	RANGED.visible = false
-	MELEE.texture = EQUIPPED.weaponSprite
+	EQUIPPED_WEAPON = INVENTORY.EQUIPPED_WEAPON
 	
 func _physics_process(_delta):
 	aim()
 	show_proper_weapon()
 	if (PLAYER_STATE != STATE.ATTACKING && PLAYER_STATE != STATE.DODGING && PLAYER_STATE != STATE.ACTION):
 		check_player_input()
+	check_equipped_weapon()
 #endregion
 #region aim
 func aim():
@@ -92,31 +91,17 @@ func check_player_input():
 	await dodge()
 #endregion
 #region weapon change
-func change_weapon():
-	if (Input.is_action_just_pressed("1")):
-		EQUIPPED = EQUIPPMENT[1]
-		MELEE.visible = false
-		RANGED.visible = true
-		MELEE.texture = EQUIPPED.weaponSprite
-		PLAYER_STATE = STATE.NEUTRAL
-	if (Input.is_action_just_pressed("2")):
-		EQUIPPED = EQUIPPMENT[0]
-		MELEE.visible = true
-		RANGED.visible = false
-		MELEE.texture = EQUIPPED.weaponSprite
-		PLAYER_STATE = STATE.NEUTRAL
-	if (Input.is_action_just_pressed("3")):
-		EQUIPPED = EQUIPPMENT[2]
-		MELEE.visible = true
-		RANGED.visible = false
-		MELEE.texture = EQUIPPED.weaponSprite
-		PLAYER_STATE = STATE.NEUTRAL
+func check_equipped_weapon():
+	EQUIPPED_WEAPON = INVENTORY.EQUIPPED_WEAPON
+	if EQUIPPED_WEAPON:
+		MELEE.texture = EQUIPPED_WEAPON.weaponSprite
+		RANGED.texture = EQUIPPED_WEAPON.weaponSprite
 func show_proper_weapon():
-	if (PLAYER_STATE != STATE.DODGING && PLAYER_STATE != STATE.ACTION && EQUIPPED != null):
-		if (EQUIPPED.isWeaponRanged == false):
+	if (PLAYER_STATE != STATE.DODGING && PLAYER_STATE != STATE.ACTION && EQUIPPED_WEAPON != null):
+		if (EQUIPPED_WEAPON.isWeaponRanged == false):
 			MELEE.visible = true
 			RANGED.visible = false
-		elif (EQUIPPED.isWeaponRanged == true):
+		elif (EQUIPPED_WEAPON.isWeaponRanged == true):
 			MELEE.visible = false
 			RANGED.visible = true
 #endregion
@@ -124,7 +109,7 @@ func show_proper_weapon():
 func attack():
 	if(ATTACK_BUTTON.pressed):
 		PLAYER_STATE = STATE.ATTACKING
-		if (EQUIPPED.isWeaponRanged == false):
+		if (EQUIPPED_WEAPON.isWeaponRanged == false):
 			knockback()
 			perform_melee_attack()
 			await ANIMATION.animation_finished
@@ -134,7 +119,7 @@ func attack():
 			knockback()
 		PLAYER_STATE = STATE.NEUTRAL
 func knockback():
-	var weaponKickback: int = EQUIPPED.weaponKickback;
+	var weaponKickback: int = EQUIPPED_WEAPON.weaponKickback;
 	var tween = create_tween()
 	var target_position : Vector2 = Vector2.ZERO
 	var aim_position : Vector2 = $"Marker2D/Aim-helper".global_position

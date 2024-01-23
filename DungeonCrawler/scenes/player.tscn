@@ -1,12 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://b6c8fwsvm7b8k"]
+[gd_scene load_steps=9 format=3 uid="uid://b6c8fwsvm7b8k"]
 
 [ext_resource type="Texture2D" uid="uid://dne3vti22ebde" path="res://assets/player/player.png" id="1_842iu"]
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_vw300"]
 [ext_resource type="PackedScene" uid="uid://xnje4uggyijj" path="res://scenes/ui.tscn" id="2_130pe"]
 [ext_resource type="Texture2D" uid="uid://cgbk02q34tlg" path="res://assets/player/pointer.png" id="2_wl0il"]
-[ext_resource type="Texture2D" uid="uid://bb6yq41h7plnu" path="res://assets/weapons/sword.png" id="4_0o85m"]
 [ext_resource type="AnimationLibrary" uid="uid://81c0pbcls2m0" path="res://animations/player_animations.res" id="5_fvxux"]
-[ext_resource type="Texture2D" uid="uid://dhaytpklv7tjl" path="res://assets/weapons/bow.png" id="6_ef77g"]
 [ext_resource type="Texture2D" uid="uid://gocm6goif27y" path="res://assets/player/attack.png" id="6_uhjr1"]
 [ext_resource type="Texture2D" uid="uid://nuos6san62fu" path="res://assets/player/ranged_attack.png" id="7_qu3kr"]
 
@@ -33,7 +31,6 @@ texture_filter = 1
 position = Vector2(-6, -2)
 rotation = 0.507229
 scale = Vector2(0.8, 0.8)
-texture = ExtResource("4_0o85m")
 flip_v = true
 
 [node name="Aim" type="Marker2D" parent="."]
@@ -51,7 +48,6 @@ position = Vector2(1, 2)
 [node name="Ranged" type="Sprite2D" parent="Marker2D"]
 texture_filter = 1
 position = Vector2(5, -1)
-texture = ExtResource("6_ef77g")
 
 [node name="RangedMark" type="Sprite2D" parent="Marker2D/Ranged"]
 texture_filter = 1
