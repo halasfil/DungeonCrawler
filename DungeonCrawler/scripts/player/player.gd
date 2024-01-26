@@ -25,7 +25,7 @@ var BODY : Sprite2D = $Body
 @onready
 var MELEE : Sprite2D = $Melee
 @onready
-var RANGED : Sprite2D = $Marker2D/Ranged
+var RANGED : Sprite2D = $Aim/Ranged
 @onready
 var MARKER : Marker2D = $Marker2D
 @onready
@@ -104,10 +104,13 @@ func show_proper_weapon():
 		elif (EQUIPPED_WEAPON.isWeaponRanged == true):
 			MELEE.visible = false
 			RANGED.visible = true
+	else:
+		MELEE.visible = false
+		RANGED.visible = false
 #endregion
 #region attack
 func attack():
-	if(ATTACK_BUTTON.pressed):
+	if (EQUIPPED_WEAPON && ATTACK_BUTTON.pressed):
 		PLAYER_STATE = STATE.ATTACKING
 		if (EQUIPPED_WEAPON.isWeaponRanged == false):
 			knockback()

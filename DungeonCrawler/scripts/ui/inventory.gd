@@ -1,9 +1,15 @@
 class_name Inventory extends Control
 
-enum ITEM_TYPES {
+enum ITEM_TYPE {
 	WEAPON,
 	ARMOR,
-	UTILS
+	UTIL
+}
+enum USE_BUTTON_STATES {
+	USE,
+	EQUIP,
+	UNEQUIP,
+	NEUTRAL
 }
 @onready
 var ITEM_LIST_CONTAINER : VBoxContainer= $VBoxContainer/HBoxContainer/ScrollContainer/ItemsList
@@ -15,16 +21,19 @@ var ITEM_TEXTURE : TextureRect = $VBoxContainer/HBoxContainer/ItemDetailsContain
 var ITEM_DETAILS : RichTextLabel= $VBoxContainer/HBoxContainer/ItemDetailsContainer/ItemDetails
 @onready
 var ITEM_ACTION_BUTTONS : HBoxContainer = $VBoxContainer/HBoxContainer/ItemDetailsContainer/ItemActionButtons
+@onready
+var USE_BUTTON : Button = $VBoxContainer/HBoxContainer/ItemDetailsContainer/ItemActionButtons/UseButton
 
 var ITEM_DETAILS_STRING_FORMAT = "Name: %s\nDmg: %s\nPrice: %s\nKg: %s"
 
-var EQUIPPED_WEAPON : Weapon
-var EQUIPPED_ARMOR
+var USE_BUTTON_STATE = USE_BUTTON_STATES.NEUTRAL;
+var EQUIPPED_WEAPON : Weapon;
+var EQUIPPED_ARMOR;
 var WEAPONS : Array[Weapon] = [Axe.new(), Bow.new(), Sword.new()]
 var ARMORS;
 var UTILS;
 var SHOWING_ITEM;
-var SHOWING_INDEX
+var SHOWING_INDEX;
 
 func open() -> void:
 	open_equipment_window()
@@ -53,7 +62,7 @@ func open_equipment_window():
 	
 func show_weapons():
 	for i in WEAPONS.size():
-		var inventoryItem = InventoryItem.new(WEAPONS[i].weaponName, i)
+		var inventoryItem = InventoryItem.new(WEAPONS[i].weaponName, i, ITEM_TYPE.WEAPON)
 		ITEM_LIST_CONTAINER.add_child(inventoryItem)
 	
 func process_item_clicked():
@@ -63,7 +72,16 @@ func process_item_clicked():
 		if (!pressedItems.is_empty()):
 			show_item_details(pressedItems)
 	
+func change_use_button_label():
+	if (SHOWING_ITEM && EQUIPPED_WEAPON && EQUIPPED_WEAPON == SHOWING_ITEM):
+		USE_BUTTON.text = "UNEQUIP"
+		USE_BUTTON_STATE = USE_BUTTON_STATES.UNEQUIP
+	else:
+		USE_BUTTON.text = "EQUIP"
+		USE_BUTTON_STATE = USE_BUTTON_STATES.EQUIP
+
 func show_item_details(pressedItems):
+	#if weaponw
 	ITEM_ACTION_BUTTONS.visible = true
 	var pressedItem = WEAPONS[pressedItems[0].inventoryIndex]
 	SHOWING_ITEM = pressedItem
@@ -71,13 +89,19 @@ func show_item_details(pressedItems):
 	ITEM_TEXTURE.texture = pressedItem.weaponSprite
 	var mixMaxDmg = "%s - %s" % [pressedItem.weaponMinDamage, pressedItem.weaponMaxDamage]
 	ITEM_DETAILS.text = ITEM_DETAILS_STRING_FORMAT % [pressedItem.weaponName, mixMaxDmg, pressedItem.weaponPrice, 10]
+	change_use_button_label()
 
 func _on_use_button_pressed():
 	#if weapon
-	unmark_buttons();
-	mark_equipped_button()
-	EQUIPPED_WEAPON = SHOWING_ITEM
-	print(EQUIPPED_WEAPON.weaponName)
+	if (USE_BUTTON_STATE == USE_BUTTON_STATES.EQUIP):
+		unmark_buttons();
+		mark_equipped_button()
+		EQUIPPED_WEAPON = SHOWING_ITEM
+		change_use_button_label()
+	else:
+		unmark_buttons();
+		EQUIPPED_WEAPON = null
+		change_use_button_label()
 	
 func unmark_buttons():
 	clear_equipment()

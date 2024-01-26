@@ -3,10 +3,12 @@ class_name InventoryItem extends Button
 var nameItem : String;
 var inventoryIndex : int;
 var clicked : bool
+var type : Inventory.ITEM_TYPE
 
-func _init(itemName : String, index : int):
+func _init(itemName : String, index : int, itemType : Inventory.ITEM_TYPE):
 	nameItem = itemName
 	inventoryIndex = index
+	type = itemType
 
 func _ready():
 	text = nameItem

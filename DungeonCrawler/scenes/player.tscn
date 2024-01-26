@@ -35,6 +35,16 @@ flip_v = true
 
 [node name="Aim" type="Marker2D" parent="."]
 
+[node name="Ranged" type="Sprite2D" parent="Aim"]
+texture_filter = 1
+position = Vector2(5, -1)
+
+[node name="RangedMark" type="Sprite2D" parent="Aim/Ranged"]
+texture_filter = 1
+position = Vector2(2, 0)
+texture = ExtResource("7_qu3kr")
+hframes = 3
+
 [node name="Pointer" type="Sprite2D" parent="Aim"]
 texture_filter = 1
 position = Vector2(18, 2)
@@ -44,16 +54,6 @@ texture = ExtResource("2_wl0il")
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(1, 2)
-
-[node name="Ranged" type="Sprite2D" parent="Marker2D"]
-texture_filter = 1
-position = Vector2(5, -1)
-
-[node name="RangedMark" type="Sprite2D" parent="Marker2D/Ranged"]
-texture_filter = 1
-position = Vector2(2, 0)
-texture = ExtResource("7_qu3kr")
-hframes = 3
 
 [node name="MeleeMark" type="Sprite2D" parent="Marker2D"]
 texture_filter = 1
