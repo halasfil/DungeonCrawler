@@ -1,10 +1,8 @@
 extends Sprite2D
 
-@export
-var maxLength : float = 120
-
 @onready 
 var joystickParent : Node2D = $".."
+var maxLength : float = 120
 var pressing : bool = false;
 func _ready() -> void:
 	maxLength *= joystickParent.scale.x

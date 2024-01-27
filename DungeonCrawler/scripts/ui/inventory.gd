@@ -110,3 +110,6 @@ func unmark_buttons():
 func mark_equipped_button():
 	var equipped_button_node = ITEM_LIST_CONTAINER.get_child(SHOWING_INDEX)
 	equipped_button_node.text = SHOWING_ITEM.weaponName + " - equipped"
+
+func _on_delete_button_pressed():
+	print("delete")

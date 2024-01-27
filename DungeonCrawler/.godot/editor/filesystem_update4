@@ -11,5 +11,3 @@ res://scenes/quick_item_button.tscn
 res://scenes/inventory.tscn
 res://scenes/inventory_item.tscn
 res://scenes/skill_button.tscn
-res://scripts/player/player.gd
-res://scripts/ui/knob.gd
