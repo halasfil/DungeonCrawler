@@ -12,17 +12,17 @@ enum USE_BUTTON_STATES {
 	NEUTRAL
 }
 @onready
-var ITEM_LIST_CONTAINER : VBoxContainer= $VBoxContainer/HBoxContainer/ScrollContainer/ItemsList
+var ITEM_LIST_CONTAINER : VBoxContainer= $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/ItemsList
 @onready
-var ITEM_DETAILS_CONTAINER : VBoxContainer = $VBoxContainer/HBoxContainer/ItemDetailsContainer
+var ITEM_DETAILS_CONTAINER : VBoxContainer = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ItemDetailsContainer
 @onready
-var ITEM_TEXTURE : TextureRect = $VBoxContainer/HBoxContainer/ItemDetailsContainer/TextureRect
+var ITEM_TEXTURE : TextureRect = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ItemDetailsContainer/TextureRect
 @onready
-var ITEM_DETAILS : RichTextLabel= $VBoxContainer/HBoxContainer/ItemDetailsContainer/ItemDetails
+var ITEM_DETAILS : RichTextLabel= $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ItemDetailsContainer/ItemDetails
 @onready
-var ITEM_ACTION_BUTTONS : HBoxContainer = $VBoxContainer/HBoxContainer/ItemDetailsContainer/ItemActionButtons
+var ITEM_ACTION_BUTTONS : HBoxContainer = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ItemDetailsContainer/ItemActionButtons
 @onready
-var USE_BUTTON : Button = $VBoxContainer/HBoxContainer/ItemDetailsContainer/ItemActionButtons/UseButton
+var USE_BUTTON : Button = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ItemDetailsContainer/ItemActionButtons/UseButton
 
 var ITEM_DETAILS_STRING_FORMAT = "Name: %s\nDmg: %s\nPrice: %s\nKg: %s"
 
@@ -74,10 +74,10 @@ func process_item_clicked():
 	
 func change_use_button_label():
 	if (SHOWING_ITEM && EQUIPPED_WEAPON && EQUIPPED_WEAPON == SHOWING_ITEM):
-		USE_BUTTON.text = "UNEQUIP"
+		USE_BUTTON.text = "Unequip"
 		USE_BUTTON_STATE = USE_BUTTON_STATES.UNEQUIP
 	else:
-		USE_BUTTON.text = "EQUIP"
+		USE_BUTTON.text = "Equip"
 		USE_BUTTON_STATE = USE_BUTTON_STATES.EQUIP
 
 func show_item_details(pressedItems):
