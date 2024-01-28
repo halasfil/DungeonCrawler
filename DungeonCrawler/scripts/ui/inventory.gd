@@ -41,9 +41,6 @@ func open() -> void:
 func _on_exit_button_down():
 	self.visible = false
 	
-func _ready():
-	show_weapons()
-	
 func _process(_delta):
 	process_item_clicked()
 	
@@ -59,11 +56,15 @@ func clear_selected():
 	
 func open_equipment_window():
 	clear_selected()
+	clear_equipment()
+	show_weapons()
 	
 func show_weapons():
 	for i in WEAPONS.size():
 		var inventoryItem = InventoryItem.new(WEAPONS[i].weaponName, i, ITEM_TYPE.WEAPON)
 		ITEM_LIST_CONTAINER.add_child(inventoryItem)
+		if (i == SHOWING_INDEX):
+			inventoryItem.text = SHOWING_ITEM.weaponName + " - equipped"
 	
 func process_item_clicked():
 	if (ITEM_LIST_CONTAINER.get_child_count() > 0):
@@ -112,4 +113,8 @@ func mark_equipped_button():
 	equipped_button_node.text = SHOWING_ITEM.weaponName + " - equipped"
 
 func _on_delete_button_pressed():
-	print("delete")
+	#if weapons
+	WEAPONS = WEAPONS.filter(
+		func(node): 
+			return node.weaponName != SHOWING_ITEM.weaponName)
+	open_equipment_window()
