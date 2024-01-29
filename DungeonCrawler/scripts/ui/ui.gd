@@ -30,7 +30,7 @@ func _ready():
 func _process(_delta):
 	if (INVENTORY_BUTTON.pressed):
 		INVENTORY.visible = true
-		INVENTORY.open()
+		INVENTORY.open_inventory_window()
 	check_inventory_open()
 	
 func check_inventory_open():

@@ -35,14 +35,13 @@ var UTILS;
 var SHOWING_ITEM;
 var SHOWING_INDEX;
 
-func open() -> void:
-	open_equipment_window()
+func open_inventory_window():
+	clear_selected()
+	clear_equipment()
+	show_weapons()
 	
 func _on_exit_button_down():
 	self.visible = false
-	
-func _process(_delta):
-	process_item_clicked()
 	
 func clear_equipment():
 	for n in ITEM_LIST_CONTAINER.get_children():
@@ -54,17 +53,13 @@ func clear_selected():
 	ITEM_DETAILS.text = ""
 	ITEM_ACTION_BUTTONS.visible = false
 	
-func open_equipment_window():
-	clear_selected()
-	clear_equipment()
-	show_weapons()
-	
 func show_weapons():
 	for i in WEAPONS.size():
 		var inventoryItem = InventoryItem.new(WEAPONS[i].weaponName, i, ITEM_TYPE.WEAPON)
+		inventoryItem.pressed.connect(process_item_clicked)
 		ITEM_LIST_CONTAINER.add_child(inventoryItem)
-		if (i == SHOWING_INDEX):
-			inventoryItem.text = SHOWING_ITEM.weaponName + " - equipped"
+		if (WEAPONS[i] == EQUIPPED_WEAPON):
+			inventoryItem.text = WEAPONS[i].weaponName + " - equipped"
 	
 func process_item_clicked():
 	if (ITEM_LIST_CONTAINER.get_child_count() > 0):
@@ -114,7 +109,10 @@ func mark_equipped_button():
 
 func _on_delete_button_pressed():
 	#if weapons
+	if (EQUIPPED_WEAPON == SHOWING_ITEM):
+		EQUIPPED_WEAPON = null
 	WEAPONS = WEAPONS.filter(
 		func(node): 
 			return node.weaponName != SHOWING_ITEM.weaponName)
-	open_equipment_window()
+	open_inventory_window()
+
