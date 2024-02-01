@@ -94,8 +94,8 @@ func check_player_input():
 func check_equipped_weapon():
 	EQUIPPED_WEAPON = INVENTORY.EQUIPPED_WEAPON
 	if EQUIPPED_WEAPON:
-		MELEE.texture = EQUIPPED_WEAPON.weaponSprite
-		RANGED.texture = EQUIPPED_WEAPON.weaponSprite
+		MELEE.texture = EQUIPPED_WEAPON.itemSprite
+		RANGED.texture = EQUIPPED_WEAPON.itemSprite
 func show_proper_weapon():
 	if (PLAYER_STATE != STATE.DODGING && PLAYER_STATE != STATE.ACTION && EQUIPPED_WEAPON != null):
 		if (EQUIPPED_WEAPON.isWeaponRanged == false):
