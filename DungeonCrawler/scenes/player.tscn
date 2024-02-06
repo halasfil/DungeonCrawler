@@ -32,7 +32,6 @@ frame = 3
 texture = ExtResource("4_8rtdu")
 
 [node name="Melee" type="Sprite2D" parent="."]
-visible = false
 z_index = -1
 texture_filter = 1
 position = Vector2(-6, -2)
@@ -45,6 +44,7 @@ flip_v = true
 position = Vector2(0, 2)
 
 [node name="Ranged" type="Sprite2D" parent="Aim"]
+visible = false
 texture_filter = 1
 position = Vector2(5, -1)
 texture = ExtResource("4_o0v6d")
