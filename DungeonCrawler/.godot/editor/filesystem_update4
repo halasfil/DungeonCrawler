@@ -1,4 +1,5 @@
 res://scenes/main_menu.tscn
+res://themes/ui/button_inventory_style.tres
 res://scenes/player.tscn
 res://scenes/game.tscn
 res://scenes/ui.tscn
@@ -11,4 +12,6 @@ res://scenes/quick_item_button.tscn
 res://scenes/inventory.tscn
 res://scenes/inventory_item.tscn
 res://scenes/skill_button.tscn
-res://animations/player_animations.res
+res://scripts/ui/inventory.gd
+res://themes/ui/button_inventory_style_font_30.tres
+res://scripts/ui/inventory_button.gd

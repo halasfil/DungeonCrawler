@@ -21,10 +21,15 @@ window/size/viewport_height=540
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
 window/handheld/orientation=4
+mouse_cursor/custom_image="res://assets/ui/cursor.png"
 
 [editor]
 
 movie_writer/movie_file="D:/repositories/godot/recording dungeon crawler/vid.avi"
+
+[gui]
+
+theme/custom_font="res://assets/ui/font/alagard.ttf"
 
 [input]
 

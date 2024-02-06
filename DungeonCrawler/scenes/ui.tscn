@@ -99,8 +99,8 @@ position = Vector2(-40, 87)
 scale = Vector2(0.6, 0.6)
 
 [node name="Inventory" parent="CanvasLayer" instance=ExtResource("8_ay8l2")]
-offset_left = 280.0
-offset_top = 122.0
-offset_right = 280.0
-offset_bottom = 122.0
+offset_left = 259.0
+offset_top = 74.0
+offset_right = 259.0
+offset_bottom = 74.0
 scale = Vector2(0.6, 0.6)

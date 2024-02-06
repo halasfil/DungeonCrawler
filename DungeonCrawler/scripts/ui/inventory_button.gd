@@ -2,8 +2,9 @@ class_name InventoryButton extends Node2D
 
 var pressed : bool = false
 
-func _on_button_button_down():
+func _on_button_pressed():
 	pressed = true
 
-func _on_button_button_up():
+
+func _on_button_released():
 	pressed = false

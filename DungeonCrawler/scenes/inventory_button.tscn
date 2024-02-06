@@ -6,9 +6,9 @@
 [node name="InventoryButton" type="Node2D"]
 script = ExtResource("1_e7dkc")
 
-[node name="Button" type="TextureButton" parent="."]
+[node name="Button" type="TouchScreenButton" parent="."]
 modulate = Color(0.454902, 0.313726, 0.2, 1)
 texture_normal = ExtResource("2_03yvp")
 
-[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
-[connection signal="button_up" from="Button" to="." method="_on_button_button_up"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="released" from="Button" to="." method="_on_button_released"]

@@ -1,0 +1,42 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://d0cj3ba0otxfs"]
+
+[ext_resource type="Texture2D" uid="uid://da3bccemdoaqp" path="res://assets/ui/inventory_button.png" id="1_de1en"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6wy6t"]
+texture = ExtResource("1_de1en")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2ysqw"]
+texture = ExtResource("1_de1en")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 10.0
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g5ixi"]
+texture = ExtResource("1_de1en")
+
+[resource]
+Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
+Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+Button/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_outline_color = Color(1, 1, 1, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+Button/colors/icon_focus_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_normal_color = Color(1, 1, 1, 1)
+Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
+Button/constants/h_separation = 2
+Button/constants/icon_max_width = 0
+Button/constants/outline_size = 0
+Button/font_sizes/font_size = 30
+Button/styles/hover = SubResource("StyleBoxTexture_6wy6t")
+Button/styles/normal = SubResource("StyleBoxTexture_2ysqw")
+Button/styles/pressed = SubResource("StyleBoxTexture_g5ixi")

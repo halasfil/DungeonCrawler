@@ -18,7 +18,7 @@ var ITEM_LIST_CONTAINER : VBoxContainer= $PanelContainer/MarginContainer/VBoxCon
 @onready
 var ITEM_DETAILS_CONTAINER : VBoxContainer = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ItemDetailsContainer
 @onready
-var ITEM_TEXTURE : TextureRect = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ItemDetailsContainer/TextureRect
+var ITEM_TEXTURE : TextureRect = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ItemDetailsContainer/ColorRect/TextureRect
 @onready
 var ITEM_DETAILS : RichTextLabel= $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ItemDetailsContainer/ItemDetails
 @onready
@@ -27,6 +27,8 @@ var ITEM_ACTION_BUTTONS : HBoxContainer = $PanelContainer/MarginContainer/VBoxCo
 var EQUIP_BUTTON : Button = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ItemDetailsContainer/ItemActionButtons/EquipButton
 @onready
 var USE_BUTTON : Button = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ItemDetailsContainer/ItemActionButtons/UseButton
+@onready
+var COLOR_RECT_BACKGROUND : ColorRect = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ItemDetailsContainer/ColorRect
 
 var USE_BUTTON_STATE : USE_BUTTON_STATES = USE_BUTTON_STATES.NEUTRAL;
 var EQUIPPED_WEAPON : Weapon;
@@ -58,6 +60,7 @@ func clear_selected():
 	ITEM_TEXTURE.texture = null
 	ITEM_DETAILS.text = ""
 	ITEM_ACTION_BUTTONS.visible = false
+	COLOR_RECT_BACKGROUND.visible = false
 
 func clear_equipment():
 	for n in ITEM_LIST_CONTAINER.get_children():
@@ -86,6 +89,7 @@ func show_clicked_item_details():
 
 func show_item_details(inventoryItem : InventoryItem):
 	ITEM_ACTION_BUTTONS.visible = true
+	COLOR_RECT_BACKGROUND.visible = true
 	SHOWING_INDEX = inventoryItem.inventoryIndex
 	SHOWING_ITEM = LISTING_ITEMS_ARRAY[SHOWING_INDEX]
 	SHOWING_ITEM_TYPE = inventoryItem.type
