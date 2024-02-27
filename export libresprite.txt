@@ -1,0 +1,8 @@
+player
+by rows
+of columns 8
+256x96
+
+
+weapons and rest
+32x32px 1 sprite
