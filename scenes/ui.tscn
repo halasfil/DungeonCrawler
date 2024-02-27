@@ -1,0 +1,106 @@
+[gd_scene load_steps=12 format=3 uid="uid://xnje4uggyijj"]
+
+[ext_resource type="PackedScene" uid="uid://cyv2gg81gj43k" path="res://scenes/joystick.tscn" id="1_g0bjv"]
+[ext_resource type="Script" path="res://scripts/ui/ui.gd" id="1_kgkwy"]
+[ext_resource type="PackedScene" uid="uid://cs1jy6ddmkpc8" path="res://scenes/attack_button.tscn" id="3_smc07"]
+[ext_resource type="PackedScene" uid="uid://cflaedboq6efx" path="res://scenes/menu_button.tscn" id="4_15bhi"]
+[ext_resource type="PackedScene" uid="uid://dovh01m70itsy" path="res://scenes/quick_item_button.tscn" id="4_52gbr"]
+[ext_resource type="PackedScene" uid="uid://c2rcdshq4xw37" path="res://scenes/dodge_button.tscn" id="5_0eka8"]
+[ext_resource type="PackedScene" uid="uid://cptn6wixbwlha" path="res://scenes/inventory_button.tscn" id="5_kep2y"]
+[ext_resource type="PackedScene" uid="uid://bffkc26tki3jx" path="res://scenes/skill_button.tscn" id="6_j1cb1"]
+[ext_resource type="PackedScene" uid="uid://phoxfhoi5d6q" path="res://scenes/inventory.tscn" id="8_ay8l2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_11thm"]
+bg_color = Color(0.6, 0.6, 0.6, 0.290196)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e8l0j"]
+bg_color = Color(1, 0.2, 0, 0.858824)
+
+[node name="Ui" type="Node2D"]
+script = ExtResource("1_kgkwy")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="CanvasLayer"]
+offset_left = 35.0
+offset_top = 29.0
+offset_right = 535.0
+offset_bottom = 69.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/HBoxContainer3"]
+custom_minimum_size = Vector2(300, 20)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_11thm")
+theme_override_styles/fill = SubResource("StyleBoxFlat_e8l0j")
+value = 50.0
+show_percentage = false
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 91.0
+offset_top = -86.0
+offset_right = 131.0
+offset_bottom = -46.0
+grow_vertical = 0
+
+[node name="joystick" parent="CanvasLayer/HBoxContainer" instance=ExtResource("1_g0bjv")]
+position = Vector2(32, -23)
+scale = Vector2(0.5, 0.5)
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -58.0
+offset_top = 4.0
+offset_right = -18.0
+offset_bottom = 44.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="AttackButton" parent="CanvasLayer/HBoxContainer2" instance=ExtResource("3_smc07")]
+position = Vector2(-92, -137)
+
+[node name="QuickItemButton" parent="CanvasLayer/HBoxContainer2" instance=ExtResource("4_52gbr")]
+position = Vector2(-62, -216)
+scale = Vector2(0.6, 0.6)
+
+[node name="DodgeButton" parent="CanvasLayer/HBoxContainer2" instance=ExtResource("5_0eka8")]
+position = Vector2(-162, -170)
+scale = Vector2(0.6, 0.6)
+
+[node name="SkillButton" parent="CanvasLayer/HBoxContainer2" instance=ExtResource("6_j1cb1")]
+position = Vector2(-214, -89)
+scale = Vector2(0.6, 0.6)
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -38.0
+offset_top = 14.0
+offset_right = 2.0
+offset_bottom = 54.0
+grow_horizontal = 0
+alignment = 2
+
+[node name="MenuButton" parent="CanvasLayer/HBoxContainer4" instance=ExtResource("4_15bhi")]
+position = Vector2(-35, 5)
+scale = Vector2(0.5, 0.5)
+
+[node name="InventoryButton" parent="CanvasLayer/HBoxContainer4" instance=ExtResource("5_kep2y")]
+position = Vector2(-40, 87)
+scale = Vector2(0.6, 0.6)
+
+[node name="Inventory" parent="CanvasLayer" instance=ExtResource("8_ay8l2")]
+offset_left = 259.0
+offset_top = 74.0
+offset_right = 259.0
+offset_bottom = 74.0
+scale = Vector2(0.6, 0.6)
