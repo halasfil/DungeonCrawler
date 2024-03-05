@@ -23,6 +23,7 @@ position = Vector2(0, 41)
 [node name="Body" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(1, 0)
+scale = Vector2(0.9, 0.9)
 texture = ExtResource("1_842iu")
 hframes = 8
 vframes = 3
@@ -36,7 +37,6 @@ texture = ExtResource("4_8rtdu")
 texture_filter = 1
 position = Vector2(-6, -2)
 rotation = 0.507229
-scale = Vector2(1, 1)
 texture = ExtResource("4_hjkq0")
 flip_v = true
 
@@ -73,7 +73,7 @@ hframes = 9
 vframes = 3
 
 [node name="Aim-helper" type="Marker2D" parent="Marker2D"]
-position = Vector2(55, -2)
+position = Vector2(21, 2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4)

@@ -1,0 +1,9 @@
+res://scenes/main_menu.tscn
+res://themes/ui/button_inventory_style.tres
+res://themes/ui/button_inventory_style_font_30.tres
+res://scripts/player/player.gd
+res://scenes/player.tscn
+res://scripts/player/weapons/axe.gd
+res://scripts/player/weapons/sword.gd
+res://scripts/player/weapons/bow.gd
+res://animations/player_animations.res
