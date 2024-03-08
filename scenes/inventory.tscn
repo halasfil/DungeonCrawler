@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://phoxfhoi5d6q"]
+[gd_scene load_steps=9 format=3 uid="uid://phoxfhoi5d6q"]
 
 [ext_resource type="Script" path="res://scripts/ui/inventory.gd" id="1_2s6c5"]
 [ext_resource type="Texture2D" uid="uid://bpg6kvg0h215n" path="res://assets/ui/menu_back.png" id="2_tjkt3"]
 [ext_resource type="Theme" uid="uid://cuud6f4ghv7bq" path="res://themes/ui/button_inventory_style.tres" id="3_1krke"]
 [ext_resource type="Theme" uid="uid://d0cj3ba0otxfs" path="res://themes/ui/button_inventory_style_font_30.tres" id="3_lqxno"]
 [ext_resource type="Texture2D" uid="uid://b4ng0jvqns8ff" path="res://assets/ui/menu_back_64.png" id="5_eol0x"]
+[ext_resource type="PackedScene" uid="uid://b41ybpiw7q5sb" path="res://scenes/inventory_item.tscn" id="5_k1h16"]
 [ext_resource type="Texture2D" uid="uid://dsyll8kbxtqnh" path="res://assets/armors/leather.png" id="5_w8bcs"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_2j1c0"]
@@ -86,15 +87,19 @@ size_flags_horizontal = 3
 
 [node name="ItemsList" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer"]
 texture_filter = 1
+custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("3_lqxno")
 theme_override_constants/separation = 25
 
+[node name="InventoryItem" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ScrollContainer/ItemsList" instance=ExtResource("5_k1h16")]
+layout_mode = 2
+
 [node name="ItemDetailsContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 10
+theme_override_constants/separation = 15
 
 [node name="ColorRect" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ItemDetailsContainer"]
 texture_filter = 1
@@ -162,6 +167,24 @@ theme_override_font_sizes/font_size = 30
 text = "Sell
 "
 
+[node name="ConfirmPanel" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ItemDetailsContainer"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 60
+alignment = 1
+
+[node name="Confirm_button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ItemDetailsContainer/ConfirmPanel"]
+layout_mode = 2
+theme = ExtResource("3_lqxno")
+text = "Confirm"
+
+[node name="Cancel_button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ItemDetailsContainer/ConfirmPanel"]
+layout_mode = 2
+theme = ExtResource("3_lqxno")
+text = "Cancel
+"
+
 [node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
@@ -177,6 +200,14 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "100/100 kg"
 
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/TypeChoice/Weapons" to="." method="handle_weapons_category_click"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/TypeChoice/Armors" to="." method="handle_armors_category_click"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/TypeChoice/Utils" to="." method="handle_utils_category_click"]
 [connection signal="button_down" from="PanelContainer/MarginContainer/VBoxContainer/TypeChoice/Exit" to="." method="_on_exit_button_down"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ItemDetailsContainer/ItemActionButtons/EquipButton" to="." method="_on_equip_button_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ItemDetailsContainer/ItemActionButtons/UseButton" to="." method="handle_use_item_button_click"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ItemDetailsContainer/ItemActionButtons/DeleteButton" to="." method="_on_delete_button_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ItemDetailsContainer/ItemActionButtons/SellButton" to="." method="handle_sell_item_button_click"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ItemDetailsContainer/ConfirmPanel/Confirm_button" to="." method="confirm_action"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ItemDetailsContainer/ConfirmPanel/Confirm_button" to="." method="sell_delete_confirm_action"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/ItemDetailsContainer/ConfirmPanel/Cancel_button" to="." method="cancel_action"]

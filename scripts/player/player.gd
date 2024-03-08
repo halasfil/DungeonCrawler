@@ -41,6 +41,8 @@ var DODGE_COOLDOWN : Timer = $DodgeCooldown
 @onready
 var AIM_HELPER : Marker2D = $"Marker2D/Aim-helper"
 @onready
+var NO_ARMOR_SKIN : CompressedTexture2D = preload("res://assets/player/skins/no_armor.png")
+@onready
 var JOYSTICK : Joystick = UI.JOYSTICK 
 @onready
 var ATTACK_BUTTON : AttackButton = UI.ATTACK_BUTTON
@@ -107,6 +109,10 @@ func check_player_input():
 #region armor change
 func check_equipped_armor():
 	EQUIPPED_ARMOR = INVENTORY.EQUIPPED_ARMOR
+	if !EQUIPPED_ARMOR:
+		BODY.texture = NO_ARMOR_SKIN
+	else:
+		BODY.texture = EQUIPPED_ARMOR.characterSkin
 #endregion
 #region weapon change
 func check_equipped_weapon():

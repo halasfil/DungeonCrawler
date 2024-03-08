@@ -1,3 +1,19 @@
-class_name UtilItem extends Node
+class_name UtilItem extends Item
 
-var UTIL_DETAILS_STRING_FORMAT = "Name: %s\nPower: %s\nType: %s\nPrice: %s\nKg: %s"
+enum UTIL_TYPE {
+	HEALING,
+};
+var itemPower : int;
+var itemType : UTIL_TYPE;
+
+func _init(
+	nameItem : String,
+	power : int,
+	type : UTIL_TYPE,
+	priceUtil : int,
+	sprite : CompressedTexture2D,
+	weight : int):
+	var utilDescription : String = "Name: %s\nPower: %s\nPrice: %s\nKg: %s" % [nameItem, power, priceUtil, weight]
+	super._init(nameItem, priceUtil, weight, sprite, utilDescription);
+	itemPower = power;
+	itemType = type;

@@ -1,16 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://b41ybpiw7q5sb"]
 
-[ext_resource type="Theme" uid="uid://d0cj3ba0otxfs" path="res://themes/ui/button_inventory_style_font_30.tres" id="1_2wcbc"]
 [ext_resource type="Script" path="res://scripts/ui/inventory_item.gd" id="1_iuufj"]
+[ext_resource type="Theme" uid="uid://cuud6f4ghv7bq" path="res://themes/ui/button_inventory_style.tres" id="1_jj4yq"]
 
 [node name="InventoryItem" type="Button"]
 texture_filter = 1
-offset_right = 60.0
-offset_bottom = 39.0
-scale = Vector2(1.00551, 1.00861)
-theme = ExtResource("1_2wcbc")
-theme_override_constants/h_separation = 10
-theme_override_font_sizes/font_size = 30
+offset_right = 150.0
+offset_bottom = 150.0
+theme = ExtResource("1_jj4yq")
 text = "test"
 script = ExtResource("1_iuufj")
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dp0dtlqc5fpab"
-path="res://.godot/imported/sample_grass.png-3b8152e470176eb400c2a398e9c0437f.ctex"
+uid="uid://bu714nemy54s1"
+path="res://.godot/imported/small_health_potion.png-919a3a6880011436aecd8019936c1518.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/world/sample_grass.png"
-dest_files=["res://.godot/imported/sample_grass.png-3b8152e470176eb400c2a398e9c0437f.ctex"]
+source_file="res://assets/utils/small_health_potion.png"
+dest_files=["res://.godot/imported/small_health_potion.png-919a3a6880011436aecd8019936c1518.ctex"]
 
 [params]
 

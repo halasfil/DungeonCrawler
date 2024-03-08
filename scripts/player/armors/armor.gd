@@ -16,7 +16,7 @@ func _init(
 	skinSprite : CompressedTexture2D,
 	weightArmor : int):
 	var minMaxArmor : String = "%s - %s" % [minProt, maxProt];
-	var armorDescription : String = "Name: %s\nArmor: %s - %s\nPrice: %s\nKg: %s" % [nameArmor, minMaxArmor, priceArmor, weightArmor]
+	var armorDescription : String = "Name: %s\nArmor: %s\nPrice: %s\nKg: %s" % [nameArmor, minMaxArmor, priceArmor, weightArmor]
 	super._init(nameArmor, priceArmor, weightArmor, invSprite, armorDescription);
 	protectionMin = minProt;
 	protectionMax = maxProt;
