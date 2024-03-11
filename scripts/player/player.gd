@@ -169,9 +169,9 @@ func play_melee_animation():
 		BODY.flip_h = true
 		MELEE.flip_h = true
 		if (attackType == 1):
-			ANIMATION.play("attack_f_melee_1");
+			ANIMATION.play("attack_f_melee_1_L");
 		else:
-			ANIMATION.play("attack_f_melee_2");
+			ANIMATION.play("attack_f_melee_2_L");
 	elif (DIRECTION_FACING == DIRECTIONS.UP_R):
 		BODY.flip_h = false
 		MELEE.flip_h = false
@@ -183,9 +183,9 @@ func play_melee_animation():
 		BODY.flip_h = true
 		MELEE.flip_h = true
 		if (attackType == 1):
-			ANIMATION.play("attack_b_melee_1");
+			ANIMATION.play("attack_b_melee_1_L");
 		else:
-			ANIMATION.play("attack_b_melee_2");
+			ANIMATION.play("attack_b_melee_2_L");
 #endregion
 #region ranged attack
 func perform_ranged_attack():
