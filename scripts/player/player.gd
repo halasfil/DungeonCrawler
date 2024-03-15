@@ -142,7 +142,7 @@ func attack():
 			KNOCKBACK_STATE = true
 			perform_ranged_attack()
 			await ANIMATION.animation_finished
-			#KNOCKBACK_STATE = true
+
 		PLAYER_STATE = STATE.NEUTRAL
 func calculate_knockback():
 	if KNOCKBACK_STATE == true:
