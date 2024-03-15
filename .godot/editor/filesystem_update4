@@ -1,12 +1,12 @@
-res://scenes/player.tscn
+res://scenes/inventory_item.tscn
 res://themes/ui/button_inventory_style.tres
 res://themes/ui/button_inventory_style_font_30.tres
-res://animations/player_animations.res
 res://scenes/main_menu.tscn
+res://scenes/player.tscn
 res://scenes/menu_button.tscn
 res://scenes/inventory_button.tscn
-res://scenes/inventory_item.tscn
 res://scenes/inventory.tscn
 res://scenes/ui.tscn
 res://scenes/game.tscn
-res://scripts/player/player.gd
+res://scripts/main_menu/main_menu.gd
+res://scripts/game/game.gd

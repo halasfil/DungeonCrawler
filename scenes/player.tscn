@@ -86,6 +86,7 @@ libraries = {
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3, 3)
+editor_draw_limits = true
 
 [node name="DodgeCooldown" type="Timer" parent="."]
 wait_time = 2.0
