@@ -15,8 +15,6 @@ enum STATE {
 	ACTION
 }
 var MOVING_SPEED : int = 100
-var VECTOR : Vector2 = Vector2.ZERO
-var SPEED_BOOST : int = 1;
 var DODGE_COOLDOWN_TIME : int = 1;
 @onready
 var ANIMATION : AnimationPlayer = $AnimationPlayer
@@ -141,9 +139,10 @@ func attack():
 			perform_melee_attack()
 			await ANIMATION.animation_finished
 		else:
+			KNOCKBACK_STATE = true
 			perform_ranged_attack()
 			await ANIMATION.animation_finished
-			KNOCKBACK_STATE = true
+			#KNOCKBACK_STATE = true
 		PLAYER_STATE = STATE.NEUTRAL
 func calculate_knockback():
 	if KNOCKBACK_STATE == true:
@@ -212,7 +211,9 @@ func play_ranged_animation():
 func walk_or_idle():
 	var walkingDirection = JOYSTICK.posVector
 	if (walkingDirection):
-		velocity = walkingDirection * MOVING_SPEED * SPEED_BOOST
+		var walkingSpeedReducer = EQUIPPED_ARMOR.walkingSpeedReducer if EQUIPPED_ARMOR != null else 1.0
+		velocity = walkingDirection * MOVING_SPEED * walkingSpeedReducer
+		print(velocity)
 		play_walking_animation()
 		move_and_slide()
 	else:

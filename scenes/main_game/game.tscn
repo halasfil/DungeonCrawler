@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://c8glvyer7hobv"]
 
 [ext_resource type="Script" path="res://scripts/game/game.gd" id="1_v86ck"]
-[ext_resource type="PackedScene" uid="uid://b6c8fwsvm7b8k" path="res://scenes/player.tscn" id="2_6bvlu"]
+[ext_resource type="PackedScene" uid="uid://b6c8fwsvm7b8k" path="res://scenes/player/player.tscn" id="2_6bvlu"]
 [ext_resource type="Texture2D" uid="uid://gdfqffdwtdfd" path="res://assets/world/sample_grass-sheet.png" id="2_cqdnq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o4ihk"]

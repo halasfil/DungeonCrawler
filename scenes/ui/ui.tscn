@@ -1,14 +1,14 @@
 [gd_scene load_steps=12 format=3 uid="uid://xnje4uggyijj"]
 
-[ext_resource type="PackedScene" uid="uid://cyv2gg81gj43k" path="res://scenes/joystick.tscn" id="1_g0bjv"]
-[ext_resource type="Script" path="res://scripts/ui/ui.gd" id="1_kgkwy"]
-[ext_resource type="PackedScene" uid="uid://cs1jy6ddmkpc8" path="res://scenes/attack_button.tscn" id="3_smc07"]
-[ext_resource type="PackedScene" uid="uid://cflaedboq6efx" path="res://scenes/menu_button.tscn" id="4_15bhi"]
-[ext_resource type="PackedScene" uid="uid://dovh01m70itsy" path="res://scenes/quick_item_button.tscn" id="4_52gbr"]
-[ext_resource type="PackedScene" uid="uid://c2rcdshq4xw37" path="res://scenes/dodge_button.tscn" id="5_0eka8"]
-[ext_resource type="PackedScene" uid="uid://cptn6wixbwlha" path="res://scenes/inventory_button.tscn" id="5_kep2y"]
-[ext_resource type="PackedScene" uid="uid://bffkc26tki3jx" path="res://scenes/skill_button.tscn" id="6_j1cb1"]
-[ext_resource type="PackedScene" uid="uid://phoxfhoi5d6q" path="res://scenes/inventory.tscn" id="8_ay8l2"]
+[ext_resource type="Script" path="res://scripts/ui/ui.gd" id="1_heurp"]
+[ext_resource type="PackedScene" uid="uid://cyv2gg81gj43k" path="res://scenes/ui/joystick.tscn" id="2_vdm0s"]
+[ext_resource type="PackedScene" uid="uid://cs1jy6ddmkpc8" path="res://scenes/ui/attack_button.tscn" id="3_k51vs"]
+[ext_resource type="PackedScene" uid="uid://dovh01m70itsy" path="res://scenes/ui/quick_item_button.tscn" id="4_yoqkh"]
+[ext_resource type="PackedScene" uid="uid://c2rcdshq4xw37" path="res://scenes/ui/dodge_button.tscn" id="5_1vj8l"]
+[ext_resource type="PackedScene" uid="uid://bffkc26tki3jx" path="res://scenes/ui/skill_button.tscn" id="6_bn8b5"]
+[ext_resource type="PackedScene" uid="uid://cflaedboq6efx" path="res://scenes/ui/menu_button.tscn" id="7_urmbc"]
+[ext_resource type="PackedScene" uid="uid://cptn6wixbwlha" path="res://scenes/ui/inventory_button.tscn" id="8_qxvt8"]
+[ext_resource type="PackedScene" uid="uid://phoxfhoi5d6q" path="res://scenes/ui/inventory.tscn" id="9_av4hr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_11thm"]
 bg_color = Color(0.6, 0.6, 0.6, 0.290196)
@@ -17,7 +17,7 @@ bg_color = Color(0.6, 0.6, 0.6, 0.290196)
 bg_color = Color(1, 0.2, 0, 0.858824)
 
 [node name="Ui" type="Node2D"]
-script = ExtResource("1_kgkwy")
+script = ExtResource("1_heurp")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -47,7 +47,7 @@ offset_right = 131.0
 offset_bottom = -46.0
 grow_vertical = 0
 
-[node name="joystick" parent="CanvasLayer/HBoxContainer" instance=ExtResource("1_g0bjv")]
+[node name="joystick" parent="CanvasLayer/HBoxContainer" instance=ExtResource("2_vdm0s")]
 position = Vector2(32, -23)
 scale = Vector2(0.5, 0.5)
 
@@ -64,18 +64,18 @@ offset_bottom = 44.0
 grow_horizontal = 0
 grow_vertical = 0
 
-[node name="AttackButton" parent="CanvasLayer/HBoxContainer2" instance=ExtResource("3_smc07")]
+[node name="AttackButton" parent="CanvasLayer/HBoxContainer2" instance=ExtResource("3_k51vs")]
 position = Vector2(-92, -137)
 
-[node name="QuickItemButton" parent="CanvasLayer/HBoxContainer2" instance=ExtResource("4_52gbr")]
+[node name="QuickItemButton" parent="CanvasLayer/HBoxContainer2" instance=ExtResource("4_yoqkh")]
 position = Vector2(-62, -216)
 scale = Vector2(0.6, 0.6)
 
-[node name="DodgeButton" parent="CanvasLayer/HBoxContainer2" instance=ExtResource("5_0eka8")]
+[node name="DodgeButton" parent="CanvasLayer/HBoxContainer2" instance=ExtResource("5_1vj8l")]
 position = Vector2(-162, -170)
 scale = Vector2(0.6, 0.6)
 
-[node name="SkillButton" parent="CanvasLayer/HBoxContainer2" instance=ExtResource("6_j1cb1")]
+[node name="SkillButton" parent="CanvasLayer/HBoxContainer2" instance=ExtResource("6_bn8b5")]
 position = Vector2(-214, -89)
 scale = Vector2(0.6, 0.6)
 
@@ -90,15 +90,15 @@ offset_bottom = 54.0
 grow_horizontal = 0
 alignment = 2
 
-[node name="MenuButton" parent="CanvasLayer/HBoxContainer4" instance=ExtResource("4_15bhi")]
+[node name="MenuButton" parent="CanvasLayer/HBoxContainer4" instance=ExtResource("7_urmbc")]
 position = Vector2(-35, 5)
 scale = Vector2(0.5, 0.5)
 
-[node name="InventoryButton" parent="CanvasLayer/HBoxContainer4" instance=ExtResource("5_kep2y")]
+[node name="InventoryButton" parent="CanvasLayer/HBoxContainer4" instance=ExtResource("8_qxvt8")]
 position = Vector2(-40, 87)
 scale = Vector2(0.6, 0.6)
 
-[node name="Inventory" parent="CanvasLayer" instance=ExtResource("8_ay8l2")]
+[node name="Inventory" parent="CanvasLayer" instance=ExtResource("9_av4hr")]
 offset_left = 261.0
 offset_top = 38.0
 offset_right = 261.0

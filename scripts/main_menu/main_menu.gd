@@ -1,7 +1,7 @@
 extends Node
 
 @onready
-var GAME_SCENE = "res://scenes/game.tscn";
+var GAME_SCENE = "res://scenes/main_game/game.tscn"
 
 func _on_start_button_pressed():
 	get_tree().change_scene_to_file(GAME_SCENE);

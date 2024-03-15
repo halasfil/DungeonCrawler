@@ -1,10 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://bpmt5l3fif8vk"]
 
-[ext_resource type="Script" path="res://scripts/main_menu/main_menu.gd" id="1_xwlia"]
-[ext_resource type="Theme" uid="uid://cuud6f4ghv7bq" path="res://themes/ui/button_inventory_style.tres" id="2_jycrl"]
+[ext_resource type="Script" path="res://scripts/main_menu/main_menu.gd" id="1_fomet"]
+[ext_resource type="Theme" uid="uid://cuud6f4ghv7bq" path="res://themes/ui/button_inventory_style.tres" id="2_megns"]
 
 [node name="MainMenu" type="Node2D"]
-script = ExtResource("1_xwlia")
+script = ExtResource("1_fomet")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -27,14 +27,14 @@ alignment = 1
 
 [node name="start_button" type="Button" parent="CanvasLayer/VBoxContainer2"]
 layout_mode = 2
-theme = ExtResource("2_jycrl")
+theme = ExtResource("2_megns")
 theme_override_font_sizes/font_size = 80
 text = "Start game"
 icon_alignment = 1
 
 [node name="exit_button" type="Button" parent="CanvasLayer/VBoxContainer2"]
 layout_mode = 2
-theme = ExtResource("2_jycrl")
+theme = ExtResource("2_megns")
 theme_override_font_sizes/font_size = 60
 text = "Exit"
 
