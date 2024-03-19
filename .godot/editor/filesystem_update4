@@ -11,3 +11,5 @@ res://scenes/player/player.tscn
 res://scripts/player/player.gd
 res://scripts/npcs/enemies/basic_enemy_script.gd
 res://scenes/main_game/game.tscn
+res://scenes/vfx/fog.tscn
+res://scenes/vfx/fog.gdshader

@@ -1,5 +1,5 @@
 fc8a56933c4b1c8d796fdb8f7a9f9475
-::res://::1710845417
+::res://::1710845516
 export libresprite.txt::TextFile::-1::1710502946::0::1::::<><>::
 export_presets.cfg::TextFile::-1::1709555446::0::1::::<><>::
 godot_logo.png::CompressedTexture2D::974734046528578901::1705444872::1709555948::1::::<><>::
@@ -52,15 +52,15 @@ sword.png::CompressedTexture2D::2522092581939342418::1710493685::1710495182::1::
 ::res://assets/world/::1710500043
 sample_grass-sheet.png::CompressedTexture2D::427658623263913169::1710500040::1710500043::1::::<><>::
 ::res://scenes/::1710501145
-::res://scenes/main_game/::1710501607
-game.tscn::PackedScene::7102166130113140807::1710501607::0::1::::<><>::res://scripts/game/game.gd<>uid://b6c8fwsvm7b8k::::res://scenes/player/player.tscn<>uid://gdfqffdwtdfd::::res://assets/world/sample_grass-sheet.png
+::res://scenes/main_game/::1710846104
+game.tscn::PackedScene::7102166130113140807::1710846104::0::1::::<><>::res://scripts/game/game.gd<>uid://b6c8fwsvm7b8k::::res://scenes/player/player.tscn<>uid://gdfqffdwtdfd::::res://assets/world/sample_grass-sheet.png<>uid://bg1pxarmy7iqs::::res://scenes/npcs/enemies/enemy.tscn
 main_menu.tscn::PackedScene::3465233689241492256::1710501606::0::1::::<><>::res://scripts/main_menu/main_menu.gd<>uid://cuud6f4ghv7bq::::res://themes/ui/button_inventory_style.tres
 world.tscn::PackedScene::574834685159822871::1704838471::0::1::::<><>::
 ::res://scenes/npcs/::1710501161
-::res://scenes/npcs/enemies/::1710845512
-enem.tscn::PackedScene::2862179422118398866::1710845501::0::1::::<><>::res://scripts/npcs/enemies/basic_enemy_script.gd<>uid://cvb5dv74gytgo::::res://assets/npcs/enemies/draugr/draugh_shadow.png<>uid://dm4v13qawsh6d::::res://assets/npcs/enemies/draugr/draugh_body_1.png<>uid://cjdpvmlcrvv3v::::res://assets/npcs/enemies/draugr/axe.png<>uid://gocm6goif27y::::res://assets/player/attack.png
-::res://scenes/player/::1710844677
-player.tscn::PackedScene::4568417366002664912::1710844677::0::1::::<><>::res://scripts/player/player.gd<>uid://xnje4uggyijj::::res://scenes/ui/ui.tscn<>uid://dne3vti22ebde::::res://assets/player/skins/no_armor.png<>uid://caj4h63ekp5s6::::res://assets/player/shadow.png<>uid://bb6yq41h7plnu::::res://assets/weapons/sword.png<>uid://dhaytpklv7tjl::::res://assets/weapons/bow.png<>uid://nuos6san62fu::::res://assets/player/ranged_attack.png<>uid://cgbk02q34tlg::::res://assets/player/pointer.png<>uid://gocm6goif27y::::res://assets/player/attack.png<>uid://81c0pbcls2m0::::res://animations/player_animations.res
+::res://scenes/npcs/enemies/::1710846104
+enemy.tscn::PackedScene::2862179422118398866::1710846104::0::1::::<><>::uid://cjdpvmlcrvv3v::::res://assets/npcs/enemies/draugr/axe.png<>res://scripts/npcs/enemies/basic_enemy_script.gd<>uid://dm4v13qawsh6d::::res://assets/npcs/enemies/draugr/draugh_body_1.png<>uid://gocm6goif27y::::res://assets/player/attack.png<>uid://cvb5dv74gytgo::::res://assets/npcs/enemies/draugr/draugh_shadow.png
+::res://scenes/player/::1710846104
+player.tscn::PackedScene::4568417366002664912::1710846104::0::1::::<><>::res://scripts/player/player.gd<>uid://xnje4uggyijj::::res://scenes/ui/ui.tscn<>uid://dne3vti22ebde::::res://assets/player/skins/no_armor.png<>uid://caj4h63ekp5s6::::res://assets/player/shadow.png<>uid://bb6yq41h7plnu::::res://assets/weapons/sword.png<>uid://dhaytpklv7tjl::::res://assets/weapons/bow.png<>uid://nuos6san62fu::::res://assets/player/ranged_attack.png<>uid://cgbk02q34tlg::::res://assets/player/pointer.png<>uid://gocm6goif27y::::res://assets/player/attack.png<>uid://81c0pbcls2m0::::res://animations/player_animations.res
 ::res://scenes/ui/::1710501606
 attack_button.tscn::PackedScene::6090505319475975377::1709555629::0::1::::<><>::res://scripts/ui/attack_button.gd<>uid://cloqpwjbujk54::::res://assets/ui/SmallHandleFilled.png
 dodge_button.tscn::PackedScene::6703162315799924728::1709555629::0::1::::<><>::uid://cloqpwjbujk54::::res://assets/ui/SmallHandleFilled.png<>res://scripts/dodge_button.gd
@@ -79,9 +79,9 @@ game.gd::GDScript::-1::1710492227::0::1::::<>Node2D<>::
 ::res://scripts/main_menu/::1710495703
 main_menu.gd::GDScript::-1::1710495703::0::1::::<>Node<>::
 ::res://scripts/npcs/::1710840135
-::res://scripts/npcs/enemies/::1710845501
-basic_enemy_parent_resource.gd::GDScript::-1::1710844399::0::1::::BasicEnemyParentResource<>Node<>::
-basic_enemy_script.gd::GDScript::-1::1710845501::0::1::::BasicEnemy<>Node<>::
+::res://scripts/npcs/enemies/::1710845918
+basic_enemy_parent_resource.gd::GDScript::-1::1710845900::0::1::::BasicEnemyParentResource<>Node<>::
+basic_enemy_script.gd::GDScript::-1::1710845918::0::1::::BasicEnemy<>Node<>::
 draugr.gd::GDScript::-1::1710840604::0::1::::Draugr<>BasicEnemyParentResource<>::
 ::res://scripts/player/::1710844572
 item.gd::GDScript::-1::1709555446::0::1::::Item<>Node<>::
