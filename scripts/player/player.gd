@@ -213,7 +213,6 @@ func walk_or_idle():
 	if (walkingDirection):
 		var walkingSpeedReducer = EQUIPPED_ARMOR.walkingSpeedReducer if EQUIPPED_ARMOR != null else 1.0
 		velocity = walkingDirection * MOVING_SPEED * walkingSpeedReducer
-		print(velocity)
 		play_walking_animation()
 		move_and_slide()
 	else:

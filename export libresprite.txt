@@ -3,6 +3,9 @@ by rows
 of columns 8
 256x96
 
+npc
+by rows
+of collumns 11
 
 weapons and rest
 32x32px 1 sprite

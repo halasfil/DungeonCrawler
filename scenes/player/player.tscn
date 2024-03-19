@@ -20,6 +20,11 @@ script = ExtResource("1_m7pnm")
 [node name="Ui" parent="." instance=ExtResource("2_gpood")]
 position = Vector2(0, 41)
 
+[node name="Shadow" type="Sprite2D" parent="."]
+position = Vector2(0.1, 0)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("4_c5bxy")
+
 [node name="Body" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(1, 0)
@@ -28,10 +33,6 @@ texture = ExtResource("3_38y77")
 hframes = 8
 vframes = 4
 frame = 3
-
-[node name="Shadow" type="Sprite2D" parent="Body"]
-position = Vector2(-1, 0)
-texture = ExtResource("4_c5bxy")
 
 [node name="Melee" type="Sprite2D" parent="Body"]
 texture_filter = 1

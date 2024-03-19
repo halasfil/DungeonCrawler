@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://m7xt46n5kou0"
-path="res://.godot/imported/draugr_body_1.png-ba3659250c65cbf17777ec11e6f43b3c.ctex"
+uid="uid://dm4v13qawsh6d"
+path="res://.godot/imported/draugh_body_1.png-d100389bba1b365e02d8f236a97ad970.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/npcs/enemies/draugr/draugr_body_1.png"
-dest_files=["res://.godot/imported/draugr_body_1.png-ba3659250c65cbf17777ec11e6f43b3c.ctex"]
+source_file="res://assets/npcs/enemies/draugr/draugh_body_1.png"
+dest_files=["res://.godot/imported/draugh_body_1.png-d100389bba1b365e02d8f236a97ad970.ctex"]
 
 [params]
 
