@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b6c8fwsvm7b8k"]
+[gd_scene load_steps=13 format=3 uid="uid://b6c8fwsvm7b8k"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_m7pnm"]
 [ext_resource type="PackedScene" uid="uid://xnje4uggyijj" path="res://scenes/ui/ui.tscn" id="2_gpood"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cgbk02q34tlg" path="res://assets/player/pointer.png" id="8_qc8i0"]
 [ext_resource type="Texture2D" uid="uid://gocm6goif27y" path="res://assets/player/attack.png" id="9_gwh43"]
 [ext_resource type="AnimationLibrary" uid="uid://81c0pbcls2m0" path="res://animations/player_animations.res" id="10_veje7"]
+[ext_resource type="Texture2D" uid="uid://bemgp0wlfvjp3" path="res://assets/vfx/light.png" id="11_x5ct2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o3gem"]
 radius = 5.0
@@ -91,5 +92,13 @@ editor_draw_limits = true
 
 [node name="DodgeCooldown" type="Timer" parent="."]
 wait_time = 2.0
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+energy = 0.25
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.682353)
+shadow_filter = 1
+texture = ExtResource("11_x5ct2")
+texture_scale = 0.6
 
 [connection signal="timeout" from="DodgeCooldown" to="." method="_on_dodge_cooldown_timeout"]

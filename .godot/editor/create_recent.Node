@@ -1,3 +1,6 @@
+CanvasModulate
+LightOccluder2D
+PointLight2D
 ColorRect
 ParallaxLayer
 ParallaxBackground
@@ -10,5 +13,3 @@ Control
 PanelContainer
 Container
 HBoxContainer
-Button
-Timer

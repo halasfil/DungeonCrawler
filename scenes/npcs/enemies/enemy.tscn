@@ -1,10 +1,13 @@
-[gd_scene load_steps=22 format=3 uid="uid://bg1pxarmy7iqs"]
+[gd_scene load_steps=23 format=3 uid="uid://bg1pxarmy7iqs"]
 
 [ext_resource type="Texture2D" uid="uid://cjdpvmlcrvv3v" path="res://assets/npcs/enemies/draugr/axe.png" id="1_c4bl0"]
 [ext_resource type="Script" path="res://scripts/npcs/enemies/basic_enemy_script.gd" id="1_vo5dm"]
 [ext_resource type="Texture2D" uid="uid://dm4v13qawsh6d" path="res://assets/npcs/enemies/draugr/draugh_body_1.png" id="3_f6ewm"]
 [ext_resource type="Texture2D" uid="uid://gocm6goif27y" path="res://assets/player/attack.png" id="4_x23kg"]
 [ext_resource type="Texture2D" uid="uid://cvb5dv74gytgo" path="res://assets/npcs/enemies/draugr/draugh_shadow.png" id="5_ea1b2"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_lww0x"]
+polygon = PackedVector2Array(-5.55556, 7.77778, -8.88889, 10, -5.55556, 11.1111, 3.33333, 11.1111, 6.66667, 8.88889, 3.33333, 7.77778)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o3gem"]
 radius = 5.0
@@ -269,13 +272,20 @@ _data = {
 [node name="Enemy" type="CharacterBody2D"]
 script = ExtResource("1_vo5dm")
 
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+position = Vector2(1, 0)
+scale = Vector2(0.9, 0.9)
+occluder = SubResource("OccluderPolygon2D_lww0x")
+
 [node name="Shadow" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(0.1, 0)
 scale = Vector2(0.9, 0.9)
 texture = ExtResource("5_ea1b2")
 
 [node name="Body" type="Sprite2D" parent="."]
 texture_filter = 1
+use_parent_material = true
 position = Vector2(1, 0)
 scale = Vector2(0.9, 0.9)
 texture = ExtResource("3_f6ewm")
