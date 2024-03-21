@@ -1,3 +1,4 @@
+Label
 CanvasModulate
 LightOccluder2D
 PointLight2D
@@ -12,4 +13,3 @@ CharacterBody2D
 Control
 PanelContainer
 Container
-HBoxContainer

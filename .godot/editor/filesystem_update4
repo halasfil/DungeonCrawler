@@ -7,3 +7,5 @@ res://scripts/player/player.gd
 res://scenes/npcs/enemies/enemy.tscn
 res://scenes/main_game/game.tscn
 res://scenes/vfx/fog.tscn
+res://scenes/ui/ui.tscn
+res://scripts/ui/ui.gd

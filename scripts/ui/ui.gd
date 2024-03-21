@@ -2,27 +2,22 @@ class_name Ui extends Node2D
 
 @onready
 var JOYSTICK : Joystick = $CanvasLayer/HBoxContainer/joystick
-
 @onready
 var ATTACK_BUTTON : AttackButton = $CanvasLayer/HBoxContainer2/AttackButton
-
 @onready
 var DODGE_BUTTON : DodgeButton = $CanvasLayer/HBoxContainer2/DodgeButton
-
 @onready
 var INVENTORY : Inventory= $CanvasLayer/Inventory
-
 @onready
 var MENU_BUTTON : MenuActionButton = $CanvasLayer/HBoxContainer4/MenuButton
-
 @onready
 var ACTION_BUTTONS_CONTAINER : HBoxContainer = $CanvasLayer/HBoxContainer2
-
 @onready
 var INVENTORY_BUTTON : InventoryButton = $CanvasLayer/HBoxContainer4/InventoryButton
-
 @onready
 var OPTION_BUTTONS_CONTAINER : HBoxContainer = $CanvasLayer/HBoxContainer4
+@onready
+var FPS : Label = $CanvasLayer/Label
 
 func _ready():
 	INVENTORY.visible = false
@@ -32,6 +27,7 @@ func _process(_delta):
 		INVENTORY.visible = true
 		INVENTORY.open_inventory_window()
 	check_inventory_open()
+	FPS.text = "FPS: "  + String.num(Engine.get_frames_per_second(), 0)
 	
 func check_inventory_open():
 	if (INVENTORY.visible):
