@@ -46,6 +46,7 @@ flip_v = true
 position = Vector2(-1, 2)
 
 [node name="Ranged" type="Sprite2D" parent="Body/Aim"]
+visible = false
 texture_filter = 1
 position = Vector2(5, -1)
 texture = ExtResource("6_u5qqe")

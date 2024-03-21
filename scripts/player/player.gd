@@ -226,7 +226,7 @@ func play_walking_animation():
 	elif (DIRECTION_FACING == DIRECTIONS.DOWN_L):
 		BODY.flip_h = true
 		MELEE.flip_h = true
-		ANIMATION.play("run_f")
+		ANIMATION.play("run_f_L")
 	elif (DIRECTION_FACING == DIRECTIONS.UP_R):
 		BODY.flip_h = false
 		MELEE.flip_h = false
@@ -234,7 +234,7 @@ func play_walking_animation():
 	elif (DIRECTION_FACING == DIRECTIONS.UP_L):
 		BODY.flip_h = true
 		MELEE.flip_h = true
-		ANIMATION.play("run_b")
+		ANIMATION.play("run_b_L")
 #endregion
 #region idle
 func idle():
@@ -246,7 +246,7 @@ func idle():
 	elif (DIRECTION_FACING == DIRECTIONS.DOWN_L):
 		BODY.flip_h = true
 		MELEE.flip_h = true
-		ANIMATION.play("idle_f")
+		ANIMATION.play("idle_f_L")
 	elif (DIRECTION_FACING == DIRECTIONS.UP_R):
 		BODY.flip_h = false
 		MELEE.flip_h = false
@@ -254,7 +254,7 @@ func idle():
 	elif (DIRECTION_FACING == DIRECTIONS.UP_L):
 		BODY.flip_h = true
 		MELEE.flip_h = true
-		ANIMATION.play("idle_b")
+		ANIMATION.play("idle_b_L")
 #endregion
 #region dodge
 func dodge():

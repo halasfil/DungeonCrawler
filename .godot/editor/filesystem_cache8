@@ -1,5 +1,5 @@
 fc8a56933c4b1c8d796fdb8f7a9f9475
-::res://::1710845516
+::res://::1711022217
 export libresprite.txt::TextFile::-1::1710502946::0::1::::<><>::
 export_presets.cfg::TextFile::-1::1709555446::0::1::::<><>::
 godot_logo.png::CompressedTexture2D::974734046528578901::1705444872::1709555948::1::::<><>::
@@ -44,7 +44,7 @@ alagard.ttf::FontFile::871261158174693850::1707217900::1709555948::1::::<><>::
 ::res://assets/utils/::1709897139
 sample.png::CompressedTexture2D::2893089651938240875::1706042574::1709555948::1::::<><>::
 small_health_potion.png::CompressedTexture2D::3857888763980111586::1709897138::1709897139::1::::<><>::
-::res://assets/vfx/::1710847909
+::res://assets/vfx/::1710847912
 light.png::CompressedTexture2D::2692341027735878550::1710847883::1710847912::1::::<><>::
 ::res://assets/weapons/::1710495182
 arrow.png::CompressedTexture2D::6881158782991802277::1704838471::1709555948::1::::<><>::
@@ -54,15 +54,15 @@ sword.png::CompressedTexture2D::2522092581939342418::1710493685::1710495182::1::
 ::res://assets/world/::1710500043
 sample_grass-sheet.png::CompressedTexture2D::427658623263913169::1710500040::1710500043::1::::<><>::
 ::res://scenes/::1710846194
-::res://scenes/main_game/::1710847333
-game.tscn::PackedScene::7102166130113140807::1710847333::0::1::::<><>::res://scripts/game/game.gd<>uid://b6c8fwsvm7b8k::::res://scenes/player/player.tscn<>uid://gdfqffdwtdfd::::res://assets/world/sample_grass-sheet.png<>uid://b608yonu2it18::::res://scenes/vfx/fog.tscn<>uid://bg1pxarmy7iqs::::res://scenes/npcs/enemies/enemy.tscn
+::res://scenes/main_game/::1710850028
+game.tscn::PackedScene::7102166130113140807::1710850028::0::1::::<><>::res://scripts/game/game.gd<>uid://b6c8fwsvm7b8k::::res://scenes/player/player.tscn<>uid://gdfqffdwtdfd::::res://assets/world/sample_grass-sheet.png<>uid://b608yonu2it18::::res://scenes/vfx/fog.tscn<>uid://bg1pxarmy7iqs::::res://scenes/npcs/enemies/enemy.tscn
 main_menu.tscn::PackedScene::3465233689241492256::1710501606::0::1::::<><>::res://scripts/main_menu/main_menu.gd<>uid://cuud6f4ghv7bq::::res://themes/ui/button_inventory_style.tres
 world.tscn::PackedScene::574834685159822871::1704838471::0::1::::<><>::
 ::res://scenes/npcs/::1710501161
-::res://scenes/npcs/enemies/::1710847333
-enemy.tscn::PackedScene::2862179422118398866::1710847333::0::1::::<><>::uid://cjdpvmlcrvv3v::::res://assets/npcs/enemies/draugr/axe.png<>res://scripts/npcs/enemies/basic_enemy_script.gd<>uid://dm4v13qawsh6d::::res://assets/npcs/enemies/draugr/draugh_body_1.png<>uid://gocm6goif27y::::res://assets/player/attack.png<>uid://cvb5dv74gytgo::::res://assets/npcs/enemies/draugr/draugh_shadow.png
-::res://scenes/player/::1710847333
-player.tscn::PackedScene::4568417366002664912::1710847333::0::1::::<><>::res://scripts/player/player.gd<>uid://xnje4uggyijj::::res://scenes/ui/ui.tscn<>uid://dne3vti22ebde::::res://assets/player/skins/no_armor.png<>uid://caj4h63ekp5s6::::res://assets/player/shadow.png<>uid://bb6yq41h7plnu::::res://assets/weapons/sword.png<>uid://dhaytpklv7tjl::::res://assets/weapons/bow.png<>uid://nuos6san62fu::::res://assets/player/ranged_attack.png<>uid://cgbk02q34tlg::::res://assets/player/pointer.png<>uid://gocm6goif27y::::res://assets/player/attack.png<>uid://81c0pbcls2m0::::res://animations/player_animations.res
+::res://scenes/npcs/enemies/::1710850028
+enemy.tscn::PackedScene::2862179422118398866::1710850028::0::1::::<><>::uid://cjdpvmlcrvv3v::::res://assets/npcs/enemies/draugr/axe.png<>res://scripts/npcs/enemies/basic_enemy_script.gd<>uid://dm4v13qawsh6d::::res://assets/npcs/enemies/draugr/draugh_body_1.png<>uid://gocm6goif27y::::res://assets/player/attack.png<>uid://cvb5dv74gytgo::::res://assets/npcs/enemies/draugr/draugh_shadow.png
+::res://scenes/player/::1710850027
+player.tscn::PackedScene::4568417366002664912::1710850027::0::1::::<><>::res://scripts/player/player.gd<>uid://xnje4uggyijj::::res://scenes/ui/ui.tscn<>uid://dne3vti22ebde::::res://assets/player/skins/no_armor.png<>uid://caj4h63ekp5s6::::res://assets/player/shadow.png<>uid://bb6yq41h7plnu::::res://assets/weapons/sword.png<>uid://dhaytpklv7tjl::::res://assets/weapons/bow.png<>uid://nuos6san62fu::::res://assets/player/ranged_attack.png<>uid://cgbk02q34tlg::::res://assets/player/pointer.png<>uid://gocm6goif27y::::res://assets/player/attack.png<>uid://81c0pbcls2m0::::res://animations/player_animations.res<>uid://bemgp0wlfvjp3::::res://assets/vfx/light.png
 ::res://scenes/ui/::1710501606
 attack_button.tscn::PackedScene::6090505319475975377::1709555629::0::1::::<><>::res://scripts/ui/attack_button.gd<>uid://cloqpwjbujk54::::res://assets/ui/SmallHandleFilled.png
 dodge_button.tscn::PackedScene::6703162315799924728::1709555629::0::1::::<><>::uid://cloqpwjbujk54::::res://assets/ui/SmallHandleFilled.png<>res://scripts/dodge_button.gd
@@ -74,9 +74,9 @@ menu_button.tscn::PackedScene::5146501043820196553::1710501606::0::1::::<><>::re
 quick_item_button.tscn::PackedScene::8185728844276435224::1709555629::0::1::::<><>::uid://cloqpwjbujk54::::res://assets/ui/SmallHandleFilled.png<>res://scripts/ui/quick_item_button.gd
 skill_button.tscn::PackedScene::2748298999065410617::1709555629::0::1::::<><>::res://scripts/ui/skill_button.gd<>uid://cloqpwjbujk54::::res://assets/ui/SmallHandleFilled.png
 ui.tscn::PackedScene::1641735464942865595::1710501606::0::1::::<><>::res://scripts/ui/ui.gd<>uid://cyv2gg81gj43k::::res://scenes/ui/joystick.tscn<>uid://cs1jy6ddmkpc8::::res://scenes/ui/attack_button.tscn<>uid://dovh01m70itsy::::res://scenes/ui/quick_item_button.tscn<>uid://c2rcdshq4xw37::::res://scenes/ui/dodge_button.tscn<>uid://bffkc26tki3jx::::res://scenes/ui/skill_button.tscn<>uid://cflaedboq6efx::::res://scenes/ui/menu_button.tscn<>uid://cptn6wixbwlha::::res://scenes/ui/inventory_button.tscn<>uid://phoxfhoi5d6q::::res://scenes/ui/inventory.tscn
-::res://scenes/vfx/::1710847333
-fog.gdshader::Shader::-1::1710847333::0::1::::<><>::
-fog.tscn::PackedScene::4615931556493096465::1710847333::0::1::::<><>::res://scenes/vfx/fog.gdshader
+::res://scenes/vfx/::1710850047
+fog.gdshader::Shader::-1::1710850047::0::1::::<><>::
+fog.tscn::PackedScene::4615931556493096465::1710850028::0::1::::<><>::res://scenes/vfx/fog.gdshader
 ::res://scripts/::1710840122
 dodge_button.gd::GDScript::-1::1709555446::0::1::::DodgeButton<>Node2D<>::
 ::res://scripts/game/::1710492227
