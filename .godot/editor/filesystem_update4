@@ -1,11 +1,8 @@
 res://scenes/player/player.tscn
 res://themes/ui/button_inventory_style.tres
 res://themes/ui/button_inventory_style_font_30.tres
-res://animations/player_animations.res
 res://scenes/vfx/fog.gdshader
-res://scripts/player/player.gd
 res://scenes/npcs/enemies/enemy.tscn
 res://scenes/main_game/game.tscn
 res://scenes/vfx/fog.tscn
 res://scenes/ui/ui.tscn
-res://scripts/ui/ui.gd

@@ -1,7 +1,7 @@
+PointLight2D
 Label
 CanvasModulate
 LightOccluder2D
-PointLight2D
 ColorRect
 ParallaxLayer
 ParallaxBackground
@@ -12,4 +12,3 @@ CollisionShape2D
 CharacterBody2D
 Control
 PanelContainer
-Container

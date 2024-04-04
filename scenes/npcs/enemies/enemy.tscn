@@ -7,7 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://cvb5dv74gytgo" path="res://assets/npcs/enemies/draugr/draugh_shadow.png" id="5_ea1b2"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_lww0x"]
-polygon = PackedVector2Array(-5.55556, 7.77778, -8.88889, 10, -5.55556, 11.1111, 3.33333, 11.1111, 6.66667, 8.88889, 3.33333, 7.77778)
+cull_mode = 1
+polygon = PackedVector2Array(-3.33333, -6.66667, -8.88889, 10, -5.55556, 11.1111, 3.33333, 11.1111, 6.66667, 8.88889, 3.33333, -6.66667)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o3gem"]
 radius = 5.0

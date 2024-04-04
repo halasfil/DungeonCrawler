@@ -58,17 +58,17 @@ texture = ExtResource("2_cqdnq")
 3:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 3:3/0/physics_layer_0/angular_velocity = 0.0
 
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_b5sdt"]
-polygon = PackedVector2Array(-12.375, 14, -5.75, 15.75, 2.125, 15.75, 5.75, 14, 2.625, 11.75, -7.625, 11.5)
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_psps8"]
+polygon = PackedVector2Array(-14.875, -8.375, -3.875, -8, -8.5, -14.125, -1.375, -9.875, 1, -14.375, 3.125, -10, 6.375, -14.875, 10, -14.875, 5.5, -8, 3.125, -1, 12.125, -8.375, 11.25, -5.125, 14.125, -3, 8, -0.5, 1.625, 4.875, 2.625, 14.5, -8.875, 15.375, -5.75, 10.5, -5.25, 4.75, -8, -4.125)
 
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_kw82f"]
-polygon = PackedVector2Array(-12.625, 21.5, -7.125, 23.125, 4.125, 23.25, 7.625, 21.625, 3.75, 19.375, -7.375, 18.375)
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ryq8y"]
+polygon = PackedVector2Array(-15, -11.75, -8, -8, -8.5, -14.125, -3.5, -8, -2.75, -12.75, -11.75, -21.75, -0.25, -17, 4.5, -22, 1, -4.25, 8.75, -21.75, 9.25, -15.75, 21.25, -19.5, 11.25, -14.25, 7.25, -10, 3.125, -1, 15.75, -11.75, 16.5, -7.25, 6.18718, 1.76777, 13.9654, 5.65685, 8, 4.94975, 5.48008, 8, 3.25, 20.25, -8.25, 20.5, -5.75, 8, -12.5, 5.5, -17, 2, -13.75, -3, -12.25, 1.5, -8, 4, -8, -4.5)
 
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_cyin1"]
-polygon = PackedVector2Array(-14.8492, 22.2739, -2.12132, 23.8649, 9.54594, 23.3345, 12.7279, 21.5668, 7.42462, 18.9151, -5.3033, 17.6777)
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_sup64"]
+polygon = PackedVector2Array(-10.75, 5, -2.25, 8, -10.25, -1.25, -20.75, -8.5, -19.5, -14, -1.5, 0.75, -16, -17, -13, -21.25, -6.75, -17, 0, -5, -2.75, -21, 2.25, -18.25, 8.75, -21.75, 4, -15, 4, -2.75, 9.25, -12.5, 14.25, -14.75, 16, -9.5, 8, -5.25, 8, 2.5, 21, 0, 8, 8, 7.75, 20, -8.25, 20.5, -1.75, 13.5)
 
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_0xtpy"]
-polygon = PackedVector2Array(-4.625, 13.75, -2, 11.5, 6.375, 11.625, 9.125, 13.375, 6.875, 15.875, -1.375, 16)
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_3tabg"]
+polygon = PackedVector2Array(-14.875, -8.375, -2.65165, -1.59099, -8.5, -14.125, -5.83363, -13.435, 0.353554, -5.12652, -2.2981, -13.6118, 2.82843, -9.54594, 6.375, -14.875, 10, -14.875, 5.5, -8, 3.125, -1, 13.6118, -8.13173, 11.25, -5.125, 6.18718, 1.76777, 13.9654, 5.65685, 8, 4.94975, 5.48008, 8, 6.18718, 13.9654, -1.94454, 14.4957, -1.23744, 8, -4.24264, 5.3033, -12.5511, 4.94975, -4.41942, 0.707108)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fsvly"]
 resource_name = "trees"
@@ -76,28 +76,28 @@ texture = ExtResource("2_cqdnq")
 4:0/size_in_atlas = Vector2i(2, 2)
 4:0/0 = 0
 4:0/0/y_sort_origin = 12
-4:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_b5sdt")
+4:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_psps8")
 4:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 4:0/0/physics_layer_0/angular_velocity = 0.0
 4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4.94975, 8, 0.353554, 8, 0.53033, 11.4905, 3.18198, 15.468, -9.25, 15.25, -6.01041, 12.1092)
 6:0/size_in_atlas = Vector2i(2, 2)
 6:0/0 = 0
 6:0/0/y_sort_origin = 12
-6:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_0xtpy")
+6:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_3tabg")
 6:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 6:0/0/physics_layer_0/angular_velocity = 0.0
 6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-1, 8, 4, 8, 6.75, 15.75, -9.25, 15.25, -2.5, 12.5)
 4:2/size_in_atlas = Vector2i(3, 3)
 4:2/0 = 0
 4:2/0/y_sort_origin = 18
-4:2/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_kw82f")
+4:2/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_ryq8y")
 4:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 4:2/0/physics_layer_0/angular_velocity = 0.0
 4:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-5.33169, 14.592, 1.26277, 15.0129, 3.648, 17.5385, 5.3317, 23.5717, -3.78831, 21.888, -12.4874, 23.8523, -9.4252, 19.3465)
 4:5/size_in_atlas = Vector2i(3, 3)
 4:5/0 = 0
 4:5/0/y_sort_origin = 20
-4:5/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_cyin1")
+4:5/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_sup64")
 4:5/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 4:5/0/physics_layer_0/angular_velocity = 0.0
 4:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-0.779536, 15.7021, 5.45675, 15.5907, 7.79536, 18.3748, 11.1362, 24.1656, -12.4874, 23.8523, -9.4252, 19.3465)
@@ -121,6 +121,7 @@ texture_region_size = Vector2i(32, 32)
 
 [sub_resource type="TileSet" id="TileSet_g1pwu"]
 occlusion_layer_0/light_mask = 1
+occlusion_layer_0/sdf_collision = true
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_o4ihk")
 sources/1 = SubResource("TileSetAtlasSource_fsvly")
@@ -149,7 +150,7 @@ layer_2/tile_data = PackedInt32Array(8, 262145, 0, 196594, 262145, 0, -131081, 2
 position = Vector2(53, 75)
 
 [node name="Enemy" parent="." instance=ExtResource("4_sbnhw")]
-position = Vector2(-92, 21)
+position = Vector2(37, 52)
 
 [node name="Fog" parent="." instance=ExtResource("3_g3vaa")]
 

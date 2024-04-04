@@ -94,12 +94,12 @@ editor_draw_limits = true
 [node name="DodgeCooldown" type="Timer" parent="."]
 wait_time = 2.0
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
+[node name="light" type="PointLight2D" parent="."]
 energy = 0.25
 shadow_enabled = true
-shadow_color = Color(0, 0, 0, 0.682353)
 shadow_filter = 1
+shadow_filter_smooth = 5.0
 texture = ExtResource("11_x5ct2")
-texture_scale = 0.6
+texture_scale = 0.5
 
 [connection signal="timeout" from="DodgeCooldown" to="." method="_on_dodge_cooldown_timeout"]
