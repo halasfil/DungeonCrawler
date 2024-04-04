@@ -20,6 +20,7 @@ bg_color = Color(1, 0.2, 0, 0.858824)
 script = ExtResource("1_heurp")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 15
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="CanvasLayer"]
 offset_left = 35.0
