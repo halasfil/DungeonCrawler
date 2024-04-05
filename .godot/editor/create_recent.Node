@@ -1,8 +1,9 @@
+ColorRect
+CanvasLayer
 PointLight2D
 Label
 CanvasModulate
 LightOccluder2D
-ColorRect
 ParallaxLayer
 ParallaxBackground
 AnimationPlayer
@@ -11,4 +12,3 @@ Marker2D
 CollisionShape2D
 CharacterBody2D
 Control
-PanelContainer

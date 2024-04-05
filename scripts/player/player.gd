@@ -135,14 +135,10 @@ func attack():
 	if (EQUIPPED_WEAPON && ATTACK_BUTTON.pressed):
 		PLAYER_STATE = STATE.ATTACKING
 		if (EQUIPPED_WEAPON.isWeaponRanged == false):
-			KNOCKBACK_STATE = true
 			perform_melee_attack()
-			await ANIMATION.animation_finished
 		else:
-			KNOCKBACK_STATE = true
 			perform_ranged_attack()
-			await ANIMATION.animation_finished
-
+		await ANIMATION.animation_finished
 		PLAYER_STATE = STATE.NEUTRAL
 func calculate_knockback():
 	if KNOCKBACK_STATE == true:
@@ -154,58 +150,51 @@ func calculate_knockback():
 #endregion
 #region melee attack
 func perform_melee_attack():
-	play_melee_animation()
+	await play_melee_animation()
+func anticipate_and_attack(anticipationAnimationName : String, animationName : String):
+	ANIMATION.play(anticipationAnimationName)
+	await get_tree().create_timer(EQUIPPED_WEAPON.weaponAnticipationTime).timeout
+	KNOCKBACK_STATE = true
+	ANIMATION.play(animationName);
 func play_melee_animation():
 	var attackType = RandomNumberGenerator.new().randi_range(0, 1)
 	if (DIRECTION_FACING == DIRECTIONS.DOWN_R):
-		BODY.flip_h = false
-		MELEE.flip_h = false
 		if (attackType == 1):
-			ANIMATION.play("attack_f_melee_1");
+			anticipate_and_attack("attack_f_melee_1_anticipation", "attack_f_melee_1")
 		else:
-			ANIMATION.play("attack_f_melee_2");
+			anticipate_and_attack("attack_f_melee_2_anticipation", "attack_f_melee_2")
 	elif (DIRECTION_FACING == DIRECTIONS.DOWN_L):
-		BODY.flip_h = true
-		MELEE.flip_h = true
 		if (attackType == 1):
-			ANIMATION.play("attack_f_melee_1_L");
+			anticipate_and_attack("attack_f_melee_1_L_anticipation", "attack_f_melee_1_L")
 		else:
-			ANIMATION.play("attack_f_melee_2_L");
+			anticipate_and_attack("attack_f_melee_2_L_anticipation", "attack_f_melee_2_L")
 	elif (DIRECTION_FACING == DIRECTIONS.UP_R):
-		BODY.flip_h = false
-		MELEE.flip_h = false
 		if (attackType == 1):
-			ANIMATION.play("attack_b_melee_1");
+			anticipate_and_attack("attack_b_melee_1_anticipation", "attack_b_melee_1")
 		else:
-			ANIMATION.play("attack_b_melee_2");
+			anticipate_and_attack("attack_b_melee_2_anticipation", "attack_b_melee_2")
 	elif (DIRECTION_FACING == DIRECTIONS.UP_L):
-		BODY.flip_h = true
-		MELEE.flip_h = true
 		if (attackType == 1):
-			ANIMATION.play("attack_b_melee_1_L");
+			anticipate_and_attack("attack_b_melee_1_L_anticipation", "attack_b_melee_1_L")
 		else:
-			ANIMATION.play("attack_b_melee_2_L");
+			anticipate_and_attack("attack_b_melee_2_L_anticipation", "attack_b_melee_2_L")
 #endregion
 #region ranged attack
 func perform_ranged_attack():
-	play_ranged_animation()
+	await play_ranged_animation()
 func play_ranged_animation():
 	if (DIRECTION_FACING == DIRECTIONS.DOWN_R):
 		BODY.flip_h = false
-		MELEE.flip_h = false
-		ANIMATION.play("attack_f_ranged");
+		anticipate_and_attack("attack_f_ranged_anticipation", "attack_f_ranged")
 	elif (DIRECTION_FACING == DIRECTIONS.DOWN_L):
 		BODY.flip_h = true
-		MELEE.flip_h = true
-		ANIMATION.play("attack_f_ranged");
+		anticipate_and_attack("attack_f_ranged_anticipation", "attack_f_ranged")
 	elif (DIRECTION_FACING == DIRECTIONS.UP_R):
 		BODY.flip_h = false
-		MELEE.flip_h = false
-		ANIMATION.play("attack_b_ranged");
+		anticipate_and_attack("attack_b_ranged_anticipation", "attack_b_ranged")
 	elif (DIRECTION_FACING == DIRECTIONS.UP_L):
 		BODY.flip_h = true
-		MELEE.flip_h = true
-		ANIMATION.play("attack_b_ranged");
+		anticipate_and_attack("attack_b_ranged_anticipation", "attack_b_ranged")
 #endregion
 #region walking
 func walk_or_idle():
