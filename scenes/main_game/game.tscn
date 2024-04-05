@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://c8glvyer7hobv"]
+[gd_scene load_steps=15 format=3 uid="uid://c8glvyer7hobv"]
 
 [ext_resource type="Script" path="res://scripts/game/game.gd" id="1_v86ck"]
 [ext_resource type="PackedScene" uid="uid://b6c8fwsvm7b8k" path="res://scenes/player/player.tscn" id="2_6bvlu"]
 [ext_resource type="Texture2D" uid="uid://gdfqffdwtdfd" path="res://assets/world/sample_grass-sheet.png" id="2_cqdnq"]
 [ext_resource type="PackedScene" uid="uid://b608yonu2it18" path="res://scenes/vfx/fog.tscn" id="3_g3vaa"]
 [ext_resource type="PackedScene" uid="uid://bg1pxarmy7iqs" path="res://scenes/npcs/enemies/enemy.tscn" id="4_sbnhw"]
+[ext_resource type="PackedScene" uid="uid://8k2i2vtgqbia" path="res://scenes/player/companion/companion.tscn" id="6_1y88y"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o4ihk"]
 resource_name = "grass"
@@ -156,3 +157,7 @@ position = Vector2(53, 75)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color(0.815686, 0.815686, 0.815686, 1)
+
+[node name="Companion" parent="." instance=ExtResource("6_1y88y")]
+position = Vector2(65, 99)
+scale = Vector2(0.1, 0.1)

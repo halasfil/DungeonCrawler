@@ -11,13 +11,10 @@
 [ext_resource type="Texture2D" uid="uid://gocm6goif27y" path="res://assets/player/attack.png" id="9_gwh43"]
 [ext_resource type="AnimationLibrary" uid="uid://81c0pbcls2m0" path="res://animations/player_animations.res" id="10_veje7"]
 [ext_resource type="Texture2D" uid="uid://bemgp0wlfvjp3" path="res://assets/vfx/light.png" id="11_x5ct2"]
+[ext_resource type="PackedScene" uid="uid://8k2i2vtgqbia" path="res://scenes/player/companion/companion.tscn" id="12_fhp3x"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o3gem"]
 radius = 5.0
-
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_haar6"]
-cull_mode = 1
-polygon = PackedVector2Array(-2, 9, 6, 9, 7, 1, 4, -6, 0, -6, -3, 1)
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_m7pnm")
@@ -26,7 +23,6 @@ script = ExtResource("1_m7pnm")
 position = Vector2(0, 41)
 
 [node name="Shadow" type="Sprite2D" parent="."]
-visible = false
 position = Vector2(0.1, 0)
 scale = Vector2(0.9, 0.9)
 texture = ExtResource("4_c5bxy")
@@ -102,10 +98,6 @@ editor_draw_limits = true
 [node name="DodgeCooldown" type="Timer" parent="."]
 wait_time = 2.0
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
-occluder = SubResource("OccluderPolygon2D_haar6")
-occluder_light_mask = 2
-
 [node name="light" type="PointLight2D" parent="."]
 energy = 0.25
 shadow_enabled = true
@@ -113,5 +105,9 @@ shadow_filter = 1
 shadow_filter_smooth = 5.0
 texture = ExtResource("11_x5ct2")
 texture_scale = 0.5
+
+[node name="Companion" parent="." instance=ExtResource("12_fhp3x")]
+position = Vector2(1, 20)
+scale = Vector2(0.15, 0.15)
 
 [connection signal="timeout" from="DodgeCooldown" to="." method="_on_dodge_cooldown_timeout"]
