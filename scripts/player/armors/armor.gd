@@ -4,7 +4,6 @@ var protectionMin : int;
 var protectionMax : int;
 var walkingSpeedReducer : float;
 var characterSkin : CompressedTexture2D;
-var ARMOR_DETAILS_STRING_FORMAT : String = "Name: %s\nArmor: %s - %s\nPrice: %s\nKg: %s"
 
 func _init(
 	nameArmor : String,

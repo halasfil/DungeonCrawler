@@ -4,13 +4,6 @@ var skinSprite : CompressedTexture2D = preload("res://assets/player/skins/leathe
 var invSprite : CompressedTexture2D = preload("res://assets/armors/leather.png")
 
 func _init() -> void: 
-	super("Leather armor", 1, 3, .9, 10, invSprite, skinSprite, 10);
-	
-	#nameArmor : String,
-	#minProt : int,
-	#maxProt : int,
-	#speedReducer : float,
-	#priceArmor : int,
-	#invSprite : CompressedTexture2D,
-	#skinSprite : CompressedTexture2D,
-	#weightArmor : int
+	super("Leather armor", 1, 3, 
+	#walkingSpeedReducer
+	.9, 10, invSprite, skinSprite, 10);

@@ -156,7 +156,7 @@ position = Vector2(53, 75)
 [node name="Fog" parent="." instance=ExtResource("3_g3vaa")]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.815686, 0.815686, 0.815686, 1)
+color = Color(0.396078, 0.533333, 0.603922, 1)
 
 [node name="Companion" parent="." instance=ExtResource("6_1y88y")]
 position = Vector2(65, 99)

@@ -38,7 +38,7 @@ func move():
 	var target_position : Vector2 = PLAYER.position
 	var random_position : Vector2 = randomize_position(target_position)
 	var tween = create_tween()
-	tween.tween_property(self, "global_position", random_position, 2)
+	tween.tween_property(self, "global_position", random_position, 1.5)
 	tween.tween_callback(
 	func end_movement():
 		self.global_position = random_position
