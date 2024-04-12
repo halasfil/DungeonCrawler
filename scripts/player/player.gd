@@ -25,6 +25,8 @@ var MELEE : Sprite2D = $Body/Melee
 @onready
 var RANGED : Sprite2D = $Body/Aim/Ranged
 @onready
+var RANGED_MARK : Sprite2D = $Body/Aim/Ranged/RangedMark
+@onready
 var MARKER : Marker2D = $Marker2D
 @onready
 var AIM = $Body/Aim
@@ -46,6 +48,7 @@ var JOYSTICK : Joystick = UI.JOYSTICK
 var ATTACK_BUTTON : AttackButton = UI.ATTACK_BUTTON
 @onready
 var DODGE_BUTTON : DodgeButton  = UI.DODGE_BUTTON
+var PROJECTILE_SCENE : PackedScene = preload("res://scenes/player/projectile.tscn")
 var CAN_DODGE : bool = true
 var PLAYER_STATE : int = STATE.NEUTRAL
 var DIRECTION_FACING : int = DIRECTIONS.DOWN_R
@@ -182,6 +185,12 @@ func play_melee_animation():
 #region ranged attack
 func perform_ranged_attack():
 	await play_ranged_animation()
+	var projectile = PROJECTILE_SCENE.instantiate()
+	get_parent().add_child(projectile)
+	projectile.position = RANGED.global_position
+	projectile.rotation = AIM.rotation
+	var aim_positon = AIM_HELPER.global_position
+	projectile.velocity = (aim_positon - position).normalized() * 3
 func play_ranged_animation():
 	if (DIRECTION_FACING == DIRECTIONS.DOWN_R):
 		BODY.flip_h = false

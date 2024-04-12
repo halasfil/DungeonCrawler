@@ -11,3 +11,11 @@ res://scenes/main_game/main_menu.tscn
 res://scenes/player/companion/companion.tscn
 res://scenes/ui/inventory.tscn
 res://scenes/ui/inventory_item.tscn
+res://scenes/player/projectile.tscn
+res://scripts/player/weapons/projectile.gd
+res://addons/gdscript_formatter/format_preference.tres
+res://scripts/player/player.gd
+res://scripts/player/weapons/weapon.gd
+res://scripts/player/weapons/axe.gd
+res://scripts/player/weapons/sword.gd
+res://scripts/player/weapons/bow.gd

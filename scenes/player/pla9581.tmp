@@ -1,0 +1,107 @@
+[gd_scene load_steps=13 format=3 uid="uid://b6c8fwsvm7b8k"]
+
+[ext_resource type="Script" path="res://scripts/player/player.gd" id="1_m7pnm"]
+[ext_resource type="PackedScene" uid="uid://xnje4uggyijj" path="res://scenes/ui/ui.tscn" id="2_gpood"]
+[ext_resource type="Texture2D" uid="uid://dne3vti22ebde" path="res://assets/player/skins/no_armor.png" id="3_38y77"]
+[ext_resource type="Texture2D" uid="uid://caj4h63ekp5s6" path="res://assets/player/shadow.png" id="4_c5bxy"]
+[ext_resource type="Texture2D" uid="uid://dvuh36y2rqr5k" path="res://assets/weapons/axe.png" id="5_a3hnl"]
+[ext_resource type="Texture2D" uid="uid://dhaytpklv7tjl" path="res://assets/weapons/bow.png" id="6_u5qqe"]
+[ext_resource type="Texture2D" uid="uid://nuos6san62fu" path="res://assets/player/ranged_attack.png" id="7_rdl1h"]
+[ext_resource type="Texture2D" uid="uid://cgbk02q34tlg" path="res://assets/player/pointer.png" id="8_qc8i0"]
+[ext_resource type="Texture2D" uid="uid://gocm6goif27y" path="res://assets/player/attack.png" id="9_gwh43"]
+[ext_resource type="AnimationLibrary" uid="uid://81c0pbcls2m0" path="res://animations/player_animations.res" id="10_veje7"]
+[ext_resource type="Texture2D" uid="uid://bemgp0wlfvjp3" path="res://assets/vfx/light.png" id="11_x5ct2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o3gem"]
+radius = 5.0
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_m7pnm")
+
+[node name="Ui" parent="." instance=ExtResource("2_gpood")]
+position = Vector2(0, 41)
+
+[node name="Shadow" type="Sprite2D" parent="."]
+position = Vector2(0.1, 0)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("4_c5bxy")
+
+[node name="Body" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1, 0)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("3_38y77")
+flip_h = true
+hframes = 8
+vframes = 4
+frame = 3
+
+[node name="Melee" type="Sprite2D" parent="Body"]
+show_behind_parent = true
+texture_filter = 1
+position = Vector2(-6, -2)
+rotation = 0.507229
+texture = ExtResource("5_a3hnl")
+flip_v = true
+
+[node name="Aim" type="Marker2D" parent="Body"]
+position = Vector2(-1, 2)
+
+[node name="Ranged" type="Sprite2D" parent="Body/Aim"]
+show_behind_parent = true
+texture_filter = 1
+position = Vector2(5, -1)
+texture = ExtResource("6_u5qqe")
+
+[node name="RangedMark" type="Sprite2D" parent="Body/Aim/Ranged"]
+show_behind_parent = true
+texture_filter = 1
+position = Vector2(2, 0)
+texture = ExtResource("7_rdl1h")
+hframes = 3
+
+[node name="Pointer" type="Sprite2D" parent="Body/Aim"]
+texture_filter = 1
+position = Vector2(18, 2)
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_qc8i0")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(1, 2)
+
+[node name="MeleeMark" type="Sprite2D" parent="Marker2D"]
+position = Vector2(8, -1)
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("9_gwh43")
+flip_v = true
+hframes = 9
+vframes = 3
+
+[node name="Aim-helper" type="Marker2D" parent="Marker2D"]
+position = Vector2(21, 2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+shape = SubResource("CircleShape2D_o3gem")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": ExtResource("10_veje7")
+}
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
+editor_draw_limits = true
+
+[node name="DodgeCooldown" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="light" type="PointLight2D" parent="."]
+energy = 0.6
+shadow_filter = 1
+shadow_filter_smooth = 5.0
+texture = ExtResource("11_x5ct2")
+texture_scale = 0.6
+
+[connection signal="timeout" from="DodgeCooldown" to="." method="_on_dodge_cooldown_timeout"]
