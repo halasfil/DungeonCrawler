@@ -56,13 +56,13 @@ texture = ExtResource("6_u5qqe")
 [node name="RangedMark" type="Sprite2D" parent="Body/Aim/Ranged"]
 show_behind_parent = true
 texture_filter = 1
-position = Vector2(2, 0)
+position = Vector2(1.66667, -1.77778)
 texture = ExtResource("7_rdl1h")
 hframes = 3
 
 [node name="Pointer" type="Sprite2D" parent="Body/Aim"]
 texture_filter = 1
-position = Vector2(18, 2)
+position = Vector2(17.6667, 0.222222)
 rotation = 1.5708
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("8_qc8i0")

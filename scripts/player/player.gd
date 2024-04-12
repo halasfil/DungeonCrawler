@@ -48,6 +48,8 @@ var JOYSTICK : Joystick = UI.JOYSTICK
 var ATTACK_BUTTON : AttackButton = UI.ATTACK_BUTTON
 @onready
 var DODGE_BUTTON : DodgeButton  = UI.DODGE_BUTTON
+@onready
+var POINTER : Sprite2D = $Body/Aim/Pointer
 var PROJECTILE_SCENE : PackedScene = preload("res://scenes/player/projectile.tscn")
 var CAN_DODGE : bool = true
 var PLAYER_STATE : int = STATE.NEUTRAL
@@ -80,7 +82,7 @@ func move_like_tween(direction, speed, duration, knockback_reset, dodge_reset):
 #endregion
 #region aim
 func aim():
-	var angle = JOYSTICK.angle
+	var angle : float = JOYSTICK.angle
 	AIM.rotation = angle
 	if (PLAYER_STATE != STATE.ATTACKING):
 		MARKER.rotation = angle;
@@ -185,12 +187,18 @@ func play_melee_animation():
 #region ranged attack
 func perform_ranged_attack():
 	await play_ranged_animation()
-	var projectile = PROJECTILE_SCENE.instantiate()
+	shoot_projectile()
+func shoot_projectile():
+	var projectile : Projectile = PROJECTILE_SCENE.instantiate()
 	get_parent().add_child(projectile)
-	projectile.position = RANGED.global_position
+	projectile.global_position = POINTER.global_position
 	projectile.rotation = AIM.rotation
-	var aim_positon = AIM_HELPER.global_position
-	projectile.velocity = (aim_positon - position).normalized() * 3
+	projectile.MIN_DAMAGE = EQUIPPED_WEAPON.weaponMinDamage
+	projectile.MAX_DAMAGE = EQUIPPED_WEAPON.weaponMaxDamage
+	projectile.PROJECTILE_SPRITE = EQUIPPED_WEAPON.projectileSprite
+	var aimPositon : Vector2 = AIM_HELPER.global_position
+	var shootAngle : Vector2 = (aimPositon - position).normalized()
+	projectile.velocity =  shootAngle * 3
 func play_ranged_animation():
 	if (DIRECTION_FACING == DIRECTIONS.DOWN_R):
 		BODY.flip_h = false
@@ -207,9 +215,9 @@ func play_ranged_animation():
 #endregion
 #region walking
 func walk_or_idle():
-	var walkingDirection = JOYSTICK.posVector
+	var walkingDirection : Vector2 = JOYSTICK.posVector
 	if (walkingDirection):
-		var walkingSpeedReducer = EQUIPPED_ARMOR.walkingSpeedReducer if EQUIPPED_ARMOR != null else 1.0
+		var walkingSpeedReducer : float = EQUIPPED_ARMOR.walkingSpeedReducer if EQUIPPED_ARMOR != null else 1.0
 		velocity = walkingDirection * MOVING_SPEED * walkingSpeedReducer
 		play_walking_animation()
 		move_and_slide()
@@ -277,8 +285,8 @@ func dodge():
 		DODGING_STATE = true
 		await ANIMATION.animation_finished
 		PLAYER_STATE = STATE.NEUTRAL
-		var color_tween = create_tween()
-		var target_color = Color(1,1,1,1)
+		var color_tween : Tween = create_tween()
+		var target_color : Color = Color(1,1,1,1)
 		color_tween.tween_property(DODGE_BUTTON, "modulate", target_color, DODGE_COOLDOWN_TIME)
 		DODGE_COOLDOWN.start(DODGE_COOLDOWN_TIME)
 func calculate_dodging():

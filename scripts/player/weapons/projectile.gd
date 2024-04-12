@@ -9,15 +9,30 @@ enum STATES {
 var ANIMATION_PLAYER : AnimationPlayer = $AnimationPlayer
 @onready
 var STATE : STATES = STATES.FLYING;
+@onready
+var LIGHT : PointLight2D = $PointLight2D
+@onready
+var MAX_DAMAGE : int = 1;
+@onready
+var MIN_DAMAGE : int = 1;
+@onready
+var SKIN : Sprite2D = $Sprite2D
+@onready
+var PROJECTILE_SPRITE : CompressedTexture2D = preload("res://assets/weapons/arrow.png")
 
 func _ready():
-	print("spawns")
-#
+	add_collision_exception_with(self)
+	var energyStrength : float = RandomNumberGenerator.new().randf_range(0.1, 0.7)
+	LIGHT.energy = energyStrength
+	
 func fly():
+	SKIN.texture = PROJECTILE_SPRITE
 	ANIMATION_PLAYER.play("idle")
 	move_and_collide(velocity)
 
 func destroy():
+	move_and_collide(velocity)
+	LIGHT.energy = 0
 	STATE = STATES.DESTROYED
 	ANIMATION_PLAYER.play("destroy")
 	await ANIMATION_PLAYER.animation_finished
@@ -32,12 +47,9 @@ func _physics_process(_delta) -> void:
 func _on_timer_timeout():
 	STATE = STATES.DESTROYED
 
-func _on_area_2d_area_shape_entered(_area_rid, area, _area_shape_index, _local_shape_index):
-	if (area.name == "hitbox"):
-		destroy()
-
-
 func _on_area_2d_body_entered(body):
 	if (body is TileMap):
 		destroy()
-
+	if (body is BasicEnemy && body.has_method("take_damage")):
+		destroy()
+		body.take_damage(MIN_DAMAGE, MAX_DAMAGE)

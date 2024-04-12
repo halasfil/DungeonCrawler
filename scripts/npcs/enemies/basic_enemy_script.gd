@@ -8,6 +8,8 @@ var BODY : Sprite2D = $Body;
 var MELEE : Sprite2D = $Body/Melee;
 @onready 
 var enemyStats : BasicEnemyParentResource;
+@onready
+var DAMAGE_TAKER : DamageTakerComponent = $DamageTaker
 enum STATES {
 	IDLE,
 	CHASE,
@@ -51,3 +53,6 @@ func play_idle_animation():
 		BODY.flip_h = true
 		MELEE.flip_h = true
 		ANIMATION.play("idle_b")
+
+func take_damage(min_damage : int, max_damage : int):
+	print(String.num(DAMAGE_TAKER.take_damage(min_damage, max_damage)))
