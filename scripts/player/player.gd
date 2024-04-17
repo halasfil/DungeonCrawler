@@ -11,7 +11,6 @@ enum STATE {
 	WALKING,
 	DODGING,
 	ATTACKING,
-	NEUTRAL,
 	ACTION
 }
 var MOVING_SPEED : int = 100
@@ -52,23 +51,26 @@ var DODGE_BUTTON : DodgeButton  = UI.DODGE_BUTTON
 var POINTER : Sprite2D = $Body/Aim/Pointer
 var PROJECTILE_SCENE : PackedScene = preload("res://scenes/player/projectile.tscn")
 var CAN_DODGE : bool = true
-var PLAYER_STATE : int = STATE.NEUTRAL
+var PLAYER_STATE : int = STATE.IDLE
 var DIRECTION_FACING : int = DIRECTIONS.DOWN_R
 var EQUIPPED_WEAPON : Weapon
 var EQUIPPED_ARMOR : Armor
-var KNOCKBACK_STATE : bool = false
-var DODGING_STATE : bool = false
+var KNOCKBACK : bool = false
+var DODGING : bool = false
 #endregion
 #region main functions
 func _physics_process(_delta):
 	aim()
 	show_proper_weapon()
-	if (PLAYER_STATE != STATE.ATTACKING && PLAYER_STATE != STATE.DODGING && PLAYER_STATE != STATE.ACTION):
+	if (PLAYER_STATE == STATE.WALKING || PLAYER_STATE == STATE.IDLE):
 		check_player_input()
 	check_equipped_weapon()
 	check_equipped_armor()
-	calculate_knockback()
-	calculate_dodging()
+	if KNOCKBACK:
+		perform_knockback()
+	if DODGING:
+		perform_dodging()
+	$state.text = String.num(PLAYER_STATE)
 #endregion
 #region general util functions
 func move_like_tween(direction, speed, duration, knockback_reset, dodge_reset):
@@ -76,9 +78,9 @@ func move_like_tween(direction, speed, duration, knockback_reset, dodge_reset):
 	move_and_slide()
 	await get_tree().create_timer(duration).timeout
 	if (knockback_reset):
-		KNOCKBACK_STATE = false
+		KNOCKBACK = false
 	if (dodge_reset):
-		DODGING_STATE = false
+		DODGING = false
 #endregion
 #region aim
 func aim():
@@ -144,14 +146,13 @@ func attack():
 		else:
 			perform_ranged_attack()
 		await ANIMATION.animation_finished
-		PLAYER_STATE = STATE.NEUTRAL
-func calculate_knockback():
-	if KNOCKBACK_STATE == true:
-		var weaponKickback: int = EQUIPPED_WEAPON.weaponKickback;
-		var aim_position : Vector2 = AIM_HELPER.global_position
-		var direction : Vector2 = (aim_position - position).normalized()
-		direction = direction * -1 * weaponKickback
-		await move_like_tween(direction, 20, .1, true, false)
+		PLAYER_STATE = STATE.IDLE
+func perform_knockback():
+	var weaponKickback: int = EQUIPPED_WEAPON.weaponKickback;
+	var aim_position : Vector2 = AIM_HELPER.global_position
+	var direction : Vector2 = (aim_position - position).normalized()
+	direction = direction * -1 * weaponKickback
+	await move_like_tween(direction, 20, .1, true, false)
 #endregion
 #region melee attack
 func perform_melee_attack():
@@ -159,7 +160,7 @@ func perform_melee_attack():
 func anticipate_and_attack(anticipationAnimationName : String, animationName : String):
 	ANIMATION.play(anticipationAnimationName)
 	await get_tree().create_timer(EQUIPPED_WEAPON.weaponAnticipationTime).timeout
-	KNOCKBACK_STATE = true
+	KNOCKBACK = true
 	ANIMATION.play(animationName);
 func play_melee_animation():
 	var attackType = RandomNumberGenerator.new().randi_range(0, 1)
@@ -196,9 +197,10 @@ func shoot_projectile():
 	projectile.MIN_DAMAGE = EQUIPPED_WEAPON.weaponMinDamage
 	projectile.MAX_DAMAGE = EQUIPPED_WEAPON.weaponMaxDamage
 	projectile.PROJECTILE_SPRITE = EQUIPPED_WEAPON.projectileSprite
-	var aimPositon : Vector2 = AIM_HELPER.global_position
+	var aimPositon : Vector2 = POINTER.global_position
 	var shootAngle : Vector2 = (aimPositon - position).normalized()
 	projectile.velocity =  shootAngle * 3
+	projectile.PUSHBACK_STRENGTH = EQUIPPED_WEAPON.weaponPushback
 func play_ranged_animation():
 	if (DIRECTION_FACING == DIRECTIONS.DOWN_R):
 		BODY.flip_h = false
@@ -225,6 +227,7 @@ func walk_or_idle():
 		velocity = Vector2.ZERO
 		idle()
 func play_walking_animation():
+	PLAYER_STATE = STATE.WALKING
 	if (DIRECTION_FACING == DIRECTIONS.DOWN_R):
 		BODY.flip_h = false
 		MELEE.flip_h = false
@@ -282,18 +285,17 @@ func dodge():
 		if (DIRECTION_FACING == DIRECTIONS.UP_R):
 			BODY.flip_h = true
 			ANIMATION.play("roll_b");
-		DODGING_STATE = true
+		DODGING = true
 		await ANIMATION.animation_finished
-		PLAYER_STATE = STATE.NEUTRAL
+		PLAYER_STATE = STATE.IDLE
 		var color_tween : Tween = create_tween()
 		var target_color : Color = Color(1,1,1,1)
 		color_tween.tween_property(DODGE_BUTTON, "modulate", target_color, DODGE_COOLDOWN_TIME)
 		DODGE_COOLDOWN.start(DODGE_COOLDOWN_TIME)
-func calculate_dodging():
-	if DODGING_STATE:
-		var aim_position : Vector2 = AIM_HELPER.global_position
-		var direction: Vector2 = (aim_position - position).normalized()
-		await move_like_tween(direction, 300, ANIMATION.get_animation("roll_f").length, false, true)
+func perform_dodging():
+	var aim_position : Vector2 = AIM_HELPER.global_position
+	var direction: Vector2 = (aim_position - position).normalized()
+	await move_like_tween(direction, 300, ANIMATION.get_animation("roll_f").length, false, true)
 func _on_dodge_cooldown_timeout():
 	CAN_DODGE = true
 #endregion

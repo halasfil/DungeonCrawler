@@ -18,6 +18,24 @@ radius = 5.0
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_m7pnm")
 
+[node name="state" type="Label" parent="."]
+offset_left = -17.0
+offset_top = -29.0
+offset_right = 23.0
+offset_bottom = -14.0
+text = "test"
+
+[node name="states" type="Label" parent="."]
+offset_left = -141.0
+offset_top = -70.0
+offset_right = -47.0
+offset_bottom = 17.0
+text = "0IDLE,
+	1WALKING,
+	2DODGING,
+	3ATTACKING,
+	4ACTION"
+
 [node name="Ui" parent="." instance=ExtResource("2_gpood")]
 position = Vector2(0, 41)
 

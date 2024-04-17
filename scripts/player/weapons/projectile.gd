@@ -16,6 +16,8 @@ var MAX_DAMAGE : int = 1;
 @onready
 var MIN_DAMAGE : int = 1;
 @onready
+var PUSHBACK_STRENGTH : int = 1;
+@onready
 var SKIN : Sprite2D = $Sprite2D
 @onready
 var PROJECTILE_SPRITE : CompressedTexture2D = preload("res://assets/weapons/arrow.png")
@@ -24,6 +26,12 @@ func _ready():
 	add_collision_exception_with(self)
 	var energyStrength : float = RandomNumberGenerator.new().randf_range(0.1, 0.7)
 	LIGHT.energy = energyStrength
+
+func _physics_process(_delta) -> void:
+	if (STATE == STATES.FLYING):
+		fly()
+	else:
+		destroy()
 	
 func fly():
 	SKIN.texture = PROJECTILE_SPRITE
@@ -38,12 +46,6 @@ func destroy():
 	await ANIMATION_PLAYER.animation_finished
 	queue_free()
 
-func _physics_process(_delta) -> void:
-	if (STATE == STATES.FLYING):
-		fly()
-	else:
-		destroy()
-	
 func _on_timer_timeout():
 	STATE = STATES.DESTROYED
 
@@ -52,4 +54,4 @@ func _on_area_2d_body_entered(body):
 		destroy()
 	if (body is BasicEnemy && body.has_method("take_damage")):
 		destroy()
-		body.take_damage(MIN_DAMAGE, MAX_DAMAGE)
+		body.take_damage(MIN_DAMAGE, MAX_DAMAGE, PUSHBACK_STRENGTH)
