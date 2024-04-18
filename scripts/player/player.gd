@@ -26,11 +26,7 @@ var RANGED : Sprite2D = $Body/Aim/Ranged
 @onready
 var RANGED_MARK : Sprite2D = $Body/Aim/Ranged/RangedMark
 @onready
-var MARKER : Marker2D = $Marker2D
-@onready
 var AIM = $Body/Aim
-@onready
-var MELEE_MARK : Sprite2D = $Marker2D/MeleeMark
 @onready 
 var UI : Ui = $Ui
 @onready
@@ -38,7 +34,7 @@ var INVENTORY : Inventory = $Ui/CanvasLayer/Inventory
 @onready
 var DODGE_COOLDOWN : Timer = $DodgeCooldown
 @onready
-var AIM_HELPER : Marker2D = $"Marker2D/Aim-helper"
+var MELEE_COLISION : CollisionPolygon2D = $Body/Aim/MeleeArea/CollisionPolygon2D
 @onready
 var NO_ARMOR_SKIN : CompressedTexture2D = preload("res://assets/player/skins/no_armor.png")
 @onready
@@ -59,6 +55,8 @@ var KNOCKBACK : bool = false
 var DODGING : bool = false
 #endregion
 #region main functions
+func _ready():
+	MELEE_COLISION.disabled = true
 func _physics_process(_delta):
 	aim()
 	show_proper_weapon()
@@ -87,7 +85,6 @@ func aim():
 	var angle : float = JOYSTICK.angle
 	AIM.rotation = angle
 	if (PLAYER_STATE != STATE.ATTACKING):
-		MARKER.rotation = angle;
 		if (angle > 0 && angle < 1.5):
 			DIRECTION_FACING = DIRECTIONS.DOWN_R;
 			AIM.show_behind_parent = false
@@ -149,7 +146,7 @@ func attack():
 		PLAYER_STATE = STATE.IDLE
 func perform_knockback():
 	var weaponKickback: int = EQUIPPED_WEAPON.weaponKickback;
-	var aim_position : Vector2 = AIM_HELPER.global_position
+	var aim_position : Vector2 = POINTER.global_position
 	var direction : Vector2 = (aim_position - position).normalized()
 	direction = direction * -1 * weaponKickback
 	await move_like_tween(direction, 20, .1, true, false)
@@ -293,9 +290,11 @@ func dodge():
 		color_tween.tween_property(DODGE_BUTTON, "modulate", target_color, DODGE_COOLDOWN_TIME)
 		DODGE_COOLDOWN.start(DODGE_COOLDOWN_TIME)
 func perform_dodging():
-	var aim_position : Vector2 = AIM_HELPER.global_position
+	var aim_position : Vector2 = POINTER.global_position
 	var direction: Vector2 = (aim_position - position).normalized()
 	await move_like_tween(direction, 300, ANIMATION.get_animation("roll_f").length, false, true)
 func _on_dodge_cooldown_timeout():
 	CAN_DODGE = true
 #endregion
+
+

@@ -33,7 +33,7 @@ var DIRECTION_FACING : int = DIRECTIONS.DOWN_R
 @onready
 var STATE : STATES = STATES.IDLE
 @onready
-var HEALTH : int = 50
+var HEALTH : int = 30
 
 func _ready():
 	HEALTH_BAR.max_value = HEALTH
@@ -77,7 +77,6 @@ func play_idle_animation():
 		ANIMATION.play("idle_b")
 		
 func take_damage(min_damage : int, max_damage : int, pushback_strength : int):
-	#4
 	var damage = DAMAGE_TAKER.take_damage(min_damage, max_damage)
 	HEALTH -= damage
 	if (HEALTH <= 0):

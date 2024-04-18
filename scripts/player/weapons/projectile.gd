@@ -39,7 +39,6 @@ func fly():
 	move_and_collide(velocity)
 
 func destroy():
-	move_and_collide(velocity)
 	LIGHT.energy = 0
 	STATE = STATES.DESTROYED
 	ANIMATION_PLAYER.play("destroy")
@@ -52,6 +51,6 @@ func _on_timer_timeout():
 func _on_area_2d_body_entered(body):
 	if (body is TileMap):
 		destroy()
-	if (body is BasicEnemy && body.has_method("take_damage")):
+	if (body.has_method("take_damage")):
 		destroy()
 		body.take_damage(MIN_DAMAGE, MAX_DAMAGE, PUSHBACK_STRENGTH)

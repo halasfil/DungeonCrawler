@@ -1,8 +1,10 @@
-res://scenes/player/player.tscn
+res://scenes/ui/attack_button.tscn
 res://scripts/player/companion/companion.gd
 res://themes/ui/button_inventory_style.tres
 res://themes/ui/button_inventory_style_font_30.tres
 res://scenes/vfx/fog.gdshader
+res://scripts/ui/attack_button.gd
+res://scenes/player/player.tscn
 res://scenes/npcs/enemies/enemy.tscn
 res://scenes/main_game/game.tscn
 res://scenes/vfx/fog.tscn
@@ -14,8 +16,9 @@ res://scenes/ui/inventory_item.tscn
 res://scenes/player/projectile.tscn
 res://scripts/player/player.gd
 res://scripts/npcs/enemies/basic_enemy_script.gd
+res://animations/player_animations.res
+res://scripts/player/melee_area.gd
 res://scripts/player/weapons/projectile.gd
 res://scripts/player/weapons/axe.gd
 res://scripts/player/weapons/bow.gd
 res://scripts/player/weapons/sword.gd
-res://scripts/player_enemy_utils/damage_taker.gd

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b6c8fwsvm7b8k"]
+[gd_scene load_steps=14 format=3 uid="uid://b6c8fwsvm7b8k"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_m7pnm"]
 [ext_resource type="PackedScene" uid="uid://xnje4uggyijj" path="res://scenes/ui/ui.tscn" id="2_gpood"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://nuos6san62fu" path="res://assets/player/ranged_attack.png" id="7_rdl1h"]
 [ext_resource type="Texture2D" uid="uid://cgbk02q34tlg" path="res://assets/player/pointer.png" id="8_qc8i0"]
 [ext_resource type="Texture2D" uid="uid://gocm6goif27y" path="res://assets/player/attack.png" id="9_gwh43"]
+[ext_resource type="Script" path="res://scripts/player/melee_area.gd" id="10_tpeqb"]
 [ext_resource type="AnimationLibrary" uid="uid://81c0pbcls2m0" path="res://animations/player_animations.res" id="10_veje7"]
 [ext_resource type="Texture2D" uid="uid://bemgp0wlfvjp3" path="res://assets/vfx/light.png" id="11_x5ct2"]
 
@@ -85,19 +86,24 @@ rotation = 1.5708
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("8_qc8i0")
 
-[node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(1, 2)
-
-[node name="MeleeMark" type="Sprite2D" parent="Marker2D"]
+[node name="MeleeMark" type="Sprite2D" parent="Body/Aim"]
+texture_filter = 2
 position = Vector2(8, -1)
-scale = Vector2(1.1, 1.1)
+scale = Vector2(1.22222, 1.22222)
 texture = ExtResource("9_gwh43")
 flip_v = true
 hframes = 9
 vframes = 3
 
-[node name="Aim-helper" type="Marker2D" parent="Marker2D"]
-position = Vector2(21, 2)
+[node name="MeleeArea" type="Area2D" parent="Body/Aim"]
+script = ExtResource("10_tpeqb")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Body/Aim/MeleeArea"]
+position = Vector2(24.3333, 0.222222)
+polygon = PackedVector2Array(-8.88889, 14.4444, 2.22222, 2.22222, 2.22222, -2.22222, -8.88889, -14.4444, -23.3333, -3.33333, -23.3333, 6.66667)
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(1, 2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4)
@@ -122,4 +128,5 @@ shadow_filter_smooth = 5.0
 texture = ExtResource("11_x5ct2")
 texture_scale = 0.6
 
+[connection signal="body_entered" from="Body/Aim/MeleeArea" to="Body/Aim/MeleeArea" method="_on_body_entered"]
 [connection signal="timeout" from="DodgeCooldown" to="." method="_on_dodge_cooldown_timeout"]
