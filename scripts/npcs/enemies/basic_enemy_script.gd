@@ -16,6 +16,10 @@ var DAMAGE_TAKER : DamageTakerComponent = $DamageTaker
 var HEALTH_BAR : ProgressBar = $ProgressBar
 @onready
 var ANIMATION_HELPER : AnimationHelper = $AnimationHelper
+@onready
+var NAVAGENT : NavigationAgent2D = $NavigationAgent2D;
+@onready
+var AIM : Marker2D = $Body/Aim
 
 enum STATES {
 	IDLE,
@@ -37,6 +41,8 @@ var DIRECTION_FACING : int = DIRECTIONS.DOWN_R
 var STATE : STATES = STATES.IDLE
 @onready
 var HEALTH : int = 30
+@onready
+var SEE_PLAYER : bool = false
 
 func _ready():
 	HEALTH_BAR.max_value = HEALTH
@@ -50,6 +56,14 @@ func _process(_delta):
 	if (STATE == STATES.DYING):
 		die()
 	update_health_bar()
+	chase_and_attack()
+	
+func chase_and_attack():
+	if (SEE_PLAYER):
+		var axis : Vector2 = to_local(NAVAGENT.get_next_path_position()).normalized();
+		var intendedVelocity  : Vector2 = axis * 500
+		NAVAGENT.set_velocity(intendedVelocity)
+		AIM.look_at(PLAYER_NODE.global_position)
 	
 func die():
 	if (HEALTH <= 0):
@@ -82,3 +96,24 @@ func hit_effect():
 
 func update_health_bar():
 	HEALTH_BAR.value = HEALTH
+
+func _on_navigation_area_body_entered(body):
+	if (body is Player):
+		SEE_PLAYER = true
+		
+
+func _on_navigation_area_body_exited(body):
+	if (body is Player):
+		SEE_PLAYER = false
+
+func makePath() -> void:
+	if (SEE_PLAYER && PLAYER_NODE):
+		NAVAGENT.target_position = PLAYER_NODE.global_position
+
+func _on_timer_timeout():
+	makePath()
+
+func _on_navigation_agent_2d_velocity_computed(safe_velocity):
+	if (SEE_PLAYER):
+		velocity = safe_velocity
+		move_and_slide()

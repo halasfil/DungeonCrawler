@@ -224,6 +224,7 @@ func walk_or_idle():
 		move_and_slide()
 	else:
 		velocity = Vector2.ZERO
+		PLAYER_STATE = STATE.IDLE
 		ANIMATION_HELPER.play_idle_animation()
 func play_walking_animation():
 	PLAYER_STATE = STATE.WALKING
@@ -243,26 +244,6 @@ func play_walking_animation():
 		BODY.flip_h = true
 		MELEE.flip_h = true
 		ANIMATION.play("run_b_L")
-#endregion
-#region idle
-func idle():
-	PLAYER_STATE = STATE.IDLE
-	if (DIRECTION_FACING == DIRECTIONS.DOWN_R):
-		BODY.flip_h = false
-		MELEE.flip_h = false
-		ANIMATION.play("idle_f")
-	elif (DIRECTION_FACING == DIRECTIONS.DOWN_L):
-		BODY.flip_h = true
-		MELEE.flip_h = true
-		ANIMATION.play("idle_f_L")
-	elif (DIRECTION_FACING == DIRECTIONS.UP_R):
-		BODY.flip_h = false
-		MELEE.flip_h = false
-		ANIMATION.play("idle_b")
-	elif (DIRECTION_FACING == DIRECTIONS.UP_L):
-		BODY.flip_h = true
-		MELEE.flip_h = true
-		ANIMATION.play("idle_b_L")
 #endregion
 #region dodge
 func dodge():

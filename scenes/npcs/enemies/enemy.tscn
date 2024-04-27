@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bg1pxarmy7iqs"]
+[gd_scene load_steps=15 format=3 uid="uid://bg1pxarmy7iqs"]
 
 [ext_resource type="Texture2D" uid="uid://cjdpvmlcrvv3v" path="res://assets/npcs/enemies/draugr/axe.png" id="1_c4bl0"]
 [ext_resource type="Script" path="res://scripts/npcs/enemies/basic_enemy_script.gd" id="1_vo5dm"]
@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cvb5dv74gytgo" path="res://assets/npcs/enemies/draugr/draugh_shadow.png" id="5_ea1b2"]
 [ext_resource type="Texture2D" uid="uid://cgbk02q34tlg" path="res://assets/player/pointer.png" id="6_q1wyy"]
 [ext_resource type="Script" path="res://scripts/player_enemy_utils/damage_taker.gd" id="6_y541k"]
-[ext_resource type="AnimationLibrary" uid="uid://81c0pbcls2m0" path="res://animations/player_animations.res" id="8_h2enw"]
+[ext_resource type="AnimationLibrary" uid="uid://c6b8l2g601fep" path="res://animations/fallen.res" id="9_o0mcx"]
 [ext_resource type="Script" path="res://scripts/player_enemy_utils/AnimationHelper.gd" id="10_1b1ft"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o3gem"]
@@ -19,6 +19,9 @@ bg_color = Color(0.6, 0.6, 0.6, 0.498039)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yt1og"]
 bg_color = Color(0.843137, 0, 0, 0.639216)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0y0gg"]
+radius = 108.005
 
 [node name="Enemy" type="CharacterBody2D"]
 script = ExtResource("1_vo5dm")
@@ -111,8 +114,26 @@ show_percentage = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": ExtResource("8_h2enw")
+"": ExtResource("9_o0mcx")
 }
 
 [node name="AnimationHelper" type="Node" parent="."]
 script = ExtResource("10_1b1ft")
+
+[node name="NavigationArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationArea"]
+shape = SubResource("CircleShape2D_0y0gg")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_postprocessing = 1
+avoidance_enabled = true
+debug_enabled = true
+
+[connection signal="body_entered" from="NavigationArea" to="." method="_on_navigation_area_body_entered"]
+[connection signal="body_exited" from="NavigationArea" to="." method="_on_navigation_area_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
