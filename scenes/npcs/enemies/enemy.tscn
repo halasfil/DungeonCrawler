@@ -1,271 +1,18 @@
-[gd_scene load_steps=25 format=3 uid="uid://bg1pxarmy7iqs"]
+[gd_scene load_steps=14 format=3 uid="uid://bg1pxarmy7iqs"]
 
 [ext_resource type="Texture2D" uid="uid://cjdpvmlcrvv3v" path="res://assets/npcs/enemies/draugr/axe.png" id="1_c4bl0"]
 [ext_resource type="Script" path="res://scripts/npcs/enemies/basic_enemy_script.gd" id="1_vo5dm"]
-[ext_resource type="Texture2D" uid="uid://dm4v13qawsh6d" path="res://assets/npcs/enemies/draugr/draugh_body_1.png" id="3_f6ewm"]
+[ext_resource type="Texture2D" uid="uid://bkvpjywumjy8" path="res://assets/player/death.png" id="2_rygdj"]
+[ext_resource type="Texture2D" uid="uid://b6lr05vr7s571" path="res://assets/npcs/enemies/draugr/fallen_1.png" id="4_ipwbq"]
 [ext_resource type="Texture2D" uid="uid://gocm6goif27y" path="res://assets/player/attack.png" id="4_x23kg"]
 [ext_resource type="Texture2D" uid="uid://cvb5dv74gytgo" path="res://assets/npcs/enemies/draugr/draugh_shadow.png" id="5_ea1b2"]
+[ext_resource type="Texture2D" uid="uid://cgbk02q34tlg" path="res://assets/player/pointer.png" id="6_q1wyy"]
 [ext_resource type="Script" path="res://scripts/player_enemy_utils/damage_taker.gd" id="6_y541k"]
+[ext_resource type="AnimationLibrary" uid="uid://81c0pbcls2m0" path="res://animations/player_animations.res" id="8_h2enw"]
+[ext_resource type="Script" path="res://scripts/player_enemy_utils/AnimationHelper.gd" id="10_1b1ft"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o3gem"]
 radius = 5.0
-
-[sub_resource type="Animation" id="Animation_l3l0d"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Body:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [24]
-}
-
-[sub_resource type="Animation" id="Animation_22vf0"]
-resource_name = "death"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Body:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": [24, 25, 26, 27, 28]
-}
-
-[sub_resource type="Animation" id="Animation_43as1"]
-resource_name = "fear_b"
-length = 0.4
-loop_mode = 1
-step = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Body:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [18, 19]
-}
-
-[sub_resource type="Animation" id="Animation_yt3ct"]
-resource_name = "fear_f"
-length = 0.4
-loop_mode = 1
-step = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Body:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [16, 17]
-}
-
-[sub_resource type="Animation" id="Animation_732uv"]
-resource_name = "idle_b"
-length = 0.6
-loop_mode = 1
-step = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Body:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [3, 4, 5]
-}
-
-[sub_resource type="Animation" id="Animation_0s7bh"]
-resource_name = "idle_f"
-length = 0.6
-loop_mode = 1
-step = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Body:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [0, 1, 2]
-}
-
-[sub_resource type="Animation" id="Animation_5ol3e"]
-resource_name = "melee_b_L"
-length = 0.4
-step = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Body:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [14, 15]
-}
-
-[sub_resource type="Animation" id="Animation_4dd25"]
-resource_name = "melee_b"
-length = 0.4
-step = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Body:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [14, 15]
-}
-
-[sub_resource type="Animation" id="Animation_cjghw"]
-resource_name = "melee_f_L"
-length = 0.4
-step = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Body:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [12, 13]
-}
-
-[sub_resource type="Animation" id="Animation_ynah6"]
-resource_name = "melee_f_R"
-length = 0.4
-step = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Body:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [12, 13]
-}
-
-[sub_resource type="Animation" id="Animation_0noyw"]
-resource_name = "range_b"
-length = 0.4
-step = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Body:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [22, 23]
-}
-
-[sub_resource type="Animation" id="Animation_wn1p8"]
-resource_name = "range_f"
-length = 0.4
-step = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Body:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [20, 21]
-}
-
-[sub_resource type="Animation" id="Animation_g4y6k"]
-resource_name = "run_b"
-length = 0.3
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Body:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [9, 10, 11]
-}
-
-[sub_resource type="Animation" id="Animation_alwnj"]
-resource_name = "run_f"
-length = 0.3
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Body:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [6, 7, 8]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_t0k45"]
-_data = {
-"RESET": SubResource("Animation_l3l0d"),
-"death": SubResource("Animation_22vf0"),
-"fear_b": SubResource("Animation_43as1"),
-"fear_f": SubResource("Animation_yt3ct"),
-"idle_b": SubResource("Animation_732uv"),
-"idle_f": SubResource("Animation_0s7bh"),
-"melee_b_L": SubResource("Animation_5ol3e"),
-"melee_b_R": SubResource("Animation_4dd25"),
-"melee_f_L": SubResource("Animation_cjghw"),
-"melee_f_R": SubResource("Animation_ynah6"),
-"range_b": SubResource("Animation_0noyw"),
-"range_f": SubResource("Animation_wn1p8"),
-"run_b": SubResource("Animation_g4y6k"),
-"run_f": SubResource("Animation_alwnj")
-}
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v8hpc"]
 bg_color = Color(0.6, 0.6, 0.6, 0.498039)
@@ -275,6 +22,11 @@ bg_color = Color(0.843137, 0, 0, 0.639216)
 
 [node name="Enemy" type="CharacterBody2D"]
 script = ExtResource("1_vo5dm")
+
+[node name="Death" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_rygdj")
+hframes = 5
 
 [node name="Shadow" type="Sprite2D" parent="."]
 position = Vector2(0.1, 0)
@@ -286,13 +38,14 @@ texture_filter = 1
 use_parent_material = true
 position = Vector2(1, 0)
 scale = Vector2(0.9, 0.9)
-texture = ExtResource("3_f6ewm")
-hframes = 11
-vframes = 3
-frame = 24
+texture = ExtResource("4_ipwbq")
+flip_h = true
+hframes = 8
+vframes = 4
+frame = 3
 
 [node name="Melee" type="Sprite2D" parent="Body"]
-visible = false
+show_behind_parent = true
 texture_filter = 1
 position = Vector2(-6, -2)
 rotation = 0.507229
@@ -300,11 +53,11 @@ texture = ExtResource("1_c4bl0")
 flip_v = true
 
 [node name="Aim" type="Marker2D" parent="Body"]
-visible = false
 position = Vector2(-1, 2)
 
 [node name="Ranged" type="Sprite2D" parent="Body/Aim"]
 visible = false
+show_behind_parent = true
 texture_filter = 1
 position = Vector2(5, -1)
 
@@ -318,30 +71,30 @@ texture_filter = 1
 position = Vector2(18, 2)
 rotation = 1.5708
 scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_q1wyy")
 
-[node name="Marker2D" type="Marker2D" parent="."]
-visible = false
-position = Vector2(1, 2)
-
-[node name="MeleeMark" type="Sprite2D" parent="Marker2D"]
+[node name="MeleeMark" type="Sprite2D" parent="Body/Aim"]
 position = Vector2(8, -1)
-scale = Vector2(1.1, 1.1)
+scale = Vector2(1.22222, 1.22222)
 texture = ExtResource("4_x23kg")
 flip_v = true
 hframes = 9
 vframes = 3
 
-[node name="Aim-helper" type="Marker2D" parent="Marker2D"]
-position = Vector2(21, 2)
+[node name="MeleeArea" type="Area2D" parent="Body/Aim"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Body/Aim/MeleeArea"]
+position = Vector2(24.3333, 0.222222)
+polygon = PackedVector2Array(-8.88889, 14.4444, 2.22222, 2.22222, 2.22222, -2.22222, -8.88889, -14.4444, -23.3333, -3.33333, -23.3333, 6.66667)
+disabled = true
+
+[node name="Marker2D" type="Marker2D" parent="."]
+visible = false
+position = Vector2(1, 2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4)
 shape = SubResource("CircleShape2D_o3gem")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_t0k45")
-}
 
 [node name="DamageTaker" type="Node" parent="."]
 script = ExtResource("6_y541k")
@@ -355,3 +108,11 @@ theme_override_styles/background = SubResource("StyleBoxFlat_v8hpc")
 theme_override_styles/fill = SubResource("StyleBoxFlat_yt1og")
 value = 50.0
 show_percentage = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": ExtResource("8_h2enw")
+}
+
+[node name="AnimationHelper" type="Node" parent="."]
+script = ExtResource("10_1b1ft")

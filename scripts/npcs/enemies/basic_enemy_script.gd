@@ -14,6 +14,9 @@ var STATS : BasicEnemyParentResource;
 var DAMAGE_TAKER : DamageTakerComponent = $DamageTaker
 @onready
 var HEALTH_BAR : ProgressBar = $ProgressBar
+@onready
+var ANIMATION_HELPER : AnimationHelper = $AnimationHelper
+
 enum STATES {
 	IDLE,
 	CHASE,
@@ -56,28 +59,11 @@ func die():
 
 func idle():
 	STATE = STATES.IDLE
-	play_idle_animation()
-
-func play_idle_animation():
-	if (DIRECTION_FACING == DIRECTIONS.DOWN_R):
-		BODY.flip_h = false
-		MELEE.flip_h = false
-		ANIMATION.play("idle_f")
-	elif (DIRECTION_FACING == DIRECTIONS.DOWN_L):
-		BODY.flip_h = true
-		MELEE.flip_h = true
-		ANIMATION.play("idle_f")
-	elif (DIRECTION_FACING == DIRECTIONS.UP_R):
-		BODY.flip_h = false
-		MELEE.flip_h = false
-		ANIMATION.play("idle_b")
-	elif (DIRECTION_FACING == DIRECTIONS.UP_L):
-		BODY.flip_h = true
-		MELEE.flip_h = true
-		ANIMATION.play("idle_b")
+	ANIMATION_HELPER.play_idle_animation()
 		
 func take_damage(min_damage : int, max_damage : int, pushback_strength : int):
-	var damage = DAMAGE_TAKER.take_damage(min_damage, max_damage)
+	var damage : int = DAMAGE_TAKER.take_damage(min_damage, max_damage)
+	print(str(damage))
 	HEALTH -= damage
 	if (HEALTH <= 0):
 		STATE = STATES.DYING

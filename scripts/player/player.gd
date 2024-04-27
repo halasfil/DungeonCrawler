@@ -45,6 +45,8 @@ var ATTACK_BUTTON : AttackButton = UI.ATTACK_BUTTON
 var DODGE_BUTTON : DodgeButton  = UI.DODGE_BUTTON
 @onready
 var POINTER : Sprite2D = $Body/Aim/Pointer
+@onready
+var ANIMATION_HELPER : AnimationHelper = $AnimationHelper
 var PROJECTILE_SCENE : PackedScene = preload("res://scenes/player/projectile.tscn")
 var CAN_DODGE : bool = true
 var PLAYER_STATE : int = STATE.IDLE
@@ -222,7 +224,7 @@ func walk_or_idle():
 		move_and_slide()
 	else:
 		velocity = Vector2.ZERO
-		idle()
+		ANIMATION_HELPER.play_idle_animation()
 func play_walking_animation():
 	PLAYER_STATE = STATE.WALKING
 	if (DIRECTION_FACING == DIRECTIONS.DOWN_R):
