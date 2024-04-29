@@ -1,5 +1,6 @@
-res://animations
+res://scenes/player_enemy_utils
 res://scripts/player_enemy_utils
+res://animations
 res://scenes/main_game
 res://scripts/player/weapons
 res://scenes/vfx

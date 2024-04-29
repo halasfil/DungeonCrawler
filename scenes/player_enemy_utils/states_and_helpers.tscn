@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://dbsetw5t502di"]
+
+[ext_resource type="Script" path="res://scripts/player_enemy_utils/StatesAndHelpers.gd" id="1_bvwcc"]
+[ext_resource type="Script" path="res://scripts/player_enemy_utils/AttackState.gd" id="2_f6cup"]
+[ext_resource type="Script" path="res://scripts/player_enemy_utils/AnimationHelper.gd" id="3_57t4l"]
+
+[node name="StatesAndHelpers" type="Node"]
+script = ExtResource("1_bvwcc")
+
+[node name="AttackState" type="Node" parent="."]
+script = ExtResource("2_f6cup")
+
+[node name="AnimationHelper" type="Node" parent="."]
+script = ExtResource("3_57t4l")

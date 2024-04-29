@@ -46,7 +46,7 @@ var DODGE_BUTTON : DodgeButton  = UI.DODGE_BUTTON
 @onready
 var POINTER : Sprite2D = $Body/Aim/Pointer
 @onready
-var ANIMATION_HELPER : AnimationHelper = $AnimationHelper
+var STATES_AND_HELPERS : StatesAndHelpers = $StatesAndHelpers
 var PROJECTILE_SCENE : PackedScene = preload("res://scenes/player/projectile.tscn")
 var CAN_DODGE : bool = true
 var PLAYER_STATE : int = STATE.IDLE
@@ -162,27 +162,7 @@ func anticipate_and_attack(anticipationAnimationName : String, animationName : S
 	KNOCKBACK = true
 	ANIMATION.play(animationName);
 func play_melee_animation():
-	var attackType = RandomNumberGenerator.new().randi_range(0, 1)
-	if (DIRECTION_FACING == DIRECTIONS.DOWN_R):
-		if (attackType == 1):
-			anticipate_and_attack("attack_f_melee_1_anticipation", "attack_f_melee_1")
-		else:
-			anticipate_and_attack("attack_f_melee_2_anticipation", "attack_f_melee_2")
-	elif (DIRECTION_FACING == DIRECTIONS.DOWN_L):
-		if (attackType == 1):
-			anticipate_and_attack("attack_f_melee_1_L_anticipation", "attack_f_melee_1_L")
-		else:
-			anticipate_and_attack("attack_f_melee_2_L_anticipation", "attack_f_melee_2_L")
-	elif (DIRECTION_FACING == DIRECTIONS.UP_R):
-		if (attackType == 1):
-			anticipate_and_attack("attack_b_melee_1_anticipation", "attack_b_melee_1")
-		else:
-			anticipate_and_attack("attack_b_melee_2_anticipation", "attack_b_melee_2")
-	elif (DIRECTION_FACING == DIRECTIONS.UP_L):
-		if (attackType == 1):
-			anticipate_and_attack("attack_b_melee_1_L_anticipation", "attack_b_melee_1_L")
-		else:
-			anticipate_and_attack("attack_b_melee_2_L_anticipation", "attack_b_melee_2_L")
+	STATES_AND_HELPERS.ANIMATION_HELPER.play_attack_animation(self)
 #endregion
 #region ranged attack
 func perform_ranged_attack():
@@ -218,32 +198,15 @@ func play_ranged_animation():
 func walk_or_idle():
 	var walkingDirection : Vector2 = JOYSTICK.posVector
 	if (walkingDirection):
+		PLAYER_STATE = STATE.WALKING
+		STATES_AND_HELPERS.ANIMATION_HELPER.play_walking_animation(self)
 		var walkingSpeedReducer : float = EQUIPPED_ARMOR.walkingSpeedReducer if EQUIPPED_ARMOR != null else 1.0
 		velocity = walkingDirection * MOVING_SPEED * walkingSpeedReducer
-		play_walking_animation()
 		move_and_slide()
 	else:
 		velocity = Vector2.ZERO
 		PLAYER_STATE = STATE.IDLE
-		ANIMATION_HELPER.play_idle_animation()
-func play_walking_animation():
-	PLAYER_STATE = STATE.WALKING
-	if (DIRECTION_FACING == DIRECTIONS.DOWN_R):
-		BODY.flip_h = false
-		MELEE.flip_h = false
-		ANIMATION.play("run_f")
-	elif (DIRECTION_FACING == DIRECTIONS.DOWN_L):
-		BODY.flip_h = true
-		MELEE.flip_h = true
-		ANIMATION.play("run_f_L")
-	elif (DIRECTION_FACING == DIRECTIONS.UP_R):
-		BODY.flip_h = false
-		MELEE.flip_h = false
-		ANIMATION.play("run_b")
-	elif (DIRECTION_FACING == DIRECTIONS.UP_L):
-		BODY.flip_h = true
-		MELEE.flip_h = true
-		ANIMATION.play("run_b_L")
+		STATES_AND_HELPERS.ANIMATION_HELPER.play_idle_animation(self)
 #endregion
 #region dodge
 func dodge():

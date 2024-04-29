@@ -1,15 +1,14 @@
+Label
+Node
 NavigationAgent2D
 Timer
 CollisionShape2D
 CollisionPolygon2D
 Area2D
-Node
 Sprite2D
-Label
 ProgressBar
 PointLight2D
 CharacterBody2D
 RigidBody2D
 AnimationPlayer
 AnimatedSprite2D
-LightOccluder2D
