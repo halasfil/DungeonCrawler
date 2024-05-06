@@ -24,6 +24,9 @@ bg_color = Color(0.843137, 0, 0, 0.639216)
 radius = 108.005
 
 [node name="Enemy" type="CharacterBody2D"]
+collision_layer = 3
+motion_mode = 1
+wall_min_slide_angle = 0.0
 script = ExtResource("1_vo5dm")
 
 [node name="Label" type="Label" parent="."]
@@ -119,7 +122,6 @@ position = Vector2(24.3333, 0.222222)
 polygon = PackedVector2Array(-8.88886, 8.88889, -4.44441, 3.33333, -4.44441, -2.22222, -8.88886, -7.77778, -23.3333, -3.33333, -23.3333, 6.66667)
 
 [node name="Marker2D" type="Marker2D" parent="."]
-visible = false
 position = Vector2(1, 2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -155,6 +157,8 @@ autostart = true
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_postprocessing = 1
 avoidance_enabled = true
+avoidance_layers = 15
+avoidance_mask = 15
 debug_enabled = true
 
 [connection signal="body_entered" from="Body/Aim/MeleeDetector" to="." method="_on_melee_detector_body_entered"]

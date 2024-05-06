@@ -56,9 +56,9 @@ func _process(_delta):
 	if (STATE == STATES.IDLE):
 		idle()
 	if (STATE == STATES.DYING):
-		die()
+		await die()
 	if (STATE == STATES.ATTACK):
-		attack()
+		await attack()
 	if (STATE == STATES.WALKING):
 		walk()
 	update_health_bar()
@@ -160,4 +160,3 @@ func _on_navigation_agent_2d_velocity_computed(safe_velocity : Vector2):
 			STATE = STATES.WALKING
 			move_and_slide()
 		
-
