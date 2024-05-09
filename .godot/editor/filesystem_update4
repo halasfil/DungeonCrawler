@@ -3,6 +3,7 @@ res://scripts/player/companion/companion.gd
 res://themes/ui/button_inventory_style.tres
 res://themes/ui/button_inventory_style_font_30.tres
 res://scenes/vfx/fog.gdshader
-res://scenes/main_game/game.tscn
 res://scenes/player/player.tscn
 res://scenes/npcs/enemies/enemy.tscn
+res://scenes/main_game/game.tscn
+res://scripts/npcs/enemies/basic_enemy_script.gd

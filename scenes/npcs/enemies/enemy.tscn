@@ -21,7 +21,7 @@ bg_color = Color(0.6, 0.6, 0.6, 0.498039)
 bg_color = Color(0.843137, 0, 0, 0.639216)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0y0gg"]
-radius = 108.005
+radius = 100.0
 
 [node name="Enemy" type="CharacterBody2D"]
 collision_mask = 3
@@ -40,6 +40,10 @@ text = "IDLE,
 	RUN_AWAY,
 	FEAR,
 	DYING"
+
+[node name="Label2" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 15.0
 
 [node name="stateLabel" type="Label" parent="."]
 offset_left = -6.0
@@ -146,24 +150,30 @@ libraries = {
 "": ExtResource("9_o0mcx")
 }
 
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+target_desired_distance = 8.0
+navigation_layers = 15
+path_postprocessing = 1
+avoidance_enabled = true
+radius = 8.0
+neighbor_distance = 300.0
+time_horizon_obstacles = 2.0
+avoidance_layers = 15
+avoidance_mask = 15
+debug_enabled = true
+
 [node name="NavigationArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationArea"]
 shape = SubResource("CircleShape2D_0y0gg")
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 0.8
 autostart = true
-
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-path_postprocessing = 1
-avoidance_enabled = true
-avoidance_layers = 15
-avoidance_mask = 15
-debug_enabled = true
 
 [connection signal="body_entered" from="Body/Aim/MeleeDetector" to="." method="_on_melee_detector_body_entered"]
 [connection signal="body_exited" from="Body/Aim/MeleeDetector" to="." method="_on_melee_detector_body_exited"]
+[connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
 [connection signal="body_entered" from="NavigationArea" to="." method="_on_navigation_area_body_entered"]
 [connection signal="body_exited" from="NavigationArea" to="." method="_on_navigation_area_body_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]

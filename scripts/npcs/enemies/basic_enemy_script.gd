@@ -47,6 +47,7 @@ var HEALTH : int = 30
 var SEE_PLAYER : bool = false
 @onready
 var CAN_ATTACK : bool = false
+
 func _ready():
 	HEALTH_BAR.max_value = HEALTH
 	
@@ -65,6 +66,7 @@ func _process(_delta):
 	chase_and_attack()
 	aim()
 	STATE_LABEL.text = String.num(STATE)
+	$Label2.text = str(is_on_wall())
 	
 func walk():
 	STATES_AND_HELPERS.ANIMATION_HELPER.play_walking_animation(self)
@@ -156,7 +158,8 @@ func _on_timer_timeout():
 func _on_navigation_agent_2d_velocity_computed(safe_velocity : Vector2):
 	if (SEE_PLAYER && !CAN_ATTACK):
 		velocity = safe_velocity
-		if (velocity != Vector2.ZERO):
-			STATE = STATES.WALKING
-			move_and_slide()
+		STATE = STATES.WALKING
+		move_and_slide()
+	else:
+		STATE = STATES.IDLE
 		

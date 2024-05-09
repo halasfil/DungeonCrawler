@@ -1,6 +1,7 @@
+Label
+Control
 NavigationRegion2D
 NavigationObstacle2D
-Label
 Node
 NavigationAgent2D
 Timer
@@ -11,5 +12,3 @@ Sprite2D
 ProgressBar
 PointLight2D
 CharacterBody2D
-RigidBody2D
-AnimationPlayer
