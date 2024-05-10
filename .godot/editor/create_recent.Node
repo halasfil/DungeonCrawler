@@ -1,6 +1,6 @@
+NavigationRegion2D
 Label
 Control
-NavigationRegion2D
 NavigationObstacle2D
 Node
 NavigationAgent2D

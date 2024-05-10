@@ -66,7 +66,6 @@ func _process(_delta):
 	chase_and_attack()
 	aim()
 	STATE_LABEL.text = String.num(STATE)
-	$Label2.text = str(is_on_wall())
 	
 func walk():
 	STATES_AND_HELPERS.ANIMATION_HELPER.play_walking_animation(self)
