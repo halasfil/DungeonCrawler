@@ -22,7 +22,6 @@ var SKIN : Sprite2D = $Sprite2D
 @onready
 var PROJECTILE_SPRITE : CompressedTexture2D = preload("res://assets/weapons/arrow.png")
 
-
 func _ready():
 	add_collision_exception_with(self)
 	var energyStrength : float = RandomNumberGenerator.new().randf_range(0.1, 0.7)

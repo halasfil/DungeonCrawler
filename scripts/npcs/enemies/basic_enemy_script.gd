@@ -155,10 +155,8 @@ func _on_timer_timeout():
 	makePath()
 
 func _on_navigation_agent_2d_velocity_computed(safe_velocity : Vector2):
-	if (SEE_PLAYER && !CAN_ATTACK):
+	if (SEE_PLAYER && !CAN_ATTACK && HEALTH > 0):
 		velocity = safe_velocity
 		STATE = STATES.WALKING
 		move_and_slide()
-	else:
-		STATE = STATES.IDLE
-		
+

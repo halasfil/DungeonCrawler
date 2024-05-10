@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cvb5dv74gytgo" path="res://assets/npcs/enemies/draugr/draugh_shadow.png" id="5_ea1b2"]
 [ext_resource type="Texture2D" uid="uid://cgbk02q34tlg" path="res://assets/player/pointer.png" id="6_q1wyy"]
 [ext_resource type="Script" path="res://scripts/player_enemy_utils/damage_taker.gd" id="6_y541k"]
-[ext_resource type="AnimationLibrary" uid="uid://c6b8l2g601fep" path="res://animations/fallen.res" id="9_o0mcx"]
+[ext_resource type="AnimationLibrary" uid="uid://81c0pbcls2m0" path="res://animations/player_animations.res" id="10_bnc10"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o3gem"]
 radius = 5.0
@@ -140,11 +140,6 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_yt1og")
 value = 50.0
 show_percentage = false
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": ExtResource("9_o0mcx")
-}
-
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 target_desired_distance = 8.0
 avoidance_enabled = true
@@ -152,6 +147,11 @@ radius = 8.0
 neighbor_distance = 300.0
 time_horizon_obstacles = 2.0
 debug_enabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": ExtResource("10_bnc10")
+}
 
 [node name="NavigationArea" type="Area2D" parent="."]
 

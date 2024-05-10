@@ -176,10 +176,10 @@ func shoot_projectile():
 	projectile.MIN_DAMAGE = EQUIPPED_WEAPON.weaponMinDamage
 	projectile.MAX_DAMAGE = EQUIPPED_WEAPON.weaponMaxDamage
 	projectile.PROJECTILE_SPRITE = EQUIPPED_WEAPON.projectileSprite
+	projectile.PUSHBACK_STRENGTH = EQUIPPED_WEAPON.weaponPushback
 	var aimPositon : Vector2 = POINTER.global_position
 	var shootAngle : Vector2 = (aimPositon - position).normalized()
 	projectile.velocity =  shootAngle * 3
-	projectile.PUSHBACK_STRENGTH = EQUIPPED_WEAPON.weaponPushback
 func play_ranged_animation():
 	if (DIRECTION_FACING == DIRECTIONS.DOWN_R):
 		BODY.flip_h = false

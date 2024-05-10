@@ -7,3 +7,8 @@ res://scenes/main_game/world.tscn
 res://scenes/player/player.tscn
 res://scenes/main_game/game.tscn
 res://scripts/npcs/enemies/basic_enemy_script.gd
+res://scenes/ui/ui.tscn
+res://scripts/world/world.gd
+res://scripts/player/weapons/projectile.gd
+res://scripts/player/player.gd
+res://animations/player_animations.res
