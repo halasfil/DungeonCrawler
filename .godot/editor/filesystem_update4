@@ -8,3 +8,4 @@ res://scenes/main_game/game.tscn
 res://scenes/main_game/world.tscn
 res://scenes/ui/ui.tscn
 res://scenes/player_enemy_utils/states_and_helpers.tscn
+res://scripts/npcs/enemies/basic_enemy_script.gd

@@ -26,6 +26,8 @@ var STATE_LABEL : Label = $stateLabel
 var POINTER : Sprite2D = $Body/Aim/Pointer
 @onready
 var MELEE_DETECTOR : Area2D = $Body/Aim/MeleeDetector
+@onready
+var RANGED_DETECTOR : RayCast2D = $Body/Aim/RangedDetector
 
 enum STATES {
 	IDLE,
@@ -53,6 +55,7 @@ var HEALTH : int = 30
 func _ready():
 	HEALTH_BAR.max_value = HEALTH
 	EQUIPPED_WEAPON.weaponAnticipationTime = EQUIPPED_WEAPON.weaponAnticipationTime * 5
+
 	
 func _physics_process(_delta):
 	if (STATE != STATES.ATTACKING && velocity == Vector2.ZERO  && !IS_ATTACKING):
@@ -73,10 +76,15 @@ func _physics_process(_delta):
 	update_health_bar()
 	chase()
 	aim()
+	check_ranged_area()
 	STATE_LABEL.text = String.num(STATE)
 	
 func walk():
 	STATES_AND_HELPERS.ANIMATION_HELPER.play_walking_animation(self)
+
+func check_ranged_area():
+	if (RANGED_DETECTOR.get_collider() && RANGED_DETECTOR.get_collider().name == "Player"):
+		print("gonna shoot")
 	
 func aim():
 	var angle : float = AIM.global_rotation

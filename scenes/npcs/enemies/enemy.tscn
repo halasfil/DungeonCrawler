@@ -22,7 +22,7 @@ bg_color = Color(0.6, 0.6, 0.6, 0.498039)
 bg_color = Color(0.843137, 0, 0, 0.639216)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0y0gg"]
-radius = 100.0
+radius = 129.004
 
 [node name="Enemy" type="CharacterBody2D"]
 motion_mode = 1
@@ -123,12 +123,16 @@ position = Vector2(24.3333, 0.222222)
 polygon = PackedVector2Array(-8.88886, 8.88889, -4.44441, 3.33333, -4.44441, -2.22222, -8.88886, -7.77778, -23.3333, -3.33333, -23.3333, 6.66667)
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="Body/Aim/MeleeDetector"]
-target_desired_distance = 5.0
+target_desired_distance = 2.0
 avoidance_enabled = true
 radius = 8.0
 neighbor_distance = 300.0
 time_horizon_obstacles = 2.0
 debug_enabled = true
+
+[node name="RangedDetector" type="RayCast2D" parent="Body/Aim"]
+rotation = -1.14008
+target_position = Vector2(35.0906, 74.2407)
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(1, 2)
