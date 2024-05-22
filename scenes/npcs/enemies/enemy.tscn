@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bg1pxarmy7iqs"]
+[gd_scene load_steps=16 format=3 uid="uid://bg1pxarmy7iqs"]
 
 [ext_resource type="Texture2D" uid="uid://cjdpvmlcrvv3v" path="res://assets/npcs/enemies/draugr/axe.png" id="1_c4bl0"]
 [ext_resource type="Script" path="res://scripts/npcs/enemies/basic_enemy_script.gd" id="1_vo5dm"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cvb5dv74gytgo" path="res://assets/npcs/enemies/draugr/draugh_shadow.png" id="5_ea1b2"]
 [ext_resource type="Texture2D" uid="uid://cgbk02q34tlg" path="res://assets/player/pointer.png" id="6_q1wyy"]
 [ext_resource type="Script" path="res://scripts/player_enemy_utils/damage_taker.gd" id="6_y541k"]
+[ext_resource type="Script" path="res://scripts/player_enemy_utils/melee_area.gd" id="9_fc2de"]
 [ext_resource type="AnimationLibrary" uid="uid://81c0pbcls2m0" path="res://animations/player_animations.res" id="10_bnc10"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o3gem"]
@@ -108,10 +109,11 @@ hframes = 9
 vframes = 3
 
 [node name="MeleeArea" type="Area2D" parent="Body/Aim"]
+script = ExtResource("9_fc2de")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Body/Aim/MeleeArea"]
 position = Vector2(24.3333, 0.222222)
-polygon = PackedVector2Array(-8.88889, 14.4444, 2.22222, 2.22222, 2.22222, -2.22222, -8.88889, -14.4444, -23.3333, -3.33333, -23.3333, 6.66667)
+polygon = PackedVector2Array(-8.88889, 14.4444, 2.22222, 2.22222, 2.22222, -2.22222, -8.88889, -14.4444, -17.7777, -4.44444, -17.7777, 7.77778)
 disabled = true
 
 [node name="MeleeDetector" type="Area2D" parent="Body/Aim"]
@@ -119,6 +121,14 @@ disabled = true
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Body/Aim/MeleeDetector"]
 position = Vector2(24.3333, 0.222222)
 polygon = PackedVector2Array(-8.88886, 8.88889, -4.44441, 3.33333, -4.44441, -2.22222, -8.88886, -7.77778, -23.3333, -3.33333, -23.3333, 6.66667)
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="Body/Aim/MeleeDetector"]
+target_desired_distance = 5.0
+avoidance_enabled = true
+radius = 8.0
+neighbor_distance = 300.0
+time_horizon_obstacles = 2.0
+debug_enabled = true
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(1, 2)
@@ -140,14 +150,6 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_yt1og")
 value = 50.0
 show_percentage = false
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-target_desired_distance = 8.0
-avoidance_enabled = true
-radius = 8.0
-neighbor_distance = 300.0
-time_horizon_obstacles = 2.0
-debug_enabled = true
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": ExtResource("10_bnc10")
@@ -162,9 +164,10 @@ shape = SubResource("CircleShape2D_0y0gg")
 wait_time = 0.8
 autostart = true
 
+[connection signal="body_entered" from="Body/Aim/MeleeArea" to="Body/Aim/MeleeArea" method="_on_body_entered"]
 [connection signal="body_entered" from="Body/Aim/MeleeDetector" to="." method="_on_melee_detector_body_entered"]
 [connection signal="body_exited" from="Body/Aim/MeleeDetector" to="." method="_on_melee_detector_body_exited"]
-[connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
+[connection signal="velocity_computed" from="Body/Aim/MeleeDetector/NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]
 [connection signal="body_entered" from="NavigationArea" to="." method="_on_navigation_area_body_entered"]
 [connection signal="body_exited" from="NavigationArea" to="." method="_on_navigation_area_body_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

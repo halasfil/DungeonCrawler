@@ -21,6 +21,7 @@ var PUSHBACK_STRENGTH : int = 1;
 var SKIN : Sprite2D = $Sprite2D
 @onready
 var PROJECTILE_SPRITE : CompressedTexture2D = preload("res://assets/weapons/arrow.png")
+var SHOOTER : Node
 
 func _ready():
 	add_collision_exception_with(self)
@@ -52,5 +53,6 @@ func _on_area_2d_body_entered(body):
 	if (body is TileMap):
 		destroy()
 	if (body.has_method("take_damage")):
-		destroy()
-		body.take_damage(MIN_DAMAGE, MAX_DAMAGE, PUSHBACK_STRENGTH)
+		if (SHOOTER && SHOOTER != body):
+			destroy()
+			body.take_damage(MIN_DAMAGE, MAX_DAMAGE, PUSHBACK_STRENGTH, self)

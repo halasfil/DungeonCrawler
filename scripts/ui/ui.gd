@@ -18,6 +18,8 @@ var INVENTORY_BUTTON : InventoryButton = $CanvasLayer/HBoxContainer4/InventoryBu
 var OPTION_BUTTONS_CONTAINER : HBoxContainer = $CanvasLayer/HBoxContainer4
 @onready
 var FPS : Label = $CanvasLayer/Label
+@onready
+var HEALTH_BAR : ProgressBar = $CanvasLayer/HBoxContainer3/ProgressBar
 
 func _ready():
 	INVENTORY.visible = false

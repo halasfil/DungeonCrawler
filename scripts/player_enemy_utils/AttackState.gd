@@ -5,4 +5,4 @@ func anticipate_and_attack(anticipationAnimationName : String, animationName : S
 	ANIMATION.play(anticipationAnimationName)
 	await get_tree().create_timer(parent.EQUIPPED_WEAPON.weaponAnticipationTime).timeout
 	parent.KNOCKBACK = true
-	ANIMATION.play(animationName);
+	ANIMATION.play(animationName)
