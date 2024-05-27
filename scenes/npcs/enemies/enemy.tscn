@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bg1pxarmy7iqs"]
+[gd_scene load_steps=18 format=3 uid="uid://bg1pxarmy7iqs"]
 
 [ext_resource type="Texture2D" uid="uid://cjdpvmlcrvv3v" path="res://assets/npcs/enemies/draugr/axe.png" id="1_c4bl0"]
 [ext_resource type="Script" path="res://scripts/npcs/enemies/basic_enemy_script.gd" id="1_vo5dm"]
@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://cvb5dv74gytgo" path="res://assets/npcs/enemies/draugr/draugh_shadow.png" id="5_ea1b2"]
 [ext_resource type="Texture2D" uid="uid://cgbk02q34tlg" path="res://assets/player/pointer.png" id="6_q1wyy"]
 [ext_resource type="Script" path="res://scripts/player_enemy_utils/damage_taker.gd" id="6_y541k"]
+[ext_resource type="Texture2D" uid="uid://dhaytpklv7tjl" path="res://assets/weapons/bow.png" id="7_30m7o"]
+[ext_resource type="Texture2D" uid="uid://nuos6san62fu" path="res://assets/player/ranged_attack.png" id="8_bgfg1"]
 [ext_resource type="Script" path="res://scripts/player_enemy_utils/melee_area.gd" id="9_fc2de"]
 [ext_resource type="AnimationLibrary" uid="uid://81c0pbcls2m0" path="res://animations/player_animations.res" id="10_bnc10"]
 
@@ -87,10 +89,12 @@ visible = false
 show_behind_parent = true
 texture_filter = 1
 position = Vector2(5, -1)
+texture = ExtResource("7_30m7o")
 
 [node name="RangedMark" type="Sprite2D" parent="Body/Aim/Ranged"]
 texture_filter = 1
 position = Vector2(2, 0)
+texture = ExtResource("8_bgfg1")
 hframes = 3
 
 [node name="Pointer" type="Sprite2D" parent="Body/Aim"]

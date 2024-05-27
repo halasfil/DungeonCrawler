@@ -8,6 +8,8 @@ var ANIMATION = $AnimationPlayer;
 var BODY : Sprite2D = $Body;
 @onready
 var MELEE : Sprite2D = $Body/Melee;
+@onready
+var RANGED : Sprite2D = $Body/Aim/Ranged;
 @onready 
 var STATS : BasicEnemyParentResource;
 @onready
@@ -51,11 +53,17 @@ var KNOCKBACK : bool = false
 var IS_ATTACKING : bool = false
 var SEE_PLAYER : bool = false
 var HEALTH : int = 30
+var IS_RANGED : bool = true
 
 func _ready():
 	HEALTH_BAR.max_value = HEALTH
 	EQUIPPED_WEAPON.weaponAnticipationTime = EQUIPPED_WEAPON.weaponAnticipationTime * 5
-
+	if (IS_RANGED):
+		MELEE.visible = false
+		RANGED.visible = true
+	else:
+		MELEE.visible = true
+		RANGED.visible = false
 	
 func _physics_process(_delta):
 	if (STATE != STATES.ATTACKING && velocity == Vector2.ZERO  && !IS_ATTACKING):
@@ -71,11 +79,12 @@ func _physics_process(_delta):
 	if (STATE != STATES.ATTACKING):
 		IS_ATTACKING = false
 		$Body/Aim/MeleeArea/CollisionPolygon2D.disabled = true
+		aim()
 	if KNOCKBACK:
 		perform_knockback()
 	update_health_bar()
-	chase()
-	aim()
+	if (STATE == STATES.WALKING || STATE==STATES.IDLE):
+		chase()
 	check_ranged_area()
 	STATE_LABEL.text = String.num(STATE)
 	
@@ -84,7 +93,8 @@ func walk():
 
 func check_ranged_area():
 	if (RANGED_DETECTOR.get_collider() && RANGED_DETECTOR.get_collider().name == "Player"):
-		print("gonna shoot")
+		if IS_RANGED:
+			STATE = STATES.ATTACKING
 	
 func aim():
 	var angle : float = AIM.global_rotation
@@ -124,8 +134,8 @@ func idle():
 func attack():
 	IS_ATTACKING = true
 	velocity = Vector2.ZERO
-	if (EQUIPPED_WEAPON.isWeaponRanged):
-		pass
+	if (IS_RANGED):
+		await STATES_AND_HELPERS.ANIMATION_HELPER.play_ranged_animation(self)
 	else:
 		await STATES_AND_HELPERS.ANIMATION_HELPER.play_melee_attack_animation(self)
 	await ANIMATION.animation_finished

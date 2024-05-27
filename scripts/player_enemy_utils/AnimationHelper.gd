@@ -54,3 +54,17 @@ func play_walking_animation(parent):
 		parent.BODY.flip_h = true
 		parent.MELEE.flip_h = true
 		parent.ANIMATION.play("run_b_L")
+
+func play_ranged_animation(parent):
+	if (parent.DIRECTION_FACING == parent.DIRECTIONS.DOWN_R):
+		parent.BODY.flip_h = false
+		ATTACK_STATE.anticipate_and_attack("attack_f_ranged_anticipation", "attack_f_ranged", parent)
+	elif (parent.DIRECTION_FACING == parent.DIRECTIONS.DOWN_L):
+		parent.BODY.flip_h = true
+		ATTACK_STATE.anticipate_and_attack("attack_f_ranged_anticipation", "attack_f_ranged", parent)
+	elif (parent.DIRECTION_FACING == parent.DIRECTIONS.UP_R):
+		parent.BODY.flip_h = false
+		ATTACK_STATE.anticipate_and_attack("attack_b_ranged_anticipation", "attack_b_ranged", parent)
+	elif (parent.DIRECTION_FACING == parent.DIRECTIONS.UP_L):
+		parent.BODY.flip_h = true
+		ATTACK_STATE.anticipate_and_attack("attack_b_ranged_anticipation", "attack_b_ranged", parent)
