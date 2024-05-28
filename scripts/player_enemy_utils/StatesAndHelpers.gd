@@ -1,4 +1,11 @@
-class_name  StatesAndHelpers extends Node
+class_name StatesAndHelpers extends Node
+
+enum DIRECTIONS {
+	UP_R,
+	DOWN_R,
+	UP_L,
+	DOWN_L,
+}
 
 @onready
 var ANIMATION_HELPER : AnimationHelper = $AnimationHelper

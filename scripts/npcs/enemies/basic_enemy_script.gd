@@ -10,8 +10,6 @@ var BODY : Sprite2D = $Body;
 var MELEE : Sprite2D = $Body/Melee;
 @onready
 var RANGED : Sprite2D = $Body/Aim/Ranged;
-@onready 
-var STATS : BasicEnemyParentResource;
 @onready
 var DAMAGE_TAKER : DamageTakerComponent = $DamageTaker
 @onready
@@ -31,6 +29,9 @@ var MELEE_DETECTOR : Area2D = $Body/Aim/MeleeDetector
 @onready
 var RANGED_DETECTOR : RayCast2D = $Body/Aim/RangedDetector
 
+@onready
+var ENEMY_RESOURCE : BasicEnemyParentResource = Draugr.new();
+
 enum STATES {
 	IDLE,
 	WALKING,
@@ -39,25 +40,25 @@ enum STATES {
 	FEAR,
 	DYING
 }
-enum DIRECTIONS {
-	UP_R,
-	DOWN_R,
-	UP_L,
-	DOWN_L,
-}
-@onready
-var EQUIPPED_WEAPON : Weapon = Axe.new()
-var DIRECTION_FACING : int = DIRECTIONS.DOWN_R
+var DIRECTION_FACING : int = STATES_AND_HELPERS.DIRECTIONS.DOWN_R
 var STATE : STATES = STATES.IDLE
+
 var KNOCKBACK : bool = false
 var IS_ATTACKING : bool = false
 var SEE_PLAYER : bool = false
-var HEALTH : int = 30
-var IS_RANGED : bool = true
+
+@onready
+var EQUIPPED_WEAPON : Weapon = ENEMY_RESOURCE.weapon
+@onready
+var HEALTH : int = ENEMY_RESOURCE.health
+@onready
+var IS_RANGED : bool = EQUIPPED_WEAPON.isWeaponRanged
+@onready
+var WALKING_SPEED : int = ENEMY_RESOURCE.walkingSpeed
 
 func _ready():
 	HEALTH_BAR.max_value = HEALTH
-	EQUIPPED_WEAPON.weaponAnticipationTime = EQUIPPED_WEAPON.weaponAnticipationTime * 5
+	EQUIPPED_WEAPON.weaponAnticipationTime = EQUIPPED_WEAPON.weaponAnticipationTime * 3
 	if (IS_RANGED):
 		MELEE.visible = false
 		RANGED.visible = true
@@ -92,33 +93,33 @@ func walk():
 	STATES_AND_HELPERS.ANIMATION_HELPER.play_walking_animation(self)
 
 func check_ranged_area():
-	if (RANGED_DETECTOR.get_collider() && RANGED_DETECTOR.get_collider().name == "Player"):
+	if (RANGED_DETECTOR.get_collider() && RANGED_DETECTOR.get_collider() == PLAYER_NODE):
 		if IS_RANGED:
 			STATE = STATES.ATTACKING
 	
 func aim():
 	var angle : float = AIM.global_rotation
 	if (angle > 0 && angle < 1.5):
-		DIRECTION_FACING = DIRECTIONS.DOWN_R;
+		DIRECTION_FACING = STATES_AND_HELPERS.DIRECTIONS.DOWN_R;
 		AIM.show_behind_parent = false
 		MELEE.show_behind_parent = false
 	elif (angle > 1.5):
-		DIRECTION_FACING = DIRECTIONS.DOWN_L;
+		DIRECTION_FACING = STATES_AND_HELPERS.DIRECTIONS.DOWN_L;
 		MELEE.show_behind_parent = false
 		AIM.show_behind_parent = false
 	elif (angle < 0 && angle > -1.5):
-		DIRECTION_FACING = DIRECTIONS.UP_R;
+		DIRECTION_FACING = STATES_AND_HELPERS.DIRECTIONS.UP_R;
 		MELEE.show_behind_parent = true
 		AIM.show_behind_parent = true
 	elif (angle < -1.5):
-		DIRECTION_FACING = DIRECTIONS.UP_L;
+		DIRECTION_FACING = STATES_AND_HELPERS.DIRECTIONS.UP_L;
 		MELEE.show_behind_parent = true
 		AIM.show_behind_parent = true
 
 func chase():
 	if (SEE_PLAYER):
 		var axis : Vector2 = to_local(NAVAGENT.get_next_path_position()).normalized();
-		var intendedVelocity  : Vector2 = axis * 500
+		var intendedVelocity  : Vector2 = axis * WALKING_SPEED
 		NAVAGENT.set_velocity(intendedVelocity)
 		AIM.look_at(PLAYER_NODE.global_position)
 	

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://nuos6san62fu"
-path="res://.godot/imported/ranged_attack.png-93718135ecff11bb3254fb263c787503.ctex"
+uid="uid://t04sx848aay3"
+path="res://.godot/imported/ranged_attack.png-700a78ef6c25b967f663cba2cdf63db6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/player/ranged_attack.png"
-dest_files=["res://.godot/imported/ranged_attack.png-93718135ecff11bb3254fb263c787503.ctex"]
+source_file="res://assets/npcs/enemies/draugr/ranged_attack.png"
+dest_files=["res://.godot/imported/ranged_attack.png-700a78ef6c25b967f663cba2cdf63db6.ctex"]
 
 [params]
 

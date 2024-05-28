@@ -9,9 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://bkvpjywumjy8" path="res://assets/player/death.png" id="4_i6oy7"]
 [ext_resource type="Texture2D" uid="uid://dvuh36y2rqr5k" path="res://assets/weapons/axe.png" id="5_a3hnl"]
 [ext_resource type="Texture2D" uid="uid://dhaytpklv7tjl" path="res://assets/weapons/bow.png" id="6_u5qqe"]
-[ext_resource type="Texture2D" uid="uid://nuos6san62fu" path="res://assets/player/ranged_attack.png" id="7_rdl1h"]
 [ext_resource type="Texture2D" uid="uid://cgbk02q34tlg" path="res://assets/player/pointer.png" id="8_qc8i0"]
 [ext_resource type="Texture2D" uid="uid://gocm6goif27y" path="res://assets/player/attack.png" id="9_gwh43"]
+[ext_resource type="Texture2D" uid="uid://d4bwjtkob7e08" path="res://assets/weapons/bow_line.png" id="10_q5tvm"]
 [ext_resource type="AnimationLibrary" uid="uid://81c0pbcls2m0" path="res://animations/player_animations.res" id="10_veje7"]
 [ext_resource type="Texture2D" uid="uid://bemgp0wlfvjp3" path="res://assets/vfx/light.png" id="11_x5ct2"]
 [ext_resource type="Script" path="res://scripts/player_enemy_utils/melee_area.gd" id="13_3vpl0"]
@@ -89,7 +89,7 @@ texture = ExtResource("6_u5qqe")
 show_behind_parent = true
 texture_filter = 1
 position = Vector2(1.66667, -1.77778)
-texture = ExtResource("7_rdl1h")
+texture = ExtResource("10_q5tvm")
 hframes = 3
 
 [node name="Pointer" type="Sprite2D" parent="Body/Aim"]

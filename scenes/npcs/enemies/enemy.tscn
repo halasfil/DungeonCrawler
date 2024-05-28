@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cgbk02q34tlg" path="res://assets/player/pointer.png" id="6_q1wyy"]
 [ext_resource type="Script" path="res://scripts/player_enemy_utils/damage_taker.gd" id="6_y541k"]
 [ext_resource type="Texture2D" uid="uid://dhaytpklv7tjl" path="res://assets/weapons/bow.png" id="7_30m7o"]
-[ext_resource type="Texture2D" uid="uid://nuos6san62fu" path="res://assets/player/ranged_attack.png" id="8_bgfg1"]
+[ext_resource type="Texture2D" uid="uid://d4bwjtkob7e08" path="res://assets/weapons/bow_line.png" id="8_2slyb"]
 [ext_resource type="Script" path="res://scripts/player_enemy_utils/melee_area.gd" id="9_fc2de"]
 [ext_resource type="AnimationLibrary" uid="uid://81c0pbcls2m0" path="res://animations/player_animations.res" id="10_bnc10"]
 
@@ -94,7 +94,7 @@ texture = ExtResource("7_30m7o")
 [node name="RangedMark" type="Sprite2D" parent="Body/Aim/Ranged"]
 texture_filter = 1
 position = Vector2(2, 0)
-texture = ExtResource("8_bgfg1")
+texture = ExtResource("8_2slyb")
 hframes = 3
 
 [node name="Pointer" type="Sprite2D" parent="Body/Aim"]

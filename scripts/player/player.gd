@@ -1,11 +1,5 @@
 class_name Player extends CharacterBody2D
 #region global variables
-enum DIRECTIONS {
-	UP_R,
-	DOWN_R,
-	UP_L,
-	DOWN_L,
-}
 enum STATES {
 	IDLE,
 	WALKING,
@@ -55,7 +49,7 @@ var DAMAGE_TAKER : DamageTakerComponent = $DamageTakerComponent
 var PROJECTILE_SCENE : PackedScene = preload("res://scenes/player/projectile.tscn")
 var CAN_DODGE : bool = true
 var STATE : int = STATES.IDLE
-var DIRECTION_FACING : int = DIRECTIONS.DOWN_R
+var DIRECTION_FACING : int = STATES_AND_HELPERS.DIRECTIONS.DOWN_R
 var EQUIPPED_WEAPON : Weapon
 var EQUIPPED_ARMOR : Armor
 var KNOCKBACK : bool = false
@@ -100,19 +94,19 @@ func aim():
 	AIM.rotation = angle
 	if (STATE != STATES.ATTACKING):
 		if (angle > 0 && angle < 1.5):
-			DIRECTION_FACING = DIRECTIONS.DOWN_R;
+			DIRECTION_FACING = STATES_AND_HELPERS.DIRECTIONS.DOWN_R;
 			AIM.show_behind_parent = false
 			MELEE.show_behind_parent = false
 		elif (angle > 1.5):
-			DIRECTION_FACING = DIRECTIONS.DOWN_L;
+			DIRECTION_FACING = STATES_AND_HELPERS.DIRECTIONS.DOWN_L;
 			MELEE.show_behind_parent = false
 			AIM.show_behind_parent = false
 		elif (angle < 0 && angle > -1.5):
-			DIRECTION_FACING = DIRECTIONS.UP_R;
+			DIRECTION_FACING = STATES_AND_HELPERS.DIRECTIONS.UP_R;
 			MELEE.show_behind_parent = true
 			AIM.show_behind_parent = true
 		elif (angle < -1.5):
-			DIRECTION_FACING = DIRECTIONS.UP_L;
+			DIRECTION_FACING = STATES_AND_HELPERS.DIRECTIONS.UP_L;
 			MELEE.show_behind_parent = true
 			AIM.show_behind_parent = true
 #endregion
@@ -136,6 +130,8 @@ func check_equipped_weapon():
 	if EQUIPPED_WEAPON:
 		MELEE.texture = EQUIPPED_WEAPON.itemSprite
 		RANGED.texture = EQUIPPED_WEAPON.itemSprite
+		if EQUIPPED_WEAPON.isWeaponRanged:
+			RANGED_MARK.texture = EQUIPPED_WEAPON.animationForRangedSprite
 func show_proper_weapon():
 	if (STATE != STATES.DODGING && STATE != STATES.ACTION && EQUIPPED_WEAPON != null):
 		if (EQUIPPED_WEAPON.isWeaponRanged == false):
@@ -168,7 +164,7 @@ func perform_knockback():
 #endregion
 #region ranged attack
 func perform_ranged_attack():
-	await play_ranged_animation()
+	await STATES_AND_HELPERS.ANIMATION_HELPER.play_ranged_animation(self)
 	shoot_projectile()
 func shoot_projectile():
 	var projectile : Projectile = PROJECTILE_SCENE.instantiate()
@@ -183,19 +179,6 @@ func shoot_projectile():
 	var aimPositon : Vector2 = POINTER.global_position
 	var shootAngle : Vector2 = (aimPositon - position).normalized()
 	projectile.velocity =  shootAngle * 3
-func play_ranged_animation():
-	if (DIRECTION_FACING == DIRECTIONS.DOWN_R):
-		BODY.flip_h = false
-		STATES_AND_HELPERS.ATTACK_STATE.anticipate_and_attack("attack_f_ranged_anticipation", "attack_f_ranged", self)
-	elif (DIRECTION_FACING == DIRECTIONS.DOWN_L):
-		BODY.flip_h = true
-		STATES_AND_HELPERS.ATTACK_STATE.anticipate_and_attack("attack_f_ranged_anticipation", "attack_f_ranged", self)
-	elif (DIRECTION_FACING == DIRECTIONS.UP_R):
-		BODY.flip_h = false
-		STATES_AND_HELPERS.ATTACK_STATE.anticipate_and_attack("attack_b_ranged_anticipation", "attack_b_ranged", self)
-	elif (DIRECTION_FACING == DIRECTIONS.UP_L):
-		BODY.flip_h = true
-		STATES_AND_HELPERS.ATTACK_STATE.anticipate_and_attack("attack_b_ranged_anticipation", "attack_b_ranged", self)
 #endregion
 #region walking
 func walk_or_idle():
@@ -219,16 +202,16 @@ func dodge():
 		MELEE.visible = false
 		RANGED.visible = false
 		DODGE_BUTTON.modulate = Color(1,1,1,0.5)
-		if (DIRECTION_FACING == DIRECTIONS.DOWN_R):
+		if (DIRECTION_FACING == STATES_AND_HELPERS.DIRECTIONS.DOWN_R):
 			BODY.flip_h = false
 			ANIMATION.play("roll_f");
-		if (DIRECTION_FACING == DIRECTIONS.DOWN_L):
+		if (DIRECTION_FACING == STATES_AND_HELPERS.DIRECTIONS.DOWN_L):
 			BODY.flip_h = true
 			ANIMATION.play("roll_f");
-		if (DIRECTION_FACING == DIRECTIONS.UP_L):
+		if (DIRECTION_FACING == STATES_AND_HELPERS.DIRECTIONS.UP_L):
 			BODY.flip_h = false
 			ANIMATION.play("roll_b");
-		if (DIRECTION_FACING == DIRECTIONS.UP_R):
+		if (DIRECTION_FACING == STATES_AND_HELPERS.DIRECTIONS.UP_R):
 			BODY.flip_h = true
 			ANIMATION.play("roll_b");
 		DODGING = true

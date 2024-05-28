@@ -1,22 +1,20 @@
-class_name BasicEnemyParentResource extends Node
+class_name BasicEnemyParentResource extends Resource
 
-var body_sprite : Array[CompressedTexture2D];
-var melee_sprite : Array[CompressedTexture2D];
-var ranged_sprite : Array[CompressedTexture2D];
-var ranged : bool;
-var rangedWeapon : bool;
-var meleeWeapon : bool;
-var run_in_fear_probability : float;
+var weapon : Weapon;
 var health : int;
-var moving_speed : int;
-var before_attack_emancipation_time : float;
-var max_gold_loot : int;
-var max_health_loot : int;
-var attack_max : int;
-var attack_min : int;
-var protection_max : int;
-var protection_min : int;
+var walkingSpeed : int;
 
-func _init():
-	#todo
-	pass
+func _init(
+	npc_weapons : Array[Weapon],
+	npc_health : int,
+	npc_walking_speed : int
+):
+	weapon = randomPickWeapon(npc_weapons);
+	health = npc_health;
+	walkingSpeed = npc_walking_speed;
+
+func randomPickWeapon(npc_weapons : Array[Weapon]):
+	var randomizer: RandomNumberGenerator = RandomNumberGenerator.new()
+	randomizer.randomize()
+	var weaponIndex : int = randomizer.randi_range(0, npc_weapons.size() -1)
+	return npc_weapons[weaponIndex]

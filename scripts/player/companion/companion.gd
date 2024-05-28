@@ -19,10 +19,10 @@ func check_if_not_too_close(rand_position, target_position):
 	return false
 
 func randomize_position(target_position) -> Vector2:
-	var random = RandomNumberGenerator.new()
-	random.randomize()
-	var rand_position : Vector2 = Vector2(target_position.x + random.randi_range(-25, 25),
-	target_position.y + random.randi_range(-25, 25))
+	var randomizer : RandomNumberGenerator = RandomNumberGenerator.new()
+	randomizer.randomize()
+	var rand_position : Vector2 = Vector2(target_position.x + randomizer.randi_range(-25, 25),
+	target_position.y + randomizer.randi_range(-25, 25))
 	if check_if_not_too_close(rand_position, target_position) && RAND_TRIES <= 2:
 		RAND_TRIES += 1
 		if (RAND_TRIES == 2):

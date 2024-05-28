@@ -14,6 +14,7 @@ func _init() -> void:
 		false, 
 		4, 
 		.1, 
+		null, 
 		null)
 
 	#nameWeapon : String, 

@@ -7,6 +7,7 @@ var weaponPushback : int;
 var isWeaponRanged : bool;
 var weaponAnticipationTime : float;
 var projectileSprite : CompressedTexture2D;
+var animationForRangedSprite : CompressedTexture2D;
 
 func _init(
 	nameWeapon : String, 
@@ -19,7 +20,8 @@ func _init(
 	ranged : bool,
 	weightWeapon : int,
 	anticipationTime : float,
-	projectile_sprite : CompressedTexture2D):
+	projectile_sprite : CompressedTexture2D,
+	animation_For_Ranged_Sprite : CompressedTexture2D):
 	var mixMaxDmg : String = "%s - %s" % [minDamage, maxDamage]
 	var weaponDescription : String = "Name: %s\nDmg: %s\nPrice: %s\nKg: %s" % [nameWeapon, mixMaxDmg, priceWeapon, weightWeapon]
 	super._init(nameWeapon, priceWeapon, weightWeapon, sprite, weaponDescription);
@@ -30,3 +32,4 @@ func _init(
 	isWeaponRanged = ranged;
 	weaponAnticipationTime = anticipationTime;
 	projectileSprite = projectile_sprite;
+	animationForRangedSprite = animation_For_Ranged_Sprite;
