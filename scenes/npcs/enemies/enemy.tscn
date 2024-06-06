@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bg1pxarmy7iqs"]
+[gd_scene load_steps=19 format=3 uid="uid://bg1pxarmy7iqs"]
 
 [ext_resource type="Texture2D" uid="uid://cjdpvmlcrvv3v" path="res://assets/npcs/enemies/draugr/axe.png" id="1_c4bl0"]
 [ext_resource type="Script" path="res://scripts/npcs/enemies/basic_enemy_script.gd" id="1_vo5dm"]
@@ -12,7 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://dhaytpklv7tjl" path="res://assets/weapons/bow.png" id="7_30m7o"]
 [ext_resource type="Texture2D" uid="uid://d4bwjtkob7e08" path="res://assets/weapons/bow_line.png" id="8_2slyb"]
 [ext_resource type="Script" path="res://scripts/player_enemy_utils/melee_area.gd" id="9_fc2de"]
-[ext_resource type="AnimationLibrary" uid="uid://81c0pbcls2m0" path="res://animations/player_animations.res" id="10_bnc10"]
+[ext_resource type="AnimationLibrary" uid="uid://16r2vq1xngvw" path="res://animations/enemy_animations.res" id="13_7q48m"]
+[ext_resource type="Texture2D" uid="uid://bemgp0wlfvjp3" path="res://assets/vfx/light.png" id="14_jtoal"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o3gem"]
 radius = 5.0
@@ -71,14 +72,15 @@ texture = ExtResource("4_ipwbq")
 flip_h = true
 hframes = 8
 vframes = 4
-frame = 3
+frame = 22
 
 [node name="Melee" type="Sprite2D" parent="Body"]
 show_behind_parent = true
 texture_filter = 1
-position = Vector2(-6, -2)
-rotation = 0.507229
+position = Vector2(2.22222, -5.55556)
+rotation = 9.8858
 texture = ExtResource("1_c4bl0")
+flip_h = true
 flip_v = true
 
 [node name="Aim" type="Marker2D" parent="Body"]
@@ -105,7 +107,6 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("6_q1wyy")
 
 [node name="MeleeMark" type="Sprite2D" parent="Body/Aim"]
-position = Vector2(8, -1)
 scale = Vector2(1.22222, 1.22222)
 texture = ExtResource("4_x23kg")
 flip_v = true
@@ -118,7 +119,6 @@ script = ExtResource("9_fc2de")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Body/Aim/MeleeArea"]
 position = Vector2(24.3333, 0.222222)
 polygon = PackedVector2Array(-8.88889, 14.4444, 2.22222, 2.22222, 2.22222, -2.22222, -8.88889, -14.4444, -17.7777, -4.44444, -17.7777, 7.77778)
-disabled = true
 
 [node name="MeleeDetector" type="Area2D" parent="Body/Aim"]
 
@@ -160,17 +160,25 @@ show_percentage = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": ExtResource("10_bnc10")
+"enemy_animations": ExtResource("13_7q48m")
 }
 
 [node name="NavigationArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationArea"]
+visible = false
 shape = SubResource("CircleShape2D_0y0gg")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.8
 autostart = true
+
+[node name="light" type="PointLight2D" parent="."]
+energy = 0.6
+shadow_filter = 1
+shadow_filter_smooth = 5.0
+texture = ExtResource("14_jtoal")
+texture_scale = 0.4
 
 [connection signal="body_entered" from="Body/Aim/MeleeArea" to="Body/Aim/MeleeArea" method="_on_body_entered"]
 [connection signal="body_entered" from="Body/Aim/MeleeDetector" to="." method="_on_melee_detector_body_entered"]

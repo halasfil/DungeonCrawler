@@ -1,4 +1,8 @@
+res://scenes/npcs/enemies
+res://
 res://animations
+res://animations/player
+res://animations/enemy
 res://scenes/player_enemy_utils
 res://scripts/player_enemy_utils
 res://scenes/main_game

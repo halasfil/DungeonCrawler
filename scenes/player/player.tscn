@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://cgbk02q34tlg" path="res://assets/player/pointer.png" id="8_qc8i0"]
 [ext_resource type="Texture2D" uid="uid://gocm6goif27y" path="res://assets/player/attack.png" id="9_gwh43"]
 [ext_resource type="Texture2D" uid="uid://d4bwjtkob7e08" path="res://assets/weapons/bow_line.png" id="10_q5tvm"]
-[ext_resource type="AnimationLibrary" uid="uid://81c0pbcls2m0" path="res://animations/player_animations.res" id="10_veje7"]
+[ext_resource type="AnimationLibrary" uid="uid://dnllaxpikthik" path="res://animations/player_animations.res" id="10_veje7"]
 [ext_resource type="Texture2D" uid="uid://bemgp0wlfvjp3" path="res://assets/vfx/light.png" id="11_x5ct2"]
 [ext_resource type="Script" path="res://scripts/player_enemy_utils/melee_area.gd" id="13_3vpl0"]
 
@@ -66,13 +66,13 @@ texture = ExtResource("3_38y77")
 flip_h = true
 hframes = 8
 vframes = 4
-frame = 3
+frame = 23
 
 [node name="Melee" type="Sprite2D" parent="Body"]
 show_behind_parent = true
 texture_filter = 1
-position = Vector2(-6, -2)
-rotation = 0.507229
+position = Vector2(-14.4, 2.22)
+rotation = 14.0499
 texture = ExtResource("5_a3hnl")
 flip_v = true
 
@@ -82,7 +82,7 @@ position = Vector2(-1, 2)
 [node name="Ranged" type="Sprite2D" parent="Body/Aim"]
 show_behind_parent = true
 texture_filter = 1
-position = Vector2(5, -1)
+position = Vector2(4.33333, -0.888889)
 texture = ExtResource("6_u5qqe")
 
 [node name="RangedMark" type="Sprite2D" parent="Body/Aim/Ranged"]
@@ -104,7 +104,6 @@ texture_filter = 2
 position = Vector2(8, -1)
 scale = Vector2(1.22222, 1.22222)
 texture = ExtResource("9_gwh43")
-flip_v = true
 hframes = 9
 vframes = 3
 
@@ -114,7 +113,6 @@ script = ExtResource("13_3vpl0")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Body/Aim/MeleeArea"]
 position = Vector2(24.3333, 0.222222)
 polygon = PackedVector2Array(-8.88889, 14.4444, 2.22222, 2.22222, 2.22222, -2.22222, -8.88889, -14.4444, -17.7777, -3.33333, -17.7777, 7.77778)
-disabled = true
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(1, 2)
@@ -122,11 +120,6 @@ position = Vector2(1, 2)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4)
 shape = SubResource("CircleShape2D_o3gem")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": ExtResource("10_veje7")
-}
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3, 3)
@@ -141,6 +134,11 @@ shadow_filter = 1
 shadow_filter_smooth = 5.0
 texture = ExtResource("11_x5ct2")
 texture_scale = 0.6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"player_animations": ExtResource("10_veje7")
+}
 
 [connection signal="body_entered" from="Body/Aim/MeleeArea" to="Body/Aim/MeleeArea" method="_on_body_entered"]
 [connection signal="timeout" from="DodgeCooldown" to="." method="_on_dodge_cooldown_timeout"]

@@ -55,11 +55,11 @@ var EQUIPPED_ARMOR : Armor
 var KNOCKBACK : bool = false
 var DODGING : bool = false
 var HEALTH : int = 100
-
 #endregion
 #region main functions
 func _ready():
 	MELEE_COLISION.disabled = true
+
 func _physics_process(_delta):
 	aim()
 	show_proper_weapon()

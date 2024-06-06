@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://scripts/game/game.gd" id="1_v86ck"]
 [ext_resource type="PackedScene" uid="uid://igppcoxjdlgx" path="res://scenes/main_game/world.tscn" id="2_4dhyd"]
-[ext_resource type="PackedScene" uid="uid://b6c8fwsvm7b8k" path="res://scenes/player/player.tscn" id="2_6bvlu"]
 [ext_resource type="PackedScene" uid="uid://bg1pxarmy7iqs" path="res://scenes/npcs/enemies/enemy.tscn" id="4_sbnhw"]
+[ext_resource type="PackedScene" uid="uid://b6c8fwsvm7b8k" path="res://scenes/player/player.tscn" id="5_ony4e"]
 [ext_resource type="PackedScene" uid="uid://8k2i2vtgqbia" path="res://scenes/player/companion/companion.tscn" id="6_1y88y"]
 
 [node name="Game" type="Node2D"]
@@ -12,18 +12,12 @@ script = ExtResource("1_v86ck")
 
 [node name="World" parent="." instance=ExtResource("2_4dhyd")]
 
-[node name="Enemy3" parent="." instance=ExtResource("4_sbnhw")]
-position = Vector2(-25, -13)
-
-[node name="Enemy2" parent="." instance=ExtResource("4_sbnhw")]
-position = Vector2(206, 207)
-
-[node name="Enemy" parent="." instance=ExtResource("4_sbnhw")]
-position = Vector2(197, 33)
-
-[node name="Player" parent="." instance=ExtResource("2_6bvlu")]
-position = Vector2(-24, 155)
-
 [node name="Companion" parent="." instance=ExtResource("6_1y88y")]
 position = Vector2(65, 99)
 scale = Vector2(0.1, 0.1)
+
+[node name="Player" parent="." instance=ExtResource("5_ony4e")]
+position = Vector2(13, 98)
+
+[node name="Enemy" parent="." instance=ExtResource("4_sbnhw")]
+position = Vector2(356, 151)
