@@ -69,18 +69,15 @@ use_parent_material = true
 position = Vector2(1, 0)
 scale = Vector2(0.9, 0.9)
 texture = ExtResource("4_ipwbq")
-flip_h = true
 hframes = 8
 vframes = 4
-frame = 22
+frame = 20
 
 [node name="Melee" type="Sprite2D" parent="Body"]
-show_behind_parent = true
 texture_filter = 1
-position = Vector2(2.22222, -5.55556)
-rotation = 9.8858
+position = Vector2(-6.66667, 12.2222)
+rotation = -5.6896
 texture = ExtResource("1_c4bl0")
-flip_h = true
 flip_v = true
 
 [node name="Aim" type="Marker2D" parent="Body"]
@@ -107,9 +104,9 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("6_q1wyy")
 
 [node name="MeleeMark" type="Sprite2D" parent="Body/Aim"]
+position = Vector2(8, -1)
 scale = Vector2(1.22222, 1.22222)
 texture = ExtResource("4_x23kg")
-flip_v = true
 hframes = 9
 vframes = 3
 

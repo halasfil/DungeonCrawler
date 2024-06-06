@@ -59,7 +59,6 @@ var HEALTH : int = 100
 #region main functions
 func _ready():
 	MELEE_COLISION.disabled = true
-
 func _physics_process(_delta):
 	aim()
 	show_proper_weapon()

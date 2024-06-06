@@ -65,11 +65,6 @@ func _ready():
 	else:
 		MELEE.visible = true
 		RANGED.visible = false
-	for animName in ANIMATION.get_animation_list():
-		var a : Animation = ANIMATION.get_animation(animName)
-		print(animName)
-		print(a.length)
-	
 	
 func _physics_process(_delta):
 	if (STATE != STATES.ATTACKING && velocity == Vector2.ZERO  && !IS_ATTACKING):

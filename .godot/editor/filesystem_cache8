@@ -1,5 +1,5 @@
 fc8a56933c4b1c8d796fdb8f7a9f9475
-::res://::1717675899
+::res://::1717704906
 export libresprite.txt::TextFile::-1::1716376961::0::1::::<><>::
 export_presets.cfg::TextFile::-1::1716376961::0::1::::<><>::
 godot_logo.png::CompressedTexture2D::974734046528578901::1716376961::1716376961::1::::<><>::
@@ -11,9 +11,9 @@ format_preference.tres::Resource::2443017758653084256::1716376965::0::1::::<><>:
 format_shortcut.tres::Shortcut::1193932290107965748::1716376965::0::1::::<><>::
 gdscript_formatter.gd::GDScript::-1::1716376965::0::1::::<>EditorPlugin<>::
 plugin.cfg::TextFile::-1::1716376965::0::1::::<><>::
-::res://animations/::1717675855
-enemy_animations.res::AnimationLibrary::1889987179196956176::1717673790::0::1::::<><>::
-player_animations.res::AnimationLibrary::8095094292175534254::1717675855::0::1::::<><>::uid://ctdbdhj24j238::::res://animations/player/attack_b_melee_1_anticipation.res<>uid://bkf3myrk27wo7::::res://animations/player/attack_b_melee_1_L_anticipation.res<>uid://c203nrbndxikh::::res://animations/player/attack_b_melee_2.res<>uid://ctwdwwdfympty::::res://animations/player/attack_b_melee_2_anticipation.res<>uid://dcdpxqoa83m2g::::res://animations/player/attack_b_melee_2_L_anticipation.res<>uid://cpeqlw7w1mpv7::::res://animations/player/attack_b_ranged.res<>uid://bydbicjvfcdei::::res://animations/player/attack_b_ranged_anticipation.res<>uid://cquk3o1dbbwpu::::res://animations/player/attack_f_melee_1.res<>uid://gqn8eb5ehg1x::::res://animations/player/attack_f_melee_1_anticipation.res<>uid://d560keg2rwl::::res://animations/player/attack_f_melee_1_L_anticipation.res<>uid://b3gb0u6y3eh4u::::res://animations/player/attack_f_melee_2.res<>uid://tqt37vr6h6pa::::res://animations/player/attack_f_melee_2_L_anticipation.res<>uid://b7pe66agrndpl::::res://animations/player/attack_f_melee_2_anticipation.res<>uid://8qs05ajgwgip::::res://animations/player/run_f_L.res<>uid://co0cl475bwlyf::::res://animations/player/RESET.res<>uid://di2p1um7rrmqa::::res://animations/player/attack_f_ranged.res<>uid://c1pgje2b646lw::::res://animations/player/attack_f_ranged_anticipation.res<>uid://dy1d5jwq7o807::::res://animations/player/death.res<>uid://xq5mjlmifu8w::::res://animations/player/idle_b.res<>uid://yd8drmt4jbpg::::res://animations/player/idle_b_L.res<>uid://bxod0dsj07hfh::::res://animations/player/idle_f.res<>uid://b6v1pfacah371::::res://animations/player/idle_f_L.res<>uid://dtf85046wnvo8::::res://animations/player/roll_b.res<>uid://bu1krhg824pfn::::res://animations/player/roll_f.res<>uid://blyy2u6i31df7::::res://animations/player/run_b.res<>uid://hh3md0h6u2ml::::res://animations/player/run_b_L.res<>uid://dlsusjrld48g1::::res://animations/player/run_f.res<>uid://lfvau0as7g88::::res://animations/player/attack_b_melee_1.res
+::res://animations/::1717676574
+enemy_animations.res::AnimationLibrary::1889987179196956176::1717676574::0::1::::<><>::
+player_animations.res::AnimationLibrary::8095094292175534254::1717676564::0::1::::<><>::uid://ctdbdhj24j238::::res://animations/player/attack_b_melee_1_anticipation.res<>uid://bkf3myrk27wo7::::res://animations/player/attack_b_melee_1_L_anticipation.res<>uid://c203nrbndxikh::::res://animations/player/attack_b_melee_2.res<>uid://ctwdwwdfympty::::res://animations/player/attack_b_melee_2_anticipation.res<>uid://dcdpxqoa83m2g::::res://animations/player/attack_b_melee_2_L_anticipation.res<>uid://cpeqlw7w1mpv7::::res://animations/player/attack_b_ranged.res<>uid://bydbicjvfcdei::::res://animations/player/attack_b_ranged_anticipation.res<>uid://cquk3o1dbbwpu::::res://animations/player/attack_f_melee_1.res<>uid://gqn8eb5ehg1x::::res://animations/player/attack_f_melee_1_anticipation.res<>uid://d560keg2rwl::::res://animations/player/attack_f_melee_1_L_anticipation.res<>uid://b3gb0u6y3eh4u::::res://animations/player/attack_f_melee_2.res<>uid://tqt37vr6h6pa::::res://animations/player/attack_f_melee_2_L_anticipation.res<>uid://b7pe66agrndpl::::res://animations/player/attack_f_melee_2_anticipation.res<>uid://8qs05ajgwgip::::res://animations/player/run_f_L.res<>uid://co0cl475bwlyf::::res://animations/player/RESET.res<>uid://di2p1um7rrmqa::::res://animations/player/attack_f_ranged.res<>uid://c1pgje2b646lw::::res://animations/player/attack_f_ranged_anticipation.res<>uid://dy1d5jwq7o807::::res://animations/player/death.res<>uid://xq5mjlmifu8w::::res://animations/player/idle_b.res<>uid://yd8drmt4jbpg::::res://animations/player/idle_b_L.res<>uid://bxod0dsj07hfh::::res://animations/player/idle_f.res<>uid://b6v1pfacah371::::res://animations/player/idle_f_L.res<>uid://dtf85046wnvo8::::res://animations/player/roll_b.res<>uid://bu1krhg824pfn::::res://animations/player/roll_f.res<>uid://blyy2u6i31df7::::res://animations/player/run_b.res<>uid://hh3md0h6u2ml::::res://animations/player/run_b_L.res<>uid://dlsusjrld48g1::::res://animations/player/run_f.res<>uid://lfvau0as7g88::::res://animations/player/attack_b_melee_1.res
 ::res://animations/enemy/::1717671687
 attack_b_melee_1.res::Animation::8968508969008788520::1717504347::0::1::::<><>::
 attack_b_melee_1_anticipation.res::Animation::458793145497600197::1717504347::0::1::::<><>::
@@ -43,7 +43,7 @@ run_b.res::Animation::8007516161152838350::1717504347::0::1::::<><>::
 run_b_L.res::Animation::3846166333017223444::1717504347::0::1::::<><>::
 run_f.res::Animation::7027944936769857687::1717504347::0::1::::<><>::
 run_f_L.res::Animation::82814598573338062::1717504347::0::1::::<><>::
-::res://animations/player/::1717675788
+::res://animations/player/::1717675983
 attack_b_melee_1.res::Animation::783675314749183995::1717675788::0::1::::<><>::
 attack_b_melee_1_anticipation.res::Animation::6112688986978064765::1717675788::0::1::::<><>::
 attack_b_melee_1_L_anticipation.res::Animation::3100353801481841028::1717675788::0::1::::<><>::
@@ -68,7 +68,7 @@ idle_f_L.res::Animation::4607232460735791938::1717672177::0::1::::<><>::
 player_animations2.res::AnimationLibrary::2370072529995144413::1717671799::0::1::::<><>::
 player_animations3.res::AnimationLibrary::2370072529995144413::1717671799::0::1::::<><>::
 player_animationsxx.res::AnimationLibrary::2370072529995144413::1717671799::0::1::::<><>::
-RESET.res::Animation::5807237273864809441::1717674722::0::1::::<><>::
+RESET.res::Animation::5807237273864809441::1717675983::0::1::::<><>::
 roll_b.res::Animation::8505230562872172473::1717673704::0::1::::<><>::
 roll_f.res::Animation::3844509284952235691::1717673704::0::1::::<><>::
 run_b.res::Animation::3209549552828585382::1717672177::0::1::::<><>::
@@ -133,8 +133,8 @@ world.tscn::PackedScene::574834685159822871::1717673824::0::1::::<><>::res://scr
 ::res://scenes/npcs/::1711108662
 ::res://scenes/npcs/enemies/::1717675789
 enemy.tscn::PackedScene::2862179422118398866::1717675789::0::1::::<><>::uid://cjdpvmlcrvv3v::::res://assets/npcs/enemies/draugr/axe.png<>res://scripts/npcs/enemies/basic_enemy_script.gd<>uid://dbsetw5t502di::::res://scenes/player_enemy_utils/states_and_helpers.tscn<>uid://bkvpjywumjy8::::res://assets/player/death.png<>uid://b6lr05vr7s571::::res://assets/npcs/enemies/draugr/fallen_1.png<>uid://gocm6goif27y::::res://assets/player/attack.png<>uid://cvb5dv74gytgo::::res://assets/npcs/enemies/draugr/draugh_shadow.png<>uid://cgbk02q34tlg::::res://assets/player/pointer.png<>res://scripts/player_enemy_utils/damage_taker.gd<>uid://dhaytpklv7tjl::::res://assets/weapons/bow.png<>uid://d4bwjtkob7e08::::res://assets/weapons/bow_line.png<>res://scripts/player_enemy_utils/melee_area.gd<>uid://16r2vq1xngvw::::res://animations/enemy_animations.res<>uid://bemgp0wlfvjp3::::res://assets/vfx/light.png
-::res://scenes/player/::1717675788
-player.tscn::PackedScene::4568417366002664912::1717675788::0::1::::<><>::res://scripts/player/player.gd<>uid://dbsetw5t502di::::res://scenes/player_enemy_utils/states_and_helpers.tscn<>uid://xnje4uggyijj::::res://scenes/ui/ui.tscn<>res://scripts/player_enemy_utils/damage_taker.gd<>uid://dne3vti22ebde::::res://assets/player/skins/no_armor.png<>uid://caj4h63ekp5s6::::res://assets/player/shadow.png<>uid://bkvpjywumjy8::::res://assets/player/death.png<>uid://dvuh36y2rqr5k::::res://assets/weapons/axe.png<>uid://dhaytpklv7tjl::::res://assets/weapons/bow.png<>uid://cgbk02q34tlg::::res://assets/player/pointer.png<>uid://gocm6goif27y::::res://assets/player/attack.png<>uid://d4bwjtkob7e08::::res://assets/weapons/bow_line.png<>uid://dnllaxpikthik::::res://animations/player_animations.res<>uid://bemgp0wlfvjp3::::res://assets/vfx/light.png<>res://scripts/player_enemy_utils/melee_area.gd
+::res://scenes/player/::1717676566
+player.tscn::PackedScene::4568417366002664912::1717676566::0::1::::<><>::res://scripts/player/player.gd<>uid://dbsetw5t502di::::res://scenes/player_enemy_utils/states_and_helpers.tscn<>uid://xnje4uggyijj::::res://scenes/ui/ui.tscn<>res://scripts/player_enemy_utils/damage_taker.gd<>uid://dne3vti22ebde::::res://assets/player/skins/no_armor.png<>uid://caj4h63ekp5s6::::res://assets/player/shadow.png<>uid://bkvpjywumjy8::::res://assets/player/death.png<>uid://dvuh36y2rqr5k::::res://assets/weapons/axe.png<>uid://dhaytpklv7tjl::::res://assets/weapons/bow.png<>uid://cgbk02q34tlg::::res://assets/player/pointer.png<>uid://gocm6goif27y::::res://assets/player/attack.png<>uid://d4bwjtkob7e08::::res://assets/weapons/bow_line.png<>uid://dnllaxpikthik::::res://animations/player_animations.res<>uid://bemgp0wlfvjp3::::res://assets/vfx/light.png<>res://scripts/player_enemy_utils/melee_area.gd
 projectile.tscn::PackedScene::3271327525112304482::1716376960::0::1::::<><>::res://scripts/player/weapons/projectile.gd<>uid://bemgp0wlfvjp3::::res://assets/vfx/light.png
 ::res://scenes/player/companion/::1716376960
 companion.tscn::PackedScene::2338530714194868116::1716376960::0::1::::<><>::uid://bemgp0wlfvjp3::::res://assets/vfx/light.png<>res://scripts/player/companion/companion.gd
@@ -151,8 +151,8 @@ menu_button.tscn::PackedScene::5146501043820196553::1716376960::0::1::::<><>::re
 quick_item_button.tscn::PackedScene::8185728844276435224::1716376960::0::1::::<><>::uid://cloqpwjbujk54::::res://assets/ui/SmallHandleFilled.png<>res://scripts/ui/quick_item_button.gd
 skill_button.tscn::PackedScene::2748298999065410617::1716376960::0::1::::<><>::res://scripts/ui/skill_button.gd<>uid://cloqpwjbujk54::::res://assets/ui/SmallHandleFilled.png
 ui.tscn::PackedScene::1641735464942865595::1717673582::0::1::::<><>::res://scripts/ui/ui.gd<>uid://cyv2gg81gj43k::::res://scenes/ui/joystick.tscn<>uid://cs1jy6ddmkpc8::::res://scenes/ui/attack_button.tscn<>uid://dovh01m70itsy::::res://scenes/ui/quick_item_button.tscn<>uid://c2rcdshq4xw37::::res://scenes/ui/dodge_button.tscn<>uid://bffkc26tki3jx::::res://scenes/ui/skill_button.tscn<>uid://cflaedboq6efx::::res://scenes/ui/menu_button.tscn<>uid://cptn6wixbwlha::::res://scenes/ui/inventory_button.tscn<>uid://phoxfhoi5d6q::::res://scenes/ui/inventory.tscn
-::res://scenes/vfx/::1717675789
-fog.gdshader::Shader::-1::1717675789::0::1::::<><>::
+::res://scenes/vfx/::1717676579
+fog.gdshader::Shader::-1::1717676579::0::1::::<><>::
 fog.tscn::PackedScene::4615931556493096465::1716376961::0::1::::<><>::res://scenes/vfx/fog.gdshader
 ::res://scripts/::1715378920
 ::res://scripts/game/::1716376961
