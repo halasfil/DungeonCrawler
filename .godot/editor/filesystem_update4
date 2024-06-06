@@ -1,14 +1,11 @@
+res://scripts/npcs/enemies/basic_enemy_script.gd
 res://scenes/player/player.tscn
 res://scripts/player/companion/companion.gd
 res://themes/ui/button_inventory_style.tres
 res://themes/ui/button_inventory_style_font_30.tres
 res://animations/enemy_animations.res
 res://scenes/vfx/fog.gdshader
-res://scripts/npcs/enemies/basic_enemy_script.gd
-res://scripts/player/player.gd
 res://scenes/npcs/enemies/enemy.tscn
 res://scenes/main_game/game.tscn
-res://scripts/npcs/enemies/basic_enemy_parent_resource.gd
-res://animations/player/attack_f_melee_1.res
-res://animations/player_animations.res
-res://animations/player/attack_f_melee_2.res
+res://scripts/player_enemy_utils/AnimationHelper.gd
+res://scenes/player_enemy_utils/states_and_helpers.tscn

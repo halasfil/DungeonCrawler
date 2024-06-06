@@ -193,6 +193,8 @@ func _on_navigation_agent_2d_velocity_computed(safe_velocity : Vector2):
 		velocity = safe_velocity * .66
 		STATE = STATES.WALKING
 		move_and_slide()
+	elif (!SEE_PLAYER && HEALTH > 0 && STATE != STATES.ATTACKING):
+		STATE = STATES.IDLE
 	
 func perform_knockback():
 	var weaponKickback: int = EQUIPPED_WEAPON.weaponKickback;
