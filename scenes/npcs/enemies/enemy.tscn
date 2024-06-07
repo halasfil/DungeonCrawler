@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dhaytpklv7tjl" path="res://assets/weapons/bow.png" id="7_30m7o"]
 [ext_resource type="Texture2D" uid="uid://d4bwjtkob7e08" path="res://assets/weapons/bow_line.png" id="8_2slyb"]
 [ext_resource type="Script" path="res://scripts/player_enemy_utils/melee_area.gd" id="9_fc2de"]
-[ext_resource type="AnimationLibrary" uid="uid://16r2vq1xngvw" path="res://animations/enemy_animations.res" id="13_7q48m"]
+[ext_resource type="AnimationLibrary" uid="uid://mnyqabk27sjw" path="res://animations/enemy_animations.tres" id="13_3bvut"]
 [ext_resource type="Texture2D" uid="uid://bemgp0wlfvjp3" path="res://assets/vfx/light.png" id="14_jtoal"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o3gem"]
@@ -72,12 +72,13 @@ texture = ExtResource("4_ipwbq")
 flip_h = true
 hframes = 8
 vframes = 4
-frame = 20
+frame = 3
 
 [node name="Melee" type="Sprite2D" parent="Body"]
+show_behind_parent = true
 texture_filter = 1
-position = Vector2(7.77778, 11.1111)
-rotation = -0.782877
+position = Vector2(-6, -2)
+rotation = 0.507229
 texture = ExtResource("1_c4bl0")
 flip_v = true
 
@@ -108,6 +109,7 @@ texture = ExtResource("6_q1wyy")
 position = Vector2(8, -1)
 scale = Vector2(1.22222, 1.22222)
 texture = ExtResource("4_x23kg")
+flip_v = true
 hframes = 9
 vframes = 3
 
@@ -159,7 +161,7 @@ show_percentage = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"enemy_animations": ExtResource("13_7q48m")
+"enemy_animations": ExtResource("13_3bvut")
 }
 
 [node name="NavigationArea" type="Area2D" parent="."]
@@ -173,11 +175,12 @@ wait_time = 0.8
 autostart = true
 
 [node name="light" type="PointLight2D" parent="."]
+color = Color(1, 0.345098, 0.278431, 1)
 energy = 0.6
 shadow_filter = 1
 shadow_filter_smooth = 5.0
 texture = ExtResource("14_jtoal")
-texture_scale = 0.4
+texture_scale = 0.6
 
 [connection signal="body_entered" from="Body/Aim/MeleeArea" to="Body/Aim/MeleeArea" method="_on_body_entered"]
 [connection signal="body_entered" from="Body/Aim/MeleeDetector" to="." method="_on_melee_detector_body_entered"]

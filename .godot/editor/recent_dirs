@@ -1,6 +1,7 @@
+res://animations
+res://test
 res://scenes/npcs/enemies
 res://
-res://animations
 res://animations/player
 res://animations/enemy
 res://scenes/player_enemy_utils
