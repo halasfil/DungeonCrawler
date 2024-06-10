@@ -37,8 +37,7 @@ enum STATES {
 	WALKING,
 	ATTACKING,
 	RUN_AWAY,
-	FEAR,
-	DYING
+	FEAR
 }
 var DIRECTION_FACING : int = STATES_AND_HELPERS.DIRECTIONS.DOWN_R
 var STATE : STATES = STATES.IDLE
@@ -46,6 +45,7 @@ var STATE : STATES = STATES.IDLE
 var KNOCKBACK : bool = false
 var IS_ATTACKING : bool = false
 var SEE_PLAYER : bool = false
+var IS_DYING : bool = false
 
 @onready
 var EQUIPPED_WEAPON : Weapon = ENEMY_RESOURCE.weapon
@@ -67,12 +67,12 @@ func _ready():
 		RANGED.visible = false
 	
 func _physics_process(_delta):
+	if (IS_DYING):
+		await die()
 	if (STATE != STATES.ATTACKING && velocity == Vector2.ZERO  && !IS_ATTACKING):
 		STATE = STATES.IDLE
 	if (STATE == STATES.IDLE && !IS_ATTACKING):
 		idle()
-	if (STATE == STATES.DYING && !IS_ATTACKING):
-		await die()
 	if (STATE == STATES.ATTACKING && !IS_ATTACKING):
 		await attack()
 	if (STATE == STATES.WALKING && !IS_ATTACKING):
@@ -125,8 +125,8 @@ func chase():
 	
 func die():
 	if (HEALTH <= 0):
-		ANIMATION.play("death")
-		await ANIMATION.animation_finished
+		HEALTH_BAR.visible = false
+		await STATES_AND_HELPERS.ANIMATION_HELPER.play_death_animation(self)
 		queue_free()
 
 func idle():
@@ -151,7 +151,7 @@ func take_damage(min_damage : int, max_damage : int, pushback_strength : int, at
 		var damage : int = DAMAGE_TAKER.calculate_damage(min_damage, max_damage)
 		HEALTH -= damage
 		if (HEALTH <= 0):
-			STATE = STATES.DYING
+			IS_DYING = true
 		hit_effect()
 		perform_pushback(attacker, pushback_strength)
 

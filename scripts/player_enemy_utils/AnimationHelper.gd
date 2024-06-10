@@ -85,6 +85,11 @@ func play_ranged_animation(parent):
 		ATTACK_STATE.anticipate_and_attack(get_proper_animation(parent, "attack_b_ranged_anticipation"), 
 		get_proper_animation(parent, "enemy_animations/attack_b_ranged"), parent)
 
+func play_death_animation(parent):
+	var ANIMATION : AnimationPlayer = parent.ANIMATION
+	ANIMATION.play(get_proper_animation(parent, "death"))
+	await ANIMATION.animation_finished
+
 func get_proper_animation(parent, animation_name : String) -> String:
 	if parent is BasicEnemy:
 		return "enemy_animations/" + animation_name
