@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b6c8fwsvm7b8k"]
+[gd_scene load_steps=16 format=3 uid="uid://b6c8fwsvm7b8k"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_m7pnm"]
 [ext_resource type="PackedScene" uid="uid://dbsetw5t502di" path="res://scenes/player_enemy_utils/states_and_helpers.tscn" id="2_empq7"]
@@ -11,7 +11,6 @@
 [ext_resource type="Texture2D" uid="uid://dhaytpklv7tjl" path="res://assets/weapons/bow.png" id="6_u5qqe"]
 [ext_resource type="Texture2D" uid="uid://cgbk02q34tlg" path="res://assets/player/pointer.png" id="8_qc8i0"]
 [ext_resource type="Texture2D" uid="uid://gocm6goif27y" path="res://assets/player/attack.png" id="9_gwh43"]
-[ext_resource type="Texture2D" uid="uid://d4bwjtkob7e08" path="res://assets/weapons/bow_line.png" id="10_q5tvm"]
 [ext_resource type="Texture2D" uid="uid://bemgp0wlfvjp3" path="res://assets/vfx/light.png" id="11_x5ct2"]
 [ext_resource type="Script" path="res://scripts/player_enemy_utils/melee_area.gd" id="13_3vpl0"]
 [ext_resource type="AnimationLibrary" uid="uid://cncs78k67axoj" path="res://animations/player_animations.tres" id="15_yo2e0"]
@@ -20,6 +19,7 @@
 radius = 5.0
 
 [node name="Player" type="CharacterBody2D"]
+position = Vector2(0, -2)
 script = ExtResource("1_m7pnm")
 
 [node name="DamageTakerComponent" type="Node" parent="."]
@@ -33,17 +33,6 @@ offset_top = -29.0
 offset_right = 23.0
 offset_bottom = -14.0
 text = "test"
-
-[node name="states" type="Label" parent="."]
-offset_left = -141.0
-offset_top = -70.0
-offset_right = -47.0
-offset_bottom = 17.0
-text = "0IDLE,
-	1WALKING,
-	2DODGING,
-	3ATTACKING,
-	4ACTION"
 
 [node name="Ui" parent="." instance=ExtResource("2_gpood")]
 position = Vector2(0, 41)
@@ -66,31 +55,24 @@ texture = ExtResource("3_38y77")
 flip_h = true
 hframes = 8
 vframes = 4
-frame = 3
+frame = 27
 
 [node name="Melee" type="Sprite2D" parent="Body"]
 show_behind_parent = true
 texture_filter = 1
-position = Vector2(-6, -2)
-rotation = 0.507229
+position = Vector2(2.22222, -5.55556)
+rotation = 9.8858
 texture = ExtResource("5_a3hnl")
+flip_h = true
 flip_v = true
 
 [node name="Aim" type="Marker2D" parent="Body"]
 position = Vector2(-1, 2)
 
 [node name="Ranged" type="Sprite2D" parent="Body/Aim"]
-show_behind_parent = true
 texture_filter = 1
-position = Vector2(5, -1)
+position = Vector2(6, 1)
 texture = ExtResource("6_u5qqe")
-
-[node name="RangedMark" type="Sprite2D" parent="Body/Aim/Ranged"]
-show_behind_parent = true
-texture_filter = 1
-position = Vector2(1.66667, -1.77778)
-texture = ExtResource("10_q5tvm")
-hframes = 3
 
 [node name="Pointer" type="Sprite2D" parent="Body/Aim"]
 texture_filter = 1
@@ -114,7 +96,6 @@ script = ExtResource("13_3vpl0")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Body/Aim/MeleeArea"]
 position = Vector2(24.3333, 0.222222)
 polygon = PackedVector2Array(-8.88889, 14.4444, 2.22222, 2.22222, 2.22222, -2.22222, -8.88889, -14.4444, -17.7777, -3.33333, -17.7777, 7.77778)
-disabled = true
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(1, 2)
@@ -131,6 +112,7 @@ editor_draw_limits = true
 wait_time = 2.0
 
 [node name="light" type="PointLight2D" parent="."]
+position = Vector2(6, -8)
 energy = 0.6
 shadow_filter = 1
 shadow_filter_smooth = 5.0

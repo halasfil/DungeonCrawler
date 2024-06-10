@@ -11,3 +11,5 @@ enum DIRECTIONS {
 var ANIMATION_HELPER : AnimationHelper = $AnimationHelper
 @onready
 var ATTACK_STATE : AttackState = $AttackState
+@onready
+var PROJECTILE_HELPER : ProjectileHelper = $ProjectilesHelper

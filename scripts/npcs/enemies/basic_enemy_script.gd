@@ -52,17 +52,20 @@ var EQUIPPED_WEAPON : Weapon = ENEMY_RESOURCE.weapon
 @onready
 var HEALTH : int = ENEMY_RESOURCE.health
 @onready
-var IS_RANGED : bool = EQUIPPED_WEAPON.isWeaponRanged
+var IS_RANGED : bool = ENEMY_RESOURCE.weapon.isWeaponRanged
 @onready
 var WALKING_SPEED : int = ENEMY_RESOURCE.walkingSpeed
 
 func _ready():
 	HEALTH_BAR.max_value = HEALTH
-	EQUIPPED_WEAPON.weaponAnticipationTime = EQUIPPED_WEAPON.weaponAnticipationTime * 3
+	ENEMY_RESOURCE.weapon.weaponAnticipationTime = ENEMY_RESOURCE.weapon.weaponAnticipationTime * 3
+
 	if (IS_RANGED):
+		RANGED.texture = ENEMY_RESOURCE.weapon.itemSprite
 		MELEE.visible = false
 		RANGED.visible = true
 	else:
+		MELEE.texture = ENEMY_RESOURCE.weapon.itemSprite
 		MELEE.visible = true
 		RANGED.visible = false
 	
@@ -137,6 +140,7 @@ func attack():
 	velocity = Vector2.ZERO
 	if (IS_RANGED):
 		await STATES_AND_HELPERS.ANIMATION_HELPER.play_ranged_animation(self)
+		STATES_AND_HELPERS.PROJECTILE_HELPER.shoot_projectile(POINTER.global_position, AIM.rotation, ENEMY_RESOURCE.weapon.projectileModel, position)
 	else:
 		await STATES_AND_HELPERS.ANIMATION_HELPER.play_melee_attack_animation(self)
 	await ANIMATION.animation_finished
@@ -197,7 +201,7 @@ func _on_navigation_agent_2d_velocity_computed(safe_velocity : Vector2):
 		STATE = STATES.IDLE
 	
 func perform_knockback():
-	var weaponKickback: int = EQUIPPED_WEAPON.weaponKickback;
+	var weaponKickback: int = ENEMY_RESOURCE.weapon.weaponKickback;
 	var aim_position : Vector2 = POINTER.global_position
 	var direction : Vector2 = (aim_position - position).normalized()
 	direction = direction * -1 * weaponKickback

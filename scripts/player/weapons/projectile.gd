@@ -11,12 +11,7 @@ var ANIMATION_PLAYER: AnimationPlayer = $AnimationPlayer
 var STATE: STATES = STATES.FLYING;
 @onready
 var LIGHT: PointLight2D = $PointLight2D
-@onready
-var MAX_DAMAGE: int = 1;
-@onready
-var MIN_DAMAGE: int = 1;
-@onready
-var PUSHBACK_STRENGTH: int = 1;
+var PROJECTILE : ProjectileModel
 @onready
 var SKIN: Sprite2D = $Sprite2D
 @onready
@@ -57,4 +52,4 @@ func _on_area_2d_body_entered(body):
 	if (body.has_method("take_damage")):
 		if (SHOOTER&&SHOOTER != body):
 			destroy()
-			body.take_damage(MIN_DAMAGE, MAX_DAMAGE, PUSHBACK_STRENGTH, self)
+			body.take_damage(PROJECTILE.minDamage, PROJECTILE.maxDamage, PROJECTILE.weaponPushback, self)

@@ -14,17 +14,4 @@ func _init() -> void:
 	false, 
 	5, 
 	.15, 
-	null, 
 	null)
-
-	#nameWeapon : String, 
-	#minDamage : int, 
-	#maxDamage : int, 
-	#kickback : int, 
-	#pushback : int,
-	#priceWeapon : int,
-	#sprite : CompressedTexture2D,
-	#ranged : bool,
-	#weightWeapon : int,
-	#anticipationTime : float,
-	#projectile_sprite : CompressedTexture2D

@@ -83,7 +83,7 @@ func play_ranged_animation(parent):
 	elif (parent.DIRECTION_FACING == STATES_AND_HELPERS.DIRECTIONS.UP_L):
 		parent.BODY.flip_h = true
 		ATTACK_STATE.anticipate_and_attack(get_proper_animation(parent, "attack_b_ranged_anticipation"), 
-		get_proper_animation(parent, "enemy_animations/attack_b_ranged"), parent)
+		get_proper_animation(parent, "attack_b_ranged"), parent)
 
 func play_death_animation(parent):
 	var ANIMATION : AnimationPlayer = parent.ANIMATION

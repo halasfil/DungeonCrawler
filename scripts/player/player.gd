@@ -19,8 +19,6 @@ var MELEE : Sprite2D = $Body/Melee
 @onready
 var RANGED : Sprite2D = $Body/Aim/Ranged
 @onready
-var RANGED_MARK : Sprite2D = $Body/Aim/Ranged/RangedMark
-@onready
 var AIM = $Body/Aim
 @onready 
 var UI : Ui = $Ui
@@ -46,7 +44,7 @@ var POINTER : Sprite2D = $Body/Aim/Pointer
 var STATES_AND_HELPERS : StatesAndHelpers = $StatesAndHelpers
 @onready
 var DAMAGE_TAKER : DamageTakerComponent = $DamageTakerComponent
-var PROJECTILE_SCENE : PackedScene = preload("res://scenes/player/projectile.tscn")
+
 var CAN_DODGE : bool = true
 var STATE : int = STATES.IDLE
 var DIRECTION_FACING : int = STATES_AND_HELPERS.DIRECTIONS.DOWN_R
@@ -130,8 +128,6 @@ func check_equipped_weapon():
 	if EQUIPPED_WEAPON:
 		MELEE.texture = EQUIPPED_WEAPON.itemSprite
 		RANGED.texture = EQUIPPED_WEAPON.itemSprite
-		if EQUIPPED_WEAPON.isWeaponRanged:
-			RANGED_MARK.texture = EQUIPPED_WEAPON.animationForRangedSprite
 func show_proper_weapon():
 	if (STATE != STATES.DODGING && STATE != STATES.ACTION && EQUIPPED_WEAPON != null):
 		if (EQUIPPED_WEAPON.isWeaponRanged == false):
@@ -165,20 +161,7 @@ func perform_knockback():
 #region ranged attack
 func perform_ranged_attack():
 	await STATES_AND_HELPERS.ANIMATION_HELPER.play_ranged_animation(self)
-	shoot_projectile()
-func shoot_projectile():
-	var projectile : Projectile = PROJECTILE_SCENE.instantiate()
-	get_parent().add_child(projectile)
-	projectile.global_position = POINTER.global_position
-	projectile.rotation = AIM.rotation
-	projectile.MIN_DAMAGE = EQUIPPED_WEAPON.weaponMinDamage
-	projectile.MAX_DAMAGE = EQUIPPED_WEAPON.weaponMaxDamage
-	projectile.PROJECTILE_SPRITE = EQUIPPED_WEAPON.projectileSprite
-	projectile.PUSHBACK_STRENGTH = EQUIPPED_WEAPON.weaponPushback
-	projectile.SHOOTER = self
-	var aimPositon : Vector2 = POINTER.global_position
-	var shootAngle : Vector2 = (aimPositon - position).normalized()
-	projectile.velocity =  shootAngle * 3
+	STATES_AND_HELPERS.PROJECTILE_HELPER.shoot_projectile(POINTER.global_position, AIM.rotation, EQUIPPED_WEAPON.projectileModel, position)
 #endregion
 #region walking
 func walk_or_idle():

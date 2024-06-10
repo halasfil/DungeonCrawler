@@ -1,3 +1,4 @@
+Node
 Camera2D
 RayCast2D
 CollisionShape2D
@@ -7,9 +8,7 @@ NavigationRegion2D
 Label
 Control
 NavigationObstacle2D
-Node
 NavigationAgent2D
 Timer
 CollisionPolygon2D
 Sprite2D
-ProgressBar

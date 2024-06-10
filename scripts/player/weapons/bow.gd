@@ -1,13 +1,19 @@
 class_name Bow extends Weapon
 
 var sprite : CompressedTexture2D = preload("res://assets/weapons/bow.png")
-var projectile : CompressedTexture2D = preload("res://assets/weapons/arrow.png")
-var bowLine : CompressedTexture2D = preload("res://assets/weapons/bow_line.png")
+var mindmg : int = 1
+var maxdmg : int = 3
+var push : int = -2
 
+var projectile : ProjectileModel = ProjectileModel.new(
+	preload("res://assets/weapons/arrow.png"),
+	mindmg,
+	maxdmg,
+	push,
+	1.0)
+	
 func _init() -> void: 
-	super("Bow", 1, 3, 5, -2, 8, sprite, true, 4, .1, projectile, bowLine)
-
-
+	super("Bow", mindmg, maxdmg, 5, push, 8, sprite, true, 4, .1, projectile)
 	#nameWeapon : String, 
 	#minDamage : int, 
 	#maxDamage : int, 
@@ -18,4 +24,3 @@ func _init() -> void:
 	#ranged : bool,
 	#weightWeapon : int,
 	#anticipationTime : float,
-	#projectile_sprite : CompressedTexture2D
