@@ -55,13 +55,12 @@ texture = ExtResource("3_38y77")
 flip_h = true
 hframes = 8
 vframes = 4
-frame = 27
+frame = 6
 
 [node name="Melee" type="Sprite2D" parent="Body"]
-show_behind_parent = true
 texture_filter = 1
-position = Vector2(2.22222, -5.55556)
-rotation = 9.8858
+position = Vector2(6.66667, -4.44445)
+rotation = 3.4383
 texture = ExtResource("5_a3hnl")
 flip_h = true
 flip_v = true
@@ -70,8 +69,9 @@ flip_v = true
 position = Vector2(-1, 2)
 
 [node name="Ranged" type="Sprite2D" parent="Body/Aim"]
+visible = false
 texture_filter = 1
-position = Vector2(6, 1)
+position = Vector2(3.22222, 0.222222)
 texture = ExtResource("6_u5qqe")
 
 [node name="Pointer" type="Sprite2D" parent="Body/Aim"]
@@ -82,6 +82,7 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("8_qc8i0")
 
 [node name="MeleeMark" type="Sprite2D" parent="Body/Aim"]
+visible = false
 texture_filter = 2
 position = Vector2(8, -1)
 scale = Vector2(1.22222, 1.22222)
@@ -89,6 +90,7 @@ texture = ExtResource("9_gwh43")
 flip_v = true
 hframes = 9
 vframes = 3
+frame = 1
 
 [node name="MeleeArea" type="Area2D" parent="Body/Aim"]
 script = ExtResource("13_3vpl0")

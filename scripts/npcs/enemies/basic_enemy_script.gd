@@ -59,7 +59,6 @@ var WALKING_SPEED : int = ENEMY_RESOURCE.walkingSpeed
 func _ready():
 	HEALTH_BAR.max_value = HEALTH
 	ENEMY_RESOURCE.weapon.weaponAnticipationTime = ENEMY_RESOURCE.weapon.weaponAnticipationTime * 3
-
 	if (IS_RANGED):
 		RANGED.texture = ENEMY_RESOURCE.weapon.itemSprite
 		MELEE.visible = false

@@ -17,38 +17,19 @@ func play_idle_animation(parent):
 		ANIMATION.play(get_proper_animation(parent, "idle_b_L"))
 
 func play_melee_attack_animation(parent):
-	var randomizer : RandomNumberGenerator = RandomNumberGenerator.new()
-	randomizer.randomize()
-	var attackType = randomizer.randi_range(0,1)
 	if (parent.DIRECTION_FACING == STATES_AND_HELPERS.DIRECTIONS.DOWN_R):
-		if (attackType == 1):
-			await ATTACK_STATE.anticipate_and_attack(get_proper_animation(parent, "attack_f_melee_1_anticipation"), 
-			get_proper_animation(parent, "attack_f_melee_1"), parent)
-		else:
-			await ATTACK_STATE.anticipate_and_attack(get_proper_animation(parent, "attack_f_melee_2_anticipation"), 
-			get_proper_animation(parent, "attack_f_melee_2"), parent)
+		await ATTACK_STATE.anticipate_and_attack(get_proper_animation(parent, "attack_f_melee_1_anticipation"), 
+		get_proper_animation(parent, "attack_f_melee_1"), parent)
 	elif (parent.DIRECTION_FACING == STATES_AND_HELPERS.DIRECTIONS.DOWN_L):
-		if (attackType == 1):
-			await ATTACK_STATE.anticipate_and_attack(get_proper_animation(parent, "attack_f_melee_1_L_anticipation"), 
-			get_proper_animation(parent, "attack_f_melee_1_L"), parent)
-		else:
-			await ATTACK_STATE.anticipate_and_attack(get_proper_animation(parent, "attack_f_melee_2_L_anticipation"), 
-			get_proper_animation(parent, "attack_f_melee_2_L"), parent)
+		await ATTACK_STATE.anticipate_and_attack(get_proper_animation(parent, "attack_f_melee_1_L_anticipation"), 
+		get_proper_animation(parent, "attack_f_melee_1_L"), parent)
 	elif (parent.DIRECTION_FACING == STATES_AND_HELPERS.DIRECTIONS.UP_R):
-		if (attackType == 1):
-			await ATTACK_STATE.anticipate_and_attack(get_proper_animation(parent, "attack_b_melee_1_anticipation"), 
-			get_proper_animation(parent, "attack_b_melee_1"), parent)
-		else:
-			await ATTACK_STATE.anticipate_and_attack(get_proper_animation(parent, "attack_b_melee_2_anticipation"), 
-			get_proper_animation(parent, "attack_b_melee_2"), parent)
+		await ATTACK_STATE.anticipate_and_attack(get_proper_animation(parent, "attack_b_melee_1_anticipation"), 
+		get_proper_animation(parent, "attack_b_melee_1"), parent)
 	elif (parent.DIRECTION_FACING == STATES_AND_HELPERS.DIRECTIONS.UP_L):
-		if (attackType == 1):
-			await ATTACK_STATE.anticipate_and_attack(get_proper_animation(parent, "attack_b_melee_1_L_anticipation"), 
-			get_proper_animation(parent, "attack_b_melee_1_L"), parent)
-		else:
-			await ATTACK_STATE.anticipate_and_attack(get_proper_animation(parent, "attack_b_melee_2_L_anticipation"), 
-			get_proper_animation(parent, "attack_b_melee_2_L"), parent)
-			
+		await ATTACK_STATE.anticipate_and_attack(get_proper_animation(parent, "attack_b_melee_1_L_anticipation"), 
+		get_proper_animation(parent, "attack_b_melee_1_L"), parent)
+
 func play_walking_animation(parent):
 	if (parent.DIRECTION_FACING == STATES_AND_HELPERS.DIRECTIONS.DOWN_R):
 		parent.BODY.flip_h = false

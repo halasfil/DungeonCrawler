@@ -187,16 +187,16 @@ func dodge():
 		DODGE_BUTTON.modulate = Color(1,1,1,0.5)
 		if (DIRECTION_FACING == STATES_AND_HELPERS.DIRECTIONS.DOWN_R):
 			BODY.flip_h = false
-			ANIMATION.play("roll_f");
+			ANIMATION.play("player_animations/roll_f");
 		if (DIRECTION_FACING == STATES_AND_HELPERS.DIRECTIONS.DOWN_L):
 			BODY.flip_h = true
-			ANIMATION.play("roll_f");
+			ANIMATION.play("player_animations/roll_f");
 		if (DIRECTION_FACING == STATES_AND_HELPERS.DIRECTIONS.UP_L):
 			BODY.flip_h = false
-			ANIMATION.play("roll_b");
+			ANIMATION.play("player_animations/roll_b");
 		if (DIRECTION_FACING == STATES_AND_HELPERS.DIRECTIONS.UP_R):
 			BODY.flip_h = true
-			ANIMATION.play("roll_b");
+			ANIMATION.play("player_animations/roll_b");
 		DODGING = true
 		await ANIMATION.animation_finished
 		STATE = STATES.IDLE
@@ -207,7 +207,7 @@ func dodge():
 func perform_dodging():
 	var aim_position : Vector2 = POINTER.global_position
 	var direction: Vector2 = (aim_position - position).normalized()
-	await move_like_tween(direction, 300, ANIMATION.get_animation("roll_f").length, false, true)
+	await move_like_tween(direction, 300, ANIMATION.get_animation("player_animations/roll_f").length, false, true)
 func _on_dodge_cooldown_timeout():
 	CAN_DODGE = true
 #endregion

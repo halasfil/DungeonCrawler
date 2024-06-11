@@ -1,18 +1,11 @@
-[gd_resource type="AnimationLibrary" load_steps=33 format=3 uid="uid://cncs78k67axoj"]
+[gd_resource type="AnimationLibrary" load_steps=25 format=3 uid="uid://cncs78k67axoj"]
 
-[ext_resource type="Animation" uid="uid://ctdbdhj24j238" path="res://animations/player/attack_b_melee_1_anticipation.res" id="1_iknhg"]
 [ext_resource type="Animation" uid="uid://bkf3myrk27wo7" path="res://animations/player/attack_b_melee_1_L_anticipation.res" id="2_fky0q"]
-[ext_resource type="Animation" uid="uid://c203nrbndxikh" path="res://animations/player/attack_b_melee_2.res" id="3_c1n0j"]
-[ext_resource type="Animation" uid="uid://ctwdwwdfympty" path="res://animations/player/attack_b_melee_2_anticipation.res" id="4_c8oft"]
-[ext_resource type="Animation" uid="uid://dcdpxqoa83m2g" path="res://animations/player/attack_b_melee_2_L_anticipation.res" id="5_c7wn5"]
 [ext_resource type="Animation" uid="uid://cpeqlw7w1mpv7" path="res://animations/player/attack_b_ranged.res" id="6_wo3of"]
 [ext_resource type="Animation" uid="uid://bydbicjvfcdei" path="res://animations/player/attack_b_ranged_anticipation.res" id="7_ivy5c"]
 [ext_resource type="Animation" uid="uid://cquk3o1dbbwpu" path="res://animations/player/attack_f_melee_1.res" id="8_8cvgc"]
 [ext_resource type="Animation" uid="uid://gqn8eb5ehg1x" path="res://animations/player/attack_f_melee_1_anticipation.res" id="9_8celc"]
 [ext_resource type="Animation" uid="uid://d560keg2rwl" path="res://animations/player/attack_f_melee_1_L_anticipation.res" id="10_kxljm"]
-[ext_resource type="Animation" uid="uid://b3gb0u6y3eh4u" path="res://animations/player/attack_f_melee_2.res" id="11_7to34"]
-[ext_resource type="Animation" uid="uid://tqt37vr6h6pa" path="res://animations/player/attack_f_melee_2_L_anticipation.res" id="12_biiwm"]
-[ext_resource type="Animation" uid="uid://b7pe66agrndpl" path="res://animations/player/attack_f_melee_2_anticipation.res" id="13_t2ter"]
 [ext_resource type="Animation" uid="uid://8qs05ajgwgip" path="res://animations/player/run_f_L.res" id="14_5l5tf"]
 [ext_resource type="Animation" uid="uid://co0cl475bwlyf" path="res://animations/player/RESET.res" id="15_kri7k"]
 [ext_resource type="Animation" uid="uid://di2p1um7rrmqa" path="res://animations/player/attack_f_ranged.res" id="16_a4o56"]
@@ -177,166 +170,6 @@ tracks/11/keys = {
 "values": [false, true]
 }
 
-[sub_resource type="Animation" id="Animation_l8wn8"]
-resource_name = "attack_b_melee_2_L"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Body/Melee:flip_v")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Body/Melee:flip_h")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Body/Melee:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Body/Melee:show_behind_parent")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Body:frame")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [23, 22]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Body:flip_h")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Body/Melee:rotation")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [14.0499, -2.89376]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Body/Melee:position")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [Vector2(-14.4, 2.22), Vector2(2.222, -5.5)]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("Body/Aim/MeleeMark:visible")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0.1, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("Body/Aim/MeleeMark:frame")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [0, 1]
-}
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("Body/Aim/MeleeMark:flip_v")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("Body/Aim/MeleeArea/CollisionPolygon2D:disabled")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/12/type = "value"
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath("Body/Aim/MeleeMark:flip_h")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
 [sub_resource type="Animation" id="Animation_r3qkc"]
 resource_name = "attack_f_melee_1_L"
 length = 0.3
@@ -497,13 +330,14 @@ tracks/12/keys = {
 "values": [false, true]
 }
 
-[sub_resource type="Animation" id="Animation_oyvbc"]
-resource_name = "attack_f_melee_2_L"
-length = 0.3
+[sub_resource type="Animation" id="Animation_x70wl"]
+resource_name = "attack_b_melee_1_anticipation_1"
+length = 0.05
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Body/Melee:flip_h")
+tracks/0/path = NodePath("Body/Melee:flip_v")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -515,38 +349,38 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Body/Melee:rotation")
+tracks/1/path = NodePath("Body/Melee:flip_h")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [-4.47454, -7.16861]
+"values": [true]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Body/Melee:position")
+tracks/2/path = NodePath("Body/Melee:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [Vector2(-14.4444, 1.11111), Vector2(7.77778, 12.2222)]
+"values": [11.529, 2.65639]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Body/Melee:scale")
+tracks/3/path = NodePath("Body/Melee:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [Vector2(1, 1), Vector2(1, 1)]
+"values": [Vector2(6.66667, 4.44444), Vector2(-3.33333, -4.44445)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -563,55 +397,55 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Body:frame")
+tracks/5/path = NodePath("Body/Melee:scale")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [21, 20]
+"values": [Vector2(1, 1), Vector2(1, 1)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Body/Aim/MeleeMark:visible")
+tracks/6/path = NodePath("Body:frame")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [22, 23]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Body/Aim/MeleeMark:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
 "times": PackedFloat32Array(0.1, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
 }
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Body/Aim/MeleeMark:frame")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Body/Aim/MeleeMark:frame")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
 "times": PackedFloat32Array(0.1, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [0, 1]
 }
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("Body/Aim/MeleeMark:flip_v")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("Body:flip_h")
+tracks/9/path = NodePath("Body/Aim/MeleeMark:flip_v")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -630,15 +464,27 @@ tracks/10/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("Body/Aim/MeleeArea/CollisionPolygon2D:disabled")
+tracks/11/path = NodePath("Body:flip_h")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Body/Aim/MeleeArea/CollisionPolygon2D:disabled")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
@@ -651,21 +497,13 @@ _data = {
 "attack_b_melee_1": ExtResource("28_2nu5a"),
 "attack_b_melee_1_L": SubResource("Animation_cdidd"),
 "attack_b_melee_1_L_anticipation": ExtResource("2_fky0q"),
-"attack_b_melee_1_anticipation": ExtResource("1_iknhg"),
-"attack_b_melee_2": ExtResource("3_c1n0j"),
-"attack_b_melee_2_L": SubResource("Animation_l8wn8"),
-"attack_b_melee_2_L_anticipation": ExtResource("5_c7wn5"),
-"attack_b_melee_2_anticipation": ExtResource("4_c8oft"),
+"attack_b_melee_1_anticipation": SubResource("Animation_x70wl"),
 "attack_b_ranged": ExtResource("6_wo3of"),
 "attack_b_ranged_anticipation": ExtResource("7_ivy5c"),
 "attack_f_melee_1": ExtResource("8_8cvgc"),
 "attack_f_melee_1_L": SubResource("Animation_r3qkc"),
 "attack_f_melee_1_L_anticipation": ExtResource("10_kxljm"),
 "attack_f_melee_1_anticipation": ExtResource("9_8celc"),
-"attack_f_melee_2": ExtResource("11_7to34"),
-"attack_f_melee_2_L": SubResource("Animation_oyvbc"),
-"attack_f_melee_2_L_anticipation": ExtResource("12_biiwm"),
-"attack_f_melee_2_anticipation": ExtResource("13_t2ter"),
 "attack_f_ranged": ExtResource("16_a4o56"),
 "attack_f_ranged_anticipation": ExtResource("17_som0j"),
 "death": ExtResource("18_e10nc"),
