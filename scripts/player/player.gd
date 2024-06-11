@@ -53,7 +53,7 @@ var EQUIPPED_WEAPON : Weapon
 var EQUIPPED_ARMOR : Armor
 var KNOCKBACK : bool = false
 var DODGING : bool = false
-var HEALTH : int = 1
+var HEALTH : int = 100
 var IS_DYING : bool = false
 var DIED : bool = false
 #endregion
@@ -240,3 +240,8 @@ func hit_effect():
 	await get_tree().create_timer(0.1).timeout
 	BODY.modulate = Color.WHITE
 
+func add_drop(dropType : Drop.DROP_TYPES, ammount : int):
+	if dropType == Drop.DROP_TYPES.HEALTH:
+		HEALTH += ammount
+	if dropType == Drop.DROP_TYPES.COIN:
+		INVENTORY.GOLD += ammount

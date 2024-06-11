@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dbsetw5t502di"]
+[gd_scene load_steps=6 format=3 uid="uid://dbsetw5t502di"]
 
 [ext_resource type="Script" path="res://scripts/player_enemy_utils/StatesAndHelpers.gd" id="1_bvwcc"]
 [ext_resource type="Script" path="res://scripts/player_enemy_utils/AttackState.gd" id="2_f6cup"]
 [ext_resource type="Script" path="res://scripts/player_enemy_utils/AnimationHelper.gd" id="3_57t4l"]
 [ext_resource type="Script" path="res://scripts/player_enemy_utils/ProjectileHelper.gd" id="4_6lmnu"]
+[ext_resource type="Script" path="res://scripts/player_enemy_utils/DropHelper.gd" id="5_adxvk"]
 
 [node name="StatesAndHelpers" type="Node"]
 script = ExtResource("1_bvwcc")
@@ -16,3 +17,6 @@ script = ExtResource("3_57t4l")
 
 [node name="ProjectilesHelper" type="Node" parent="."]
 script = ExtResource("4_6lmnu")
+
+[node name="DropHelper" type="Node" parent="."]
+script = ExtResource("5_adxvk")

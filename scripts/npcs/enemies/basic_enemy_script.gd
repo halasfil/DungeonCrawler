@@ -129,6 +129,8 @@ func die():
 	if (HEALTH <= 0):
 		HEALTH_BAR.visible = false
 		await STATES_AND_HELPERS.ANIMATION_HELPER.play_death_animation(self)
+		STATES_AND_HELPERS.DROP_HELPER.spawn_drop(Drop.DROP_TYPES.COIN, ENEMY_RESOURCE.coinDropAmmount, ENEMY_RESOURCE.coinDropStrength)
+		
 		queue_free()
 
 func idle():

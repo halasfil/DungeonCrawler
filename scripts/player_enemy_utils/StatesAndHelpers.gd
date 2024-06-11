@@ -13,3 +13,5 @@ var ANIMATION_HELPER : AnimationHelper = $AnimationHelper
 var ATTACK_STATE : AttackState = $AttackState
 @onready
 var PROJECTILE_HELPER : ProjectileHelper = $ProjectilesHelper
+@onready
+var DROP_HELPER : DropHelper = $DropHelper

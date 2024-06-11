@@ -1,3 +1,5 @@
+res://scripts/player_enemy_utils
+res://scripts/drops
 res://animations
 res://test
 res://scenes/npcs/enemies
@@ -5,7 +7,6 @@ res://
 res://animations/player
 res://animations/enemy
 res://scenes/player_enemy_utils
-res://scripts/player_enemy_utils
 res://scenes/main_game
 res://scripts/player/weapons
 res://scenes/vfx

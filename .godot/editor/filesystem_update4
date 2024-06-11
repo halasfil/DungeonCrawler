@@ -21,3 +21,11 @@ res://animations/player/attack_b_melee_1_L_anticipation.res
 res://scripts/player/weapons/projectile.gd
 res://scripts/player_enemy_utils/ProjectileHelper.gd
 res://scripts/npcs/enemies/draugrs/draugr.gd
+res://scenes/drop_items/HealthDrop.tscn
+res://scripts/drops/HealthDrop.gd
+res://scenes/drop_items/CoinDrop.tscn
+res://scenes/drop_items/Drop.tscn
+res://scripts/drops/Drop.gd
+res://scripts/player_enemy_utils/DropHelper.gd
+res://scripts/player_enemy_utils/StatesAndHelpers.gd
+res://scripts/npcs/enemies/basic_enemy_parent_resource.gd
