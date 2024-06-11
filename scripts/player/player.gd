@@ -5,8 +5,7 @@ enum STATES {
 	WALKING,
 	DODGING,
 	ATTACKING,
-	ACTION,
-	DYING
+	ACTION
 }
 var MOVING_SPEED : int = 100
 var DODGE_COOLDOWN_TIME : int = 1;
@@ -44,6 +43,8 @@ var POINTER : Sprite2D = $Body/Aim/Pointer
 var STATES_AND_HELPERS : StatesAndHelpers = $StatesAndHelpers
 @onready
 var DAMAGE_TAKER : DamageTakerComponent = $DamageTakerComponent
+@onready
+var DEATH : Sprite2D = $Death
 
 var CAN_DODGE : bool = true
 var STATE : int = STATES.IDLE
@@ -52,24 +53,33 @@ var EQUIPPED_WEAPON : Weapon
 var EQUIPPED_ARMOR : Armor
 var KNOCKBACK : bool = false
 var DODGING : bool = false
-var HEALTH : int = 100
+var HEALTH : int = 1
+var IS_DYING : bool = false
+var DIED : bool = false
 #endregion
 #region main functions
 func _ready():
 	MELEE_COLISION.disabled = true
 	
 func _physics_process(_delta):
-	aim()
-	show_proper_weapon()
-	if (STATE == STATES.WALKING || STATE == STATES.IDLE):
-		check_player_input()
-	check_equipped_weapon()
-	check_equipped_armor()
-	if KNOCKBACK:
-		perform_knockback()
-	if DODGING:
-		perform_dodging()
-	update_health_bar()
+	if (IS_DYING && DIED == false):
+		await STATES_AND_HELPERS.ANIMATION_HELPER.play_death_animation(self)
+		BODY.visible = false
+		DEATH.visible = false
+		DIED = true
+		#todo handle player die
+	elif (!IS_DYING):
+		aim()
+		show_proper_weapon()
+		if (STATE == STATES.WALKING || STATE == STATES.IDLE):
+			check_player_input()
+		check_equipped_weapon()
+		check_equipped_armor()
+		if KNOCKBACK:
+			perform_knockback()
+		if DODGING:
+			perform_dodging()
+		update_health_bar()
 	$state.text = String.num(STATE)
 #endregion
 #region util
@@ -161,7 +171,7 @@ func perform_knockback():
 #region ranged attack
 func perform_ranged_attack():
 	await STATES_AND_HELPERS.ANIMATION_HELPER.play_ranged_animation(self)
-	STATES_AND_HELPERS.PROJECTILE_HELPER.shoot_projectile(POINTER.global_position, AIM.rotation, EQUIPPED_WEAPON.projectileModel, position)
+	STATES_AND_HELPERS.PROJECTILE_HELPER.shoot_projectile(POINTER.global_position, AIM.rotation, EQUIPPED_WEAPON.projectileModel, position, self)
 #endregion
 #region walking
 func walk_or_idle():
@@ -216,7 +226,7 @@ func take_damage(min_damage : int, max_damage : int, pushback_strength : int, at
 		var damage : int = DAMAGE_TAKER.calculate_damage(min_damage, max_damage)
 		HEALTH -= damage
 		if (HEALTH <= 0):
-			STATE = STATES.DYING
+			IS_DYING = true
 		hit_effect()
 		pushback(attacker, pushback_strength)
 	

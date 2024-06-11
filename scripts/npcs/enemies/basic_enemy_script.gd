@@ -71,11 +71,11 @@ func _ready():
 func _physics_process(_delta):
 	if (IS_DYING):
 		await die()
-	if (STATE != STATES.ATTACKING && velocity == Vector2.ZERO  && !IS_ATTACKING):
+	if (PLAYER_NODE.IS_DYING || STATE != STATES.ATTACKING && velocity == Vector2.ZERO  && !IS_ATTACKING):
 		STATE = STATES.IDLE
 	if (STATE == STATES.IDLE && !IS_ATTACKING):
 		idle()
-	if (STATE == STATES.ATTACKING && !IS_ATTACKING):
+	if (STATE == STATES.ATTACKING && !IS_ATTACKING && !PLAYER_NODE.IS_DYING):
 		await attack()
 	if (STATE == STATES.WALKING && !IS_ATTACKING):
 		walk()
@@ -139,7 +139,7 @@ func attack():
 	velocity = Vector2.ZERO
 	if (IS_RANGED):
 		await STATES_AND_HELPERS.ANIMATION_HELPER.play_ranged_animation(self)
-		STATES_AND_HELPERS.PROJECTILE_HELPER.shoot_projectile(POINTER.global_position, AIM.rotation, ENEMY_RESOURCE.weapon.projectileModel, position)
+		STATES_AND_HELPERS.PROJECTILE_HELPER.shoot_projectile(POINTER.global_position, AIM.rotation, ENEMY_RESOURCE.weapon.projectileModel, position, self)
 	else:
 		await STATES_AND_HELPERS.ANIMATION_HELPER.play_melee_attack_animation(self)
 	await ANIMATION.animation_finished

@@ -34,7 +34,7 @@ func randomize_position(target_position) -> Vector2:
 		return rand_position
 
 func move():
-	if (PLAYER):
+	if (PLAYER != null):
 		STATE = STATES.MOVING
 		var target_position : Vector2 = PLAYER.position
 		var random_position : Vector2 = randomize_position(target_position)

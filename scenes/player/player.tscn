@@ -37,11 +37,6 @@ text = "test"
 [node name="Ui" parent="." instance=ExtResource("2_gpood")]
 position = Vector2(0, 41)
 
-[node name="Shadow" type="Sprite2D" parent="."]
-position = Vector2(0.1, 0)
-scale = Vector2(0.9, 0.9)
-texture = ExtResource("4_c5bxy")
-
 [node name="Death" type="Sprite2D" parent="."]
 visible = false
 texture = ExtResource("4_i6oy7")
@@ -55,14 +50,14 @@ texture = ExtResource("3_38y77")
 flip_h = true
 hframes = 8
 vframes = 4
-frame = 6
+frame = 3
 
 [node name="Melee" type="Sprite2D" parent="Body"]
+show_behind_parent = true
 texture_filter = 1
-position = Vector2(6.66667, -4.44445)
-rotation = 3.4383
+position = Vector2(-6, -2)
+rotation = 0.507229
 texture = ExtResource("5_a3hnl")
-flip_h = true
 flip_v = true
 
 [node name="Aim" type="Marker2D" parent="Body"]
@@ -70,6 +65,7 @@ position = Vector2(-1, 2)
 
 [node name="Ranged" type="Sprite2D" parent="Body/Aim"]
 visible = false
+show_behind_parent = true
 texture_filter = 1
 position = Vector2(3.22222, 0.222222)
 texture = ExtResource("6_u5qqe")
@@ -82,7 +78,6 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("8_qc8i0")
 
 [node name="MeleeMark" type="Sprite2D" parent="Body/Aim"]
-visible = false
 texture_filter = 2
 position = Vector2(8, -1)
 scale = Vector2(1.22222, 1.22222)
@@ -90,7 +85,6 @@ texture = ExtResource("9_gwh43")
 flip_v = true
 hframes = 9
 vframes = 3
-frame = 1
 
 [node name="MeleeArea" type="Area2D" parent="Body/Aim"]
 script = ExtResource("13_3vpl0")
@@ -98,6 +92,11 @@ script = ExtResource("13_3vpl0")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Body/Aim/MeleeArea"]
 position = Vector2(24.3333, 0.222222)
 polygon = PackedVector2Array(-8.88889, 14.4444, 2.22222, 2.22222, 2.22222, -2.22222, -8.88889, -14.4444, -17.7777, -3.33333, -17.7777, 7.77778)
+disabled = true
+
+[node name="Shadow" type="Sprite2D" parent="Body"]
+position = Vector2(-1, 0)
+texture = ExtResource("4_c5bxy")
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(1, 2)

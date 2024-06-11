@@ -50,6 +50,9 @@ func _on_area_2d_body_entered(body):
 	if (body is TileMap):
 		destroy()
 	if (body.has_method("take_damage")):
-		if (SHOOTER&&SHOOTER != body):
-			destroy()
+		destroy()
+		if (SHOOTER && SHOOTER != body && !friendly_fire_check(body)):
 			body.take_damage(PROJECTILE.minDamage, PROJECTILE.maxDamage, PROJECTILE.weaponPushback, self)
+
+func friendly_fire_check(body):
+	return SHOOTER is BasicEnemy && body is BasicEnemy

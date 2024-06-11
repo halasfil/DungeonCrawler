@@ -18,3 +18,6 @@ res://scenes/player/projectile.tscn
 res://scenes/player_enemy_utils/states_and_helpers.tscn
 res://scripts/player/player.gd
 res://animations/player/attack_b_melee_1_L_anticipation.res
+res://scripts/player/weapons/projectile.gd
+res://scripts/player_enemy_utils/ProjectileHelper.gd
+res://scripts/npcs/enemies/draugrs/draugr.gd
