@@ -10,9 +10,9 @@ var STRENGTH : int
 @onready
 var ANIMATION : AnimationPlayer = $AnimationPlayer
 @onready
-var SPRITE : Sprite2D = $Sprite2d
+var SPRITE : Sprite2D = $Sprite2D
 @onready
-var LIGHT : PointLight2D = $Sprite2d/light
+var LIGHT : PointLight2D = $light
 
 func _ready():
 	ANIMATION.play("idle")
@@ -22,7 +22,6 @@ func _ready():
 	if (TYPE == DROP_TYPES.COIN):	
 		LIGHT.color = Color(.98,1,0,1)
 		SPRITE.texture = preload("res://assets/drops/coin.png")
-
 
 func _on_area_2d_body_entered(body):
 	if (body is Player):

@@ -1,11 +1,11 @@
-Node
-NavigationAgent2D
 CollisionShape2D
 Area2D
-Node2D
-Sprite2D
 PointLight2D
 AnimationPlayer
+Sprite2D
+Node
+NavigationAgent2D
+Node2D
 Camera2D
 RayCast2D
 DamageTakerComponent

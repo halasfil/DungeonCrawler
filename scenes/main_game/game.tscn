@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://c8glvyer7hobv"]
+[gd_scene load_steps=7 format=3 uid="uid://c8glvyer7hobv"]
 
 [ext_resource type="Script" path="res://scripts/game/game.gd" id="1_v86ck"]
 [ext_resource type="PackedScene" uid="uid://igppcoxjdlgx" path="res://scenes/main_game/world.tscn" id="2_4dhyd"]
 [ext_resource type="PackedScene" uid="uid://bg1pxarmy7iqs" path="res://scenes/npcs/enemies/enemy.tscn" id="4_sbnhw"]
 [ext_resource type="PackedScene" uid="uid://b6c8fwsvm7b8k" path="res://scenes/player/player.tscn" id="5_ony4e"]
 [ext_resource type="PackedScene" uid="uid://8k2i2vtgqbia" path="res://scenes/player/companion/companion.tscn" id="6_1y88y"]
+[ext_resource type="PackedScene" uid="uid://cwqh3dv4br021" path="res://scenes/drop_items/Drops.tscn" id="6_tlwai"]
 
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
@@ -27,3 +28,6 @@ position = Vector2(356, 83)
 
 [node name="Enemy3" parent="." instance=ExtResource("4_sbnhw")]
 position = Vector2(353, 224)
+
+[node name="Drops" parent="." instance=ExtResource("6_tlwai")]
+position = Vector2(103, 100)
