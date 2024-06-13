@@ -11,13 +11,12 @@
 y_sort_enabled = true
 script = ExtResource("1_v86ck")
 
-[node name="World" parent="." instance=ExtResource("2_4dhyd")]
-
 [node name="Companion" parent="." instance=ExtResource("6_1y88y")]
 position = Vector2(65, 99)
 scale = Vector2(0.1, 0.1)
 
 [node name="Player" parent="." instance=ExtResource("5_ony4e")]
+y_sort_enabled = true
 position = Vector2(13, 98)
 
 [node name="Enemy" parent="." instance=ExtResource("4_sbnhw")]
@@ -31,3 +30,5 @@ position = Vector2(353, 224)
 
 [node name="Drops" parent="." instance=ExtResource("6_tlwai")]
 position = Vector2(103, 100)
+
+[node name="World" parent="." instance=ExtResource("2_4dhyd")]
