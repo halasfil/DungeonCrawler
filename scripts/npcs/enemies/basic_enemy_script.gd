@@ -1,7 +1,7 @@
 class_name BasicEnemy extends CharacterBody2D
 
 @onready
-var PLAYER_NODE : Player = get_parent().get_node("Player")
+var PLAYER_NODE : Player = get_parent().get_parent().get_parent().get_parent().get_node("Player")
 @onready
 var ANIMATION = $AnimationPlayer;
 @onready
@@ -68,27 +68,29 @@ func _ready():
 		MELEE.visible = true
 		RANGED.visible = false
 	
-func _physics_process(_delta):
+func _process(delta):
 	if (IS_DYING):
 		await die()
-	if (PLAYER_NODE.IS_DYING || STATE != STATES.ATTACKING && velocity == Vector2.ZERO  && !IS_ATTACKING):
-		STATE = STATES.IDLE
-	if (STATE == STATES.IDLE && !IS_ATTACKING):
-		idle()
-	if (STATE == STATES.ATTACKING && !IS_ATTACKING && !PLAYER_NODE.IS_DYING):
-		await attack()
-	if (STATE == STATES.WALKING && !IS_ATTACKING):
-		walk()
-	if (STATE != STATES.ATTACKING):
-		IS_ATTACKING = false
-		$Body/Aim/MeleeArea/CollisionPolygon2D.disabled = true
-		aim()
-	if KNOCKBACK:
-		perform_knockback()
-	update_health_bar()
-	if (STATE == STATES.WALKING || STATE==STATES.IDLE):
-		chase()
-	check_ranged_area()
+func _physics_process(_delta):
+	if (IS_DYING):
+		if (PLAYER_NODE.IS_DYING || STATE != STATES.ATTACKING && velocity == Vector2.ZERO  && !IS_ATTACKING):
+			STATE = STATES.IDLE
+		if (STATE == STATES.IDLE && !IS_ATTACKING):
+			idle()
+		if (STATE == STATES.ATTACKING && !IS_ATTACKING && !PLAYER_NODE.IS_DYING):
+			await attack()
+		if (STATE == STATES.WALKING && !IS_ATTACKING):
+			walk()
+		if (STATE != STATES.ATTACKING):
+			IS_ATTACKING = false
+			$Body/Aim/MeleeArea/CollisionPolygon2D.disabled = true
+			aim()
+		if KNOCKBACK:
+			perform_knockback()
+		update_health_bar()
+		if (STATE == STATES.WALKING || STATE==STATES.IDLE):
+			chase()
+		check_ranged_area()
 	STATE_LABEL.text = String.num(STATE)
 	
 func walk():
@@ -126,12 +128,10 @@ func chase():
 		AIM.look_at(PLAYER_NODE.global_position)
 	
 func die():
-	if (HEALTH <= 0):
-		HEALTH_BAR.visible = false
-		await STATES_AND_HELPERS.ANIMATION_HELPER.play_death_animation(self)
-		STATES_AND_HELPERS.DROP_HELPER.spawn_drop(Drop.DROP_TYPES.COIN, ENEMY_RESOURCE.coinDropAmmount, ENEMY_RESOURCE.coinDropStrength)
-		
-		queue_free()
+	HEALTH_BAR.visible = false
+	await STATES_AND_HELPERS.ANIMATION_HELPER.play_death_animation(self)
+	STATES_AND_HELPERS.DROP_HELPER.spawn_drop(Drop.DROP_TYPES.COIN, ENEMY_RESOURCE.coinDropAmmount, ENEMY_RESOURCE.coinDropStrength)
+	queue_free()
 
 func idle():
 	STATES_AND_HELPERS.ANIMATION_HELPER.play_idle_animation(self)

@@ -12,3 +12,5 @@ res://scenes/player/projectile.tscn
 res://scenes/player_enemy_utils/states_and_helpers.tscn
 res://scenes/drop_items/Drops.tscn
 res://scenes/main_game/world.tscn
+res://scripts/npcs/enemies/draugrs/draugr.gd
+res://scripts/npcs/enemies/basic_enemy_script.gd
